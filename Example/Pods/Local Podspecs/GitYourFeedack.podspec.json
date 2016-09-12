@@ -1,0 +1,27 @@
+{
+  "name": "GitYourFeedack",
+  "version": "0.1.0",
+  "summary": "A short description of GitYourFeedack.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/GitYourFeedack",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Gabe Kangas": "gabek@real-ity.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/GitYourFeedack.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "GitYourFeedack/Classes/**/*",
+  "resource_bundles": {
+    "GitYourFeedack": [
+      "GitYourFeedack/Assets/*.png"
+    ]
+  }
+}

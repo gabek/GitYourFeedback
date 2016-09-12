@@ -1,0 +1,6 @@
+framework module Pods_GitYourFeedack_Example {
+  umbrella header "Pods-GitYourFeedack_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'GitYourFeedack_Example' do
+  pod 'GitYourFeedack', :path => '../'
+end

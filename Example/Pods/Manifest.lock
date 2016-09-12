@@ -1,0 +1,16 @@
+PODS:
+  - GitYourFeedack (0.1.0)
+
+DEPENDENCIES:
+  - GitYourFeedack (from `../`)
+
+EXTERNAL SOURCES:
+  GitYourFeedack:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  GitYourFeedack: afa3eec8b4ce30c21b7d66d3abc315aa9f48f2de
+
+PODFILE CHECKSUM: a65bcb099e3d48a7e2f715e075fe7a335c015383
+
+COCOAPODS: 1.1.0.rc.1
