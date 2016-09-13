@@ -131,6 +131,8 @@ class GYFMainViewController: UIViewController {
             bodyText += "\n\n\(bodyFieldText)"
         }
         
+        bodyText += Helpers.templateText()
+        
         reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (complete) in
             self.close()
         })
