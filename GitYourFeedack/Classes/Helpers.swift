@@ -29,15 +29,8 @@ struct Helpers {
     static func templateText() -> String {
         var template = "\n\n ------------------------ Details ------------------------"
         
-        // Bundle ID
-        if let bundleId = Bundle.main.bundleIdentifier {
-            template += "\n" + bundleId
-        }
-        
-        // App version and build number
-        if let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, let buildNumber = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String {
-            template += "\nVersion: \(appVersion) build \(buildNumber)"
-        }
+        // App bundle, version and build number
+        template += "\nVersion: \(Helpers.appDisplayVersion())"
         
         // Device name and screen resolution
         let width = String(Int(UIScreen.main.bounds.size.width))
@@ -45,9 +38,14 @@ struct Helpers {
         template += "\nDevice: " + UIDevice.modelName() + ". \(width)x\(height)"
         
         return template
-
     }
     
+    static func appDisplayVersion() -> String? {
+        if let bundleId = Bundle.main.bundleIdentifier, let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, let buildNumber = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String {
+            return "\(bundleId) \(appVersion) build \(buildNumber)"
+        }
+        return nil
+    }
 }
 
 extension UIDevice {

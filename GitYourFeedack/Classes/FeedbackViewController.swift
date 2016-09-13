@@ -38,6 +38,7 @@ class FeedbackInterfaceViewController: UIViewController {
         stack.addArrangedSubview(titleField)
         stack.addArrangedSubview(bodyField)
         stack.addArrangedSubview(imagePreview)
+        stack.addArrangedSubview(footerLabel)
         
         // Navbar
         let bundle = Bundle(for: type(of: self))
@@ -159,7 +160,7 @@ class FeedbackInterfaceViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textField.placeholder = "Short title"
+        textField.placeholder = "Short description of issue"
         textField.keyboardType = .asciiCapable
         textField.borderStyle = .roundedRect
         return textField
@@ -169,7 +170,7 @@ class FeedbackInterfaceViewController: UIViewController {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        textField.placeholder = "Email"
+        textField.placeholder = "Your email"
         textField.keyboardType = .emailAddress
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
@@ -196,7 +197,6 @@ class FeedbackInterfaceViewController: UIViewController {
         return imageView
     }()
     
-    
     private let submitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -205,6 +205,15 @@ class FeedbackInterfaceViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         button.layer.cornerRadius = 5
         return button
+    }()
+    
+    private let footerLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.text = Helpers.appDisplayVersion()
+        label.textAlignment = .center
+        return label
     }()
     
     func adjustForKeyboard(notification: NSNotification) {
