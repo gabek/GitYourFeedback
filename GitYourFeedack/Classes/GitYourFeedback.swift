@@ -24,7 +24,7 @@ public class GitYourFeedback: NSObject {
         super.init()
         
         // Listen for screnshot
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: self, queue: OperationQueue.main) { (notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
             self.display()
         }
     }

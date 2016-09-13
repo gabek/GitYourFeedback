@@ -149,6 +149,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = UJXQMSLQ5S;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -355,6 +356,7 @@
 			baseConfigurationReference = 9A0EE3AB4867371EFC6C8E19 /* Pods-GitYourFeedack_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJXQMSLQ5S;
 				INFOPLIST_FILE = GitYourFeedack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -370,6 +372,7 @@
 			baseConfigurationReference = 81FAB07461B1B8B76BB7B27C /* Pods-GitYourFeedack_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = UJXQMSLQ5S;
 				INFOPLIST_FILE = GitYourFeedack/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
