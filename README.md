@@ -1,13 +1,16 @@
 # GitYourFeedack
 
-[![CI Status](http://img.shields.io/travis/Gabe Kangas/GitYourFeedack.svg?style=flat)](https://travis-ci.org/Gabe Kangas/GitYourFeedack)
 [![Version](https://img.shields.io/cocoapods/v/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
 [![License](https://img.shields.io/cocoapods/l/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
 [![Platform](https://img.shields.io/cocoapods/p/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
 
+A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Yet none of the feedback reporting tools use Issues as the datastore.  Instead the expected behavior is to route all of your users to Github and hope they file an issue.
+
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project:
+* Clone the repo, and run `pod install` from the Example directory.
+* Edit `Config.swift` and add your Github API Token, Repository name, and Google Cloud Storage bucket name.
 
 ## Requirements
 * Google Cloud Storage bucket for storing the screenshots.
