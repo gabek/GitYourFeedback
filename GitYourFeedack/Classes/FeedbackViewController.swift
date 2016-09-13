@@ -55,7 +55,7 @@ class FeedbackInterfaceViewController: UIViewController {
         title = "Submit Feedback"
         
         handleScreenshot()
-        //listenForKeyboardNotifications()
+        listenForKeyboardNotifications()
         
         populateEmailField()
         imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
@@ -151,7 +151,7 @@ class FeedbackInterfaceViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        scrollView.keyboardDismissMode = .interactive
         return scrollView
     }()
     
@@ -231,9 +231,9 @@ class FeedbackInterfaceViewController: UIViewController {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            scrollView.contentInset = UIEdgeInsets.zero
+            scrollView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
         } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
         }
         
         scrollView.scrollIndicatorInsets = scrollView.contentInset
