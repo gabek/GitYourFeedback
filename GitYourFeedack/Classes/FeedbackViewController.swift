@@ -39,7 +39,7 @@ class FeedbackInterfaceViewController: UIViewController {
         stack.addArrangedSubview(bodyField)
         stack.addArrangedSubview(imagePreviewButton)
         stack.addArrangedSubview(footerLabel)
-        
+                
         // Navbar
         let bundle = Bundle(for: type(of: self))
         let saveImage = UIImage(named: "save.png", in: bundle, compatibleWith: nil)
@@ -187,8 +187,9 @@ class FeedbackInterfaceViewController: UIViewController {
     
     private let bodyField: UITextView = {
         let textView = UITextView()
+        textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
         textView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1
@@ -221,6 +222,7 @@ class FeedbackInterfaceViewController: UIViewController {
         label.text = Helpers.appDisplayVersion()
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.textColor = UIColor(white: 0.8, alpha: 1.0)
         return label
     }()
     
@@ -238,6 +240,7 @@ class FeedbackInterfaceViewController: UIViewController {
         
         scrollView.scrollIndicatorInsets = scrollView.contentInset
     }
+    
     
     private func populateEmailField() {
         let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
