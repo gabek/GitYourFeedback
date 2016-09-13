@@ -21,13 +21,13 @@ class FeedbackInterfaceViewController: UIViewController {
     
     var image: UIImage? {
         didSet {
-            imagePreview.image = image
+            imagePreviewButton.setImage(image, for: .normal)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
         
         view.addSubview(scrollView)
         scrollView.addSubview(stack)
@@ -37,7 +37,7 @@ class FeedbackInterfaceViewController: UIViewController {
         stack.addArrangedSubview(emailField)
         stack.addArrangedSubview(titleField)
         stack.addArrangedSubview(bodyField)
-        stack.addArrangedSubview(imagePreview)
+        stack.addArrangedSubview(imagePreviewButton)
         stack.addArrangedSubview(footerLabel)
         
         // Navbar
@@ -58,6 +58,7 @@ class FeedbackInterfaceViewController: UIViewController {
         //listenForKeyboardNotifications()
         
         populateEmailField()
+        imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
     }
     
     private func handleScreenshot() {
@@ -80,6 +81,12 @@ class FeedbackInterfaceViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func selectNewImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
     }
     
     private func showNotification(title: String, message: String) {
@@ -189,12 +196,12 @@ class FeedbackInterfaceViewController: UIViewController {
         return textView
     }()
     
-    private let imagePreview: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    private let imagePreviewButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
     }()
     
     private let submitButton: UIButton = {
@@ -213,6 +220,7 @@ class FeedbackInterfaceViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 13)
         label.text = Helpers.appDisplayVersion()
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
     
@@ -244,6 +252,19 @@ class FeedbackInterfaceViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            image = pickedImage
+            picker.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
