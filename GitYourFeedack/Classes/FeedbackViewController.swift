@@ -1,6 +1,6 @@
 //
-//  GYFViewController.swift
-//  GYFViewController
+//  FeedbackViewController.swift
+//  GitYourFeedback
 //
 //  Created by Gabe Kangas on 9/11/16.
 //  Copyright © 2016 Gabe Kangas. All rights reserved.
@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class GYFMainViewController: UIViewController {
+class FeedbackInterfaceViewController: UIViewController {
     
-    var reporter: GitYourFeedback?
+    var reporter: FeedbackManager?
     
-    init(reporter: GitYourFeedback?) {
+    init(reporter: FeedbackManager?) {
         super.init(nibName: nil, bundle: nil)
         
         self.reporter = reporter
@@ -238,10 +238,10 @@ class GYFMainViewController: UIViewController {
     }
 }
 
-class GYFViewController: UINavigationController {
-    weak var reporter: GitYourFeedback?
+class FeedbackViewController: UINavigationController {
+    weak var reporter: FeedbackManager?
     
-    init(reporter: GitYourFeedback) {
+    init(reporter: FeedbackManager) {
         super.init(nibName: nil, bundle: nil)
         
         self.reporter = reporter
@@ -250,7 +250,7 @@ class GYFViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [GYFMainViewController(reporter: reporter)]
+        viewControllers = [FeedbackInterfaceViewController(reporter: reporter)]
     }
     
     required init?(coder aDecoder: NSCoder) {

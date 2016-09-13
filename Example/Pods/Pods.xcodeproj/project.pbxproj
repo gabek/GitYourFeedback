@@ -13,8 +13,8 @@
 		3255DA96FC3114B492A42D58CA33173E /* GitYourFeedack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1731796DB7EB532EFC7EC209A7338453 /* GitYourFeedack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3330F3C1D9DCC992AB00F105B9CC4685 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		3F34C3AE0A18D25EF945AA079D7ABC3D /* Pods-GitYourFeedack_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE0D785B975BB7A9ACE2B641877D6DB /* Pods-GitYourFeedack_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		56E6F869B2D405D5877F22D6575CCA75 /* GYFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DACBB08156B1BD70630054FEA43E /* GYFViewController.swift */; };
-		86530048AF0752B2AAE49D946C29A009 /* GitYourFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6036A55E72468725E81C86A93B6C /* GitYourFeedback.swift */; };
+		56E6F869B2D405D5877F22D6575CCA75 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DACBB08156B1BD70630054FEA43E /* FeedbackViewController.swift */; };
+		86530048AF0752B2AAE49D946C29A009 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6036A55E72468725E81C86A93B6C /* FeedbackManager.swift */; };
 		93F513F2267723D8307D52EB0675BDCC /* GoogleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BC60C0569CCCCF735FC6ED07A9439 /* GoogleStorage.swift */; };
 		A01567C01D879C960038F4FC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01567BF1D879C960038F4FC /* Helpers.swift */; };
 		BB032CBB988C43835DA77D53B6BC26BF /* Pods-GitYourFeedack_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */; };
@@ -42,7 +42,7 @@
 /* Begin PBXFileReference section */
 		0848AE6AC2DB43FEBCC741A7AF4D4CCF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CBBB937C8549D62997D43227B6B3AF7 /* GitYourFeedack.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitYourFeedack.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		0EF4DACBB08156B1BD70630054FEA43E /* GYFViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GYFViewController.swift; sourceTree = "<group>"; };
+		0EF4DACBB08156B1BD70630054FEA43E /* FeedbackViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		124929419E0D3DAD2ACF1CCEFE053BE9 /* Pods-GitYourFeedack_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedack_Example-frameworks.sh"; sourceTree = "<group>"; };
 		150C1EF66EAE989B118554F042C5B0AB /* save.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		1731796DB7EB532EFC7EC209A7338453 /* GitYourFeedack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedack-umbrella.h"; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		A2355892AFE5F55735C9A376A62B2920 /* Pods-GitYourFeedack_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedack_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A920B0A7E925BE5589AC952EEB3E7AFF /* GitYourFeedack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA06F0A94F3B8E65D319F42A9FF6BF10 /* Pods-GitYourFeedack_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GitYourFeedack_Example.modulemap"; sourceTree = "<group>"; };
-		CB5D6036A55E72468725E81C86A93B6C /* GitYourFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GitYourFeedback.swift; sourceTree = "<group>"; };
+		CB5D6036A55E72468725E81C86A93B6C /* FeedbackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		DDE0D785B975BB7A9ACE2B641877D6DB /* Pods-GitYourFeedack_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GitYourFeedack_Example-umbrella.h"; sourceTree = "<group>"; };
 		F7E4356D1A9A5471B8640DE632C98A13 /* Pods_GitYourFeedack_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitYourFeedack_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,9 +171,9 @@
 		6DEDA6C5BD343DC4A3B152D413C398C3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CB5D6036A55E72468725E81C86A93B6C /* GitYourFeedback.swift */,
+				CB5D6036A55E72468725E81C86A93B6C /* FeedbackManager.swift */,
 				485BC60C0569CCCCF735FC6ED07A9439 /* GoogleStorage.swift */,
-				0EF4DACBB08156B1BD70630054FEA43E /* GYFViewController.swift */,
+				0EF4DACBB08156B1BD70630054FEA43E /* FeedbackViewController.swift */,
 				6B4EFCFD8E2067ED8CFB9EACA76180B8 /* MediaQuery.swift */,
 				A01567BF1D879C960038F4FC /* Helpers.swift */,
 			);
@@ -368,9 +368,9 @@
 			files = (
 				D9221006CA17FC37DFA19609B80E4705 /* GitYourFeedack-dummy.m in Sources */,
 				A01567C01D879C960038F4FC /* Helpers.swift in Sources */,
-				86530048AF0752B2AAE49D946C29A009 /* GitYourFeedback.swift in Sources */,
+				86530048AF0752B2AAE49D946C29A009 /* FeedbackManager.swift in Sources */,
 				93F513F2267723D8307D52EB0675BDCC /* GoogleStorage.swift in Sources */,
-				56E6F869B2D405D5877F22D6575CCA75 /* GYFViewController.swift in Sources */,
+				56E6F869B2D405D5877F22D6575CCA75 /* FeedbackViewController.swift in Sources */,
 				0A799FB0096BD478E2B822BBEEE78AE9 /* MediaQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

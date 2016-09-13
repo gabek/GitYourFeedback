@@ -11,7 +11,7 @@ import GitYourFeedack
 
 class ViewController: UIViewController {
 
-     let feedback = GitYourFeedback(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, googleStorageBucket: Config.googleStorageBucket, labels: ["Test Label 1", "Test Label 2"])
+     let feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, googleStorageBucket: Config.googleStorageBucket, labels: ["Test Label 1", "Test Label 2"])
     
     override func viewDidLoad() {
         super.viewDidLoad()

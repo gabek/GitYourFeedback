@@ -1,5 +1,5 @@
 //
-//  GitYourFeedback.swift
+//  FeedbackManager.swift
 //  GitYourFeedback
 //
 //  Created by Gabe Kangas on 9/10/16.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class GitYourFeedback: NSObject {
+public class FeedbackManager: NSObject {
     var githubApiToken: String
     var githubRepo: String
     var labels: [String]?
@@ -40,7 +40,7 @@ public class GitYourFeedback: NSObject {
         }
         
         if let vc = vc {
-            vc.present(GYFViewController(reporter: self), animated: true, completion: nil)
+            vc.present(FeedbackViewController(reporter: self), animated: true, completion: nil)
         } else {
             fatalError("No view controller to present GKBugreporter on")
         }
