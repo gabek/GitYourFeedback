@@ -46,10 +46,17 @@ class GYFMainViewController: UIViewController {
         let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
         saveButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = saveButton
+
+        let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
+        closeButton.tintColor = UIColor.black
+        navigationItem.leftBarButtonItem = closeButton
+        
         title = "Submit Feedback"
         
         handleScreenshot()
         //listenForKeyboardNotifications()
+        
+        populateEmailField()
     }
     
     private func handleScreenshot() {
@@ -125,8 +132,10 @@ class GYFMainViewController: UIViewController {
         }
         
         reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (complete) in
-            self.dismiss(animated: true, completion: nil)
+            self.close()
         })
+        
+        Helpers.saveEmail(email: emailField.text)
     }
     
     private let scrollView: UIScrollView = {
@@ -209,6 +218,17 @@ class GYFMainViewController: UIViewController {
         }
         
         scrollView.scrollIndicatorInsets = scrollView.contentInset
+    }
+    
+    private func populateEmailField() {
+        let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
+        if let email = Helpers.email() {
+            emailField.text = email
+        }
+    }
+    
+    func close() {
+        dismiss(animated: true, completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

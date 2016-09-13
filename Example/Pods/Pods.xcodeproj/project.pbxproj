@@ -16,6 +16,7 @@
 		56E6F869B2D405D5877F22D6575CCA75 /* GYFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF4DACBB08156B1BD70630054FEA43E /* GYFViewController.swift */; };
 		86530048AF0752B2AAE49D946C29A009 /* GitYourFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5D6036A55E72468725E81C86A93B6C /* GitYourFeedback.swift */; };
 		93F513F2267723D8307D52EB0675BDCC /* GoogleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485BC60C0569CCCCF735FC6ED07A9439 /* GoogleStorage.swift */; };
+		A01567C01D879C960038F4FC /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01567BF1D879C960038F4FC /* Helpers.swift */; };
 		BB032CBB988C43835DA77D53B6BC26BF /* Pods-GitYourFeedack_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */; };
 		D9221006CA17FC37DFA19609B80E4705 /* GitYourFeedack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D68E984FD2EA4DE7A894C13EB6C3FA7 /* GitYourFeedack-dummy.m */; };
 		E81E4EDF1342A758F0E338E2E5A4CD6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -59,6 +60,7 @@
 		7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GitYourFeedack_Example-dummy.m"; sourceTree = "<group>"; };
 		8D68E984FD2EA4DE7A894C13EB6C3FA7 /* GitYourFeedack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GitYourFeedack-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A01567BF1D879C960038F4FC /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		A2355892AFE5F55735C9A376A62B2920 /* Pods-GitYourFeedack_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedack_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A920B0A7E925BE5589AC952EEB3E7AFF /* GitYourFeedack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA06F0A94F3B8E65D319F42A9FF6BF10 /* Pods-GitYourFeedack_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GitYourFeedack_Example.modulemap"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				485BC60C0569CCCCF735FC6ED07A9439 /* GoogleStorage.swift */,
 				0EF4DACBB08156B1BD70630054FEA43E /* GYFViewController.swift */,
 				6B4EFCFD8E2067ED8CFB9EACA76180B8 /* MediaQuery.swift */,
+				A01567BF1D879C960038F4FC /* Helpers.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9221006CA17FC37DFA19609B80E4705 /* GitYourFeedack-dummy.m in Sources */,
+				A01567C01D879C960038F4FC /* Helpers.swift in Sources */,
 				86530048AF0752B2AAE49D946C29A009 /* GitYourFeedback.swift in Sources */,
 				93F513F2267723D8307D52EB0675BDCC /* GoogleStorage.swift in Sources */,
 				56E6F869B2D405D5877F22D6575CCA75 /* GYFViewController.swift in Sources */,
