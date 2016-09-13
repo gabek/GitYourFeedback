@@ -32,8 +32,6 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'GitYourFeedack/Classes/**/*'
 
-  s.resource_bundles = {
-     'GitYourFeedack' => ['GitYourFeedack/Assets/*.png']
-  }
+  s.resources = 'GitYourFeedack/Assets/*.png'
 
 end

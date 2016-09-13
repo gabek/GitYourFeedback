@@ -1,9 +1,9 @@
 {
   "name": "GitYourFeedack",
   "version": "0.1.0",
-  "summary": "A short description of GitYourFeedack.",
+  "summary": "Let users submit feedback, with screenshots, directly from your iOS app to Github Issues.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/GitYourFeedack",
+  "homepage": "https://github.com/gabek/GitYourFeedack",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,16 +12,13 @@
     "Gabe Kangas": "gabek@real-ity.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/GitYourFeedack.git",
+    "git": "https://github.com/gabek/GitYourFeedack.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/gabek",
   "platforms": {
     "ios": "9.0"
   },
   "source_files": "GitYourFeedack/Classes/**/*",
-  "resource_bundles": {
-    "GitYourFeedack": [
-      "GitYourFeedack/Assets/*.png"
-    ]
-  }
+  "resources": "GitYourFeedack/Assets/*.png"
 }

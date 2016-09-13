@@ -43,12 +43,12 @@ class FeedbackInterfaceViewController: UIViewController {
         // Navbar
         let bundle = Bundle(for: type(of: self))
         let saveImage = UIImage(named: "save.png", in: bundle, compatibleWith: nil)
-        //let saveButton = UIBarButtonItem(image: saveImage, style: .plain, target: self, action: #selector(save))
-        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(save))
+        let saveButton = UIBarButtonItem(image: saveImage, style: .plain, target: self, action: #selector(save))
         saveButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = saveButton
 
-        let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(close))
+        let closeImage = UIImage(named: "close.png", in: bundle, compatibleWith: nil)
+        let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(close))
         closeButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = closeButton
         
