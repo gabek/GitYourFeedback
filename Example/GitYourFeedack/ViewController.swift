@@ -26,6 +26,11 @@ class ViewController: UIViewController {
         button.widthAnchor.constraint(equalToConstant: 150).isActive = true
         button.heightAnchor.constraint(equalToConstant: 45).isActive = true
         button.addTarget(self, action: #selector(display), for: .touchUpInside)
+        
+        view.addSubview(label)
+        label.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -50).isActive = true
     }
     
     func display() {
@@ -39,6 +44,16 @@ class ViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor.blue
         return button
+    }()
+    
+    private let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Take a screenshot or press button to provide feedback"
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 14)
+        return label
     }()
 }
 
