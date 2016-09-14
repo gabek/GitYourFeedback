@@ -200,7 +200,9 @@ class FeedbackInterfaceViewController: UIViewController {
     private let imagePreviewButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        let height = button.heightAnchor.constraint(equalToConstant: 200)
+        height.priority = 999
+        height.isActive = true
         button.imageView?.contentMode = .scaleAspectFit
         return button
     }()
