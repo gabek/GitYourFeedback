@@ -11,10 +11,13 @@ import GitYourFeedack
 
 class ViewController: UIViewController {
 
-     let feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, googleStorageBucket: Config.googleStorageBucket, labels: ["Test Label 1", "Test Label 2"])
+    var feedback: FeedbackManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, googleUploadTargetFileDelegate: self)
+        
         view.backgroundColor = UIColor.white
         
         view.addSubview(button)
@@ -37,4 +40,12 @@ class ViewController: UIViewController {
         button.backgroundColor = UIColor.blue
         return button
     }()
+}
+
+extension ViewController: FeedbackManagerUploadTargetDelegate {
+    func uploadUrl() -> String {
+        let filename = String(Date().timeIntervalSince1970) + ".jpg"
+        let url = "https://www.googleapis.com/upload/storage/v1/b/\(Config.googleStorageBucket)/o?name=\(filename)"
+        return url
+    }
 }

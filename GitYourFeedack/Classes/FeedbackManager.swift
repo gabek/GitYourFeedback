@@ -9,21 +9,30 @@
 import Foundation
 import UIKit
 
+public protocol FeedbackManagerUploadTargetDelegate {
+    func uploadUrl() -> String
+}
+
 public class FeedbackManager: NSObject {
+    var uploadUrlDelegate: FeedbackManagerUploadTargetDelegate?
+    
     var githubApiToken: String
     var githubRepo: String
     var labels: [String]?
     
-    var googleStorage: GoogleStorage
-    public init(githubApiToken: String, repo: String, googleStorageBucket: String, labels: [String]? = nil) {
+    let googleStorage = GoogleStorage()
+    
+    public init(githubApiToken: String, repo: String, googleUploadTargetFileDelegate: FeedbackManagerUploadTargetDelegate, labels: [String]? = nil) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
-        self.googleStorage = GoogleStorage(bucket: googleStorageBucket)
         self.labels = labels
+        self.uploadUrlDelegate = googleUploadTargetFileDelegate
         
         super.init()
-        
-        // Listen for screnshot
+        listenForScreenshot()
+    }
+
+    private func listenForScreenshot() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
             self.display()
         }
@@ -48,8 +57,13 @@ public class FeedbackManager: NSObject {
     
     func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
         if let screenshotData = screenshotData {
-            let remotefilename =  String.random() + ".jpg"
-            googleStorage.upload(data: screenshotData, remotefilename: remotefilename) { (publicUrl, error) in
+            
+            guard let googleStorageUrl = uploadUrlDelegate?.uploadUrl() else {
+                fatalError("No URL to upload the screenshot to.")
+                return
+            }
+
+            googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (publicUrl, error) in
                 guard let publicUrl = publicUrl else {
                     return
                 }
