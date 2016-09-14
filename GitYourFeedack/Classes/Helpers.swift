@@ -30,7 +30,9 @@ struct Helpers {
         var template = "\n\n ------------------------ Details ------------------------"
         
         // App bundle, version and build number
-        template += "\nVersion: \(Helpers.appDisplayVersion())"
+        if let appDisplayVersion = Helpers.appDisplayVersion() {
+            template += "\nVersion: \(appDisplayVersion)"
+        }
         
         // Device name and screen resolution
         let width = String(Int(UIScreen.main.bounds.size.width))
