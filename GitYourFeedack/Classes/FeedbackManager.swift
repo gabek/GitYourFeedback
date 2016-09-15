@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-public protocol FeedbackManagerUploadTargetDelegate {
+public protocol FeedbackRemoteStorageDelegate {
     func uploadUrl() -> String
 }
 
 public class FeedbackManager: NSObject {
-    var uploadUrlDelegate: FeedbackManagerUploadTargetDelegate?
+    var feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate?
     
     var githubApiToken: String
     var githubRepo: String
@@ -22,11 +22,11 @@ public class FeedbackManager: NSObject {
     
     let googleStorage = GoogleStorage()
     
-    public init(githubApiToken: String, repo: String, googleUploadTargetFileDelegate: FeedbackManagerUploadTargetDelegate, labels: [String]? = nil) {
+    public init(githubApiToken: String, repo: String, feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate, labels: [String]? = nil) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
         self.labels = labels
-        self.uploadUrlDelegate = googleUploadTargetFileDelegate
+        self.feedbackRemoteStorageDelegate = feedbackRemoteStorageDelegate
         
         super.init()
         listenForScreenshot()
@@ -58,7 +58,7 @@ public class FeedbackManager: NSObject {
     func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
         if let screenshotData = screenshotData {
             
-            guard let googleStorageUrl = uploadUrlDelegate?.uploadUrl() else {
+            guard let googleStorageUrl = feedbackRemoteStorageDelegate?.uploadUrl() else {
                 fatalError("No URL to upload the screenshot to.")
                 return
             }

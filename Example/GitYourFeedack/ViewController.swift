@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, googleUploadTargetFileDelegate: self)
+        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs"])
         
         view.backgroundColor = UIColor.white
         
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     }()
 }
 
-extension ViewController: FeedbackManagerUploadTargetDelegate {
+extension ViewController: FeedbackRemoteStorageDelegate {
     func uploadUrl() -> String {
         let filename = String(Date().timeIntervalSince1970) + ".jpg"
         let url = "https://www.googleapis.com/upload/storage/v1/b/\(Config.googleStorageBucket)/o?name=\(filename)"
