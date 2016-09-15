@@ -4,13 +4,15 @@
 [![License](https://img.shields.io/cocoapods/l/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
 [![Platform](https://img.shields.io/cocoapods/p/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
 
-A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Yet none of the feedback reporting tools use Issues as the datastore.  Instead the expected behavior is to route all of your users to Github and hope they file an issue.
+A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to Github and expecting them to file issues, this is an option to support it right from inside your iOS application.
 
 ## Example
 
 To run the example project:
 * Clone the repo, and run `pod install` from the Example directory.
 * Edit `Config.swift` and add your Github API Token, Repository name, and Google Cloud Storage bucket name.
+* This must be a publicly accessible Google Cloud Storage bucket, as it needs permissions to upload and read the file.
+* Run the project either on a device and take a screenshot, or press the button in the simulator to bring up the feedback interface.
 
 ## Requirements
 * Google Cloud Storage bucket for storing the screenshots.
@@ -27,22 +29,35 @@ pod "GitYourFeedack"
 
 1. Generate a [Personal Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for the Github user who will be saving the issues in your repo.
 
-2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.
+2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.  This is user-facing so use your own judgement.
 
 3. In your AppDelegate, or some other long-lived controller:
 
 ```
-let feedback = FeedbackManager(githubApiToken: "abc123", repo: "gabek/GKBugreportertest", googleStorageBucket: "myapp-storage-bucket.appspot.com", labels: ["Feedback", "Bugs", "Whatever Github Labels You Want"])
+let feedback = FeedbackManager(githubApiToken: "abc123", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever Github Labels You Want"])
 ```
 
-4. The user feedback interface can be presented in either of these ways:
+You also need to implement `FeedbackRemoteStorageDelegate` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:
 
-* Manually fire `feedback.display()` with an optional specific view controller to present from
-* or it can automatically show up as the result of the user taking a screenshot.
+```
+func uploadUrl() -> String {
+    let filename = String(Date().timeIntervalSince1970) + ".jpg"
+    let url = "https://www.googleapis.com/upload/storage/v1/b/mybucketname.appspot.com/o?name=\(filename)"
+    return url
+}
+```
+
+This is also where you could generate, possibly from your backend, a signed URL so the Google Cloud Storage bucket doesn't need to be completely public.
+
+## Presenting the Feedback interface
+
+The interface will automatically display as a result of a user taking a screenshot.  If this is the first time the user has taken a screenshot in your application they will be greeted with an iOS permissions dialog stating they need to grant your app access to the user's Photos in order to use the screenshot.  You may want to emphasize that the user should accept this.  It uses the copy you added in your Info.plist's `NSPhotoLibraryUsageDescription` key.
+
+You could also manually fire `feedback.display()` with an optional specific view controller to present from.  With this approach the user will have to select their own screenshot manually if they want to send one.
 
 ## Author
 
-Gabe Kangas, gabek@real-ity.com
+Gabe Kangas, gabek@real-ity.com.  [@gabek](http://twitter.com/gabek)
 
 ## License
 
