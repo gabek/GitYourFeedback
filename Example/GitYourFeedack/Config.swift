@@ -11,5 +11,6 @@ import Foundation
 struct Config {
     static let githubApiToken = "abc123"
     static let githubRepo = "yourusername/yourRepoName"
+    static let githubUser = "repoman"
     static let googleStorageBucket = "yourbucket.appspot.com"
 }
