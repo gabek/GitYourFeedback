@@ -9,8 +9,9 @@ A lot of organizations run on Github, not just for the code repositories, but al
 ## Example
 
 To run the example project:
+
 * Clone the repo, and run `pod install` from the Example directory.
-* Edit `Config.swift` and add your Github API Token, Repository name, and Google Cloud Storage bucket name.
+* Edit `Config.swift` and add your Github details (user, api key, repo) and Google Cloud Storage bucket name.
 * This must be a publicly accessible Google Cloud Storage bucket, as it needs permissions to upload and read the file.
 * Run the project either on a device and take a screenshot, or press the button in the simulator to bring up the feedback interface.
 
@@ -34,7 +35,7 @@ pod "GitYourFeedack"
 3. In your AppDelegate, or some other long-lived controller:
 
 ```
-let feedback = FeedbackManager(githubApiToken: "abc123", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever Github Labels You Want"])
+let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever Github Labels You Want"])
 ```
 
 You also need to implement `FeedbackRemoteStorageDelegate` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:

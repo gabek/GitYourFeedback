@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, repo: Config.githubRepo, feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs"])
+        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, githubUser: Config.githubUser, repo: Config.githubRepo, feedbackRemoteStorageDelegate: self, issueLabels: ["Feedback", "Bugs"])
         
         view.backgroundColor = UIColor.white
         

@@ -18,14 +18,16 @@ public class FeedbackManager: NSObject {
     
     var githubApiToken: String
     var githubRepo: String
-    var labels: [String]?
+    var githubUser: String
+    var githubIssueLabels: [String]?
     
     let googleStorage = GoogleStorage()
     
-    public init(githubApiToken: String, repo: String, feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate, labels: [String]? = nil) {
+    public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate, issueLabels: [String]? = nil) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
-        self.labels = labels
+        self.githubUser = githubUser
+        self.githubIssueLabels = issueLabels
         self.feedbackRemoteStorageDelegate = feedbackRemoteStorageDelegate
         
         super.init()
@@ -69,10 +71,10 @@ public class FeedbackManager: NSObject {
                 }
 
                 let finalBody = body + "\n\n![Screenshot](\(publicUrl))"
-                self.createIssue(title: title, body: finalBody, labels: self.labels, completionHandler: completionHandler)
+                self.createIssue(title: title, body: finalBody, labels: self.githubIssueLabels, completionHandler: completionHandler)
             }
         } else {
-            self.createIssue(title: title, body: body, labels: labels, completionHandler: completionHandler)
+            self.createIssue(title: title, body: body, labels: githubIssueLabels, completionHandler: completionHandler)
         }
     }
     
@@ -105,7 +107,7 @@ public class FeedbackManager: NSObject {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let basicAuthString = "gabek:\(self.githubApiToken)"
+        let basicAuthString = "\(githubUser):\(githubApiToken)"
         let userPasswordData = basicAuthString.data(using: String.Encoding.utf8)
         let base64EncodedCredential = userPasswordData?.base64EncodedString()
         let authString = "Basic \(base64EncodedCredential!)"
