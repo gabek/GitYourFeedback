@@ -1,0 +1,6 @@
+framework module GitYourFeedback {
+  umbrella header "GitYourFeedback-umbrella.h"
+
+  export *
+  module * { export * }
+}

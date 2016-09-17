@@ -7,87 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		128185307DB7304293C0CB1E1CB76195 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E44C907C62BA42FD7FF01E7BDD0CFBF /* Helpers.swift */; };
-		3F34C3AE0A18D25EF945AA079D7ABC3D /* Pods-GitYourFeedack_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DDE0D785B975BB7A9ACE2B641877D6DB /* Pods-GitYourFeedack_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58934D18DDAF56AFA0291E31EA418D38 /* MediaQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30023435530D0D391F0FA90DC50A1DF /* MediaQuery.swift */; };
-		6E3D1F88469F8D6B323DD0E5222A385C /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B786A42A619D21BED10D357B9BE400EB /* FeedbackManager.swift */; };
-		7634779AEDD2140EE06A060E86BCFEC0 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F274121528BFF23EC9AC08FE5090103 /* save.png */; };
-		7D367B2169FDFC2F1B511030FAF44D01 /* GitYourFeedack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B6E51993EAA349D1E961CEE734EF98 /* GitYourFeedack-dummy.m */; };
-		A01567C21D885FB00038F4FC /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A01567C11D885FB00038F4FC /* close.png */; };
-		AC8E2705202C41305CAE7AD5D598CE9D /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A595A4884C11840DF214E7B7EF2BD5CB /* FeedbackViewController.swift */; };
-		BB032CBB988C43835DA77D53B6BC26BF /* Pods-GitYourFeedack_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */; };
-		D7928EC4477BBBA67C46AC6A706953F8 /* GoogleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2136C54D608566D277B226A586548C5B /* GoogleStorage.swift */; };
-		E81E4EDF1342A758F0E338E2E5A4CD6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		E9AF03A9DB4DEFF22476F73D87F169FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		F3764EE3E07E0E52BE66654D97E88C86 /* GitYourFeedack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 283BF814E9E168EEF06325D176A3B83A /* GitYourFeedack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		222676DA3C53FE292F36DD46D89B2166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		404B61C8D0F07B4029545262A125BF53 /* GitYourFeedback-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E33B77250D37F22927ECF3DDA4F4639 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 915D5D86A7731A6878DB5F1D238090F4 /* save.png */; };
+		69EBC1B61345A166572C8173C4C1ED63 /* Pods-GitYourFeedback_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFF21F1D1DEB0504413B8DD1003882D9 /* Pods-GitYourFeedback_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C0B4BB81D15980F0144AF4E662C0430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		74B36AB805BFF8B00644016A06421CB9 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */; };
+		A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */; };
+		B65AC11833CBBF87BDE5575CD89EED90 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 15498AAF9748F8CC3A942009956150CB /* close.png */; };
+		CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F50ECE153543CC26EEC26918BC28F7A0 /* GitYourFeedback-dummy.m */; };
+		DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */; };
+		E28E2D9AA4B7C3EA5CE5C85C8C8D942D /* Pods-GitYourFeedback_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A31D5A58845B5A2CAF0497A0A577CD7 /* Pods-GitYourFeedback_Example-dummy.m */; };
+		FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */; };
+		FC3252B3DD1450ADC8E13E8C407A48FC /* MediaQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B29131DDB73738C39199C0433AE1A8A2 /* PBXContainerItemProxy */ = {
+		1EF5574C6929B92E82A784E2C0E95693 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D90D79B6530D84C73674BCDA29CD76DB;
-			remoteInfo = GitYourFeedack;
+			remoteGlobalIDString = 8D9AE5341AD6543178C19985B6743A11;
+			remoteInfo = GitYourFeedback;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E44C907C62BA42FD7FF01E7BDD0CFBF /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		124929419E0D3DAD2ACF1CCEFE053BE9 /* Pods-GitYourFeedack_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedack_Example-frameworks.sh"; sourceTree = "<group>"; };
-		2136C54D608566D277B226A586548C5B /* GoogleStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleStorage.swift; sourceTree = "<group>"; };
-		283BF814E9E168EEF06325D176A3B83A /* GitYourFeedack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedack-umbrella.h"; sourceTree = "<group>"; };
-		2F274121528BFF23EC9AC08FE5090103 /* save.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
-		52CC6050E8D6A449A988988F93909A80 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		643BF39C14975393B754706C34044C2E /* Pods-GitYourFeedack_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GitYourFeedack_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		69047E50D50981B9A1E869C6F773EDFE /* Pods-GitYourFeedack_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedack_Example-resources.sh"; sourceTree = "<group>"; };
-		6C33A21C5E8874535A41D9EFACF538B8 /* Pods-GitYourFeedack_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedack_Example.release.xcconfig"; sourceTree = "<group>"; };
-		6D7784AB51141FDE40720110C0F439B7 /* Pods-GitYourFeedack_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GitYourFeedack_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		70583733A0CF90836B293C04F1918DF5 /* GitYourFeedack.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GitYourFeedack.xcconfig; sourceTree = "<group>"; };
-		7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GitYourFeedack_Example-dummy.m"; sourceTree = "<group>"; };
-		878AC2659F51B8E7CEF4505F98FF9754 /* GitYourFeedack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GitYourFeedack.modulemap; sourceTree = "<group>"; };
-		9149C89D03B564845A19D4FB1649F636 /* Pods_GitYourFeedack_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitYourFeedack_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A31D5A58845B5A2CAF0497A0A577CD7 /* Pods-GitYourFeedback_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GitYourFeedback_Example-dummy.m"; sourceTree = "<group>"; };
+		0C669C673275A9AEC68A596709A1579F /* Pods_GitYourFeedback_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitYourFeedback_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1342FC1EADE45A3073DDEFDF74817ADA /* Pods-GitYourFeedback_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedback_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		15498AAF9748F8CC3A942009956150CB /* close.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		1C504348FD933572FB331CF86A845E85 /* Pods-GitYourFeedback_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedback_Example-frameworks.sh"; sourceTree = "<group>"; };
+		1F35E2509BEC3A27E3946AC982E39439 /* Pods-GitYourFeedback_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedback_Example-resources.sh"; sourceTree = "<group>"; };
+		28AD9C01DD3E37ACB0A9E25D5E82E635 /* GitYourFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC591B7737928379118E1D15FE4D744 /* GitYourFeedback.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GitYourFeedback.modulemap; sourceTree = "<group>"; };
+		37BDBAF743D42D493BD32C6C7BD78839 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleStorage.swift; sourceTree = "<group>"; };
+		50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-umbrella.h"; sourceTree = "<group>"; };
+		7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
+		837A9664B1104F367EA628BEDB0AE241 /* GitYourFeedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GitYourFeedback.xcconfig; sourceTree = "<group>"; };
+		885BD2D28C414CDDB05B51F30258D4CD /* Pods-GitYourFeedback_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedback_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8D206B98088CAD09F79AFE3AF8DF7B17 /* Pods-GitYourFeedback_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GitYourFeedback_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		915D5D86A7731A6878DB5F1D238090F4 /* save.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A01567C11D885FB00038F4FC /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		A2355892AFE5F55735C9A376A62B2920 /* Pods-GitYourFeedack_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedack_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A595A4884C11840DF214E7B7EF2BD5CB /* FeedbackViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
-		AA06F0A94F3B8E65D319F42A9FF6BF10 /* Pods-GitYourFeedack_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GitYourFeedack_Example.modulemap"; sourceTree = "<group>"; };
-		AD105F2FFA8394EF31E5C5B188ADC8C7 /* GitYourFeedack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedack-prefix.pch"; sourceTree = "<group>"; };
-		B786A42A619D21BED10D357B9BE400EB /* FeedbackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
-		B8F8FD6172E81FB06972FCFDA9BBA466 /* GitYourFeedack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0FEDDC5CEAD138CDD305202B4F9451D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A72510EC26E1253E7903CF98C0E71A26 /* GitYourFeedback-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-prefix.pch"; sourceTree = "<group>"; };
+		A988434EC97497F4FF6F8E96E417DFAF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaQuery.swift; sourceTree = "<group>"; };
+		AFF21F1D1DEB0504413B8DD1003882D9 /* Pods-GitYourFeedback_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GitYourFeedback_Example-umbrella.h"; sourceTree = "<group>"; };
+		C00A8840744664E2D6070E94867E7C7D /* Pods-GitYourFeedback_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GitYourFeedback_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DDE0D785B975BB7A9ACE2B641877D6DB /* Pods-GitYourFeedack_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GitYourFeedack_Example-umbrella.h"; sourceTree = "<group>"; };
-		F2B6E51993EAA349D1E961CEE734EF98 /* GitYourFeedack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GitYourFeedack-dummy.m"; sourceTree = "<group>"; };
-		F30023435530D0D391F0FA90DC50A1DF /* MediaQuery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaQuery.swift; sourceTree = "<group>"; };
+		F1075B8DFFA9FC311AAD128EECFAE9CA /* Pods-GitYourFeedback_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-GitYourFeedback_Example.modulemap"; sourceTree = "<group>"; };
+		F50ECE153543CC26EEC26918BC28F7A0 /* GitYourFeedback-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GitYourFeedback-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		56BA42E1DEC39D72816822204C3BD527 /* Frameworks */ = {
+		6C6507CAD197E2797302F7400A70D333 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9AF03A9DB4DEFF22476F73D87F169FD /* Foundation.framework in Frameworks */,
+				222676DA3C53FE292F36DD46D89B2166 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8927B523352B0CBE0BA0BA2FD820A84F /* Frameworks */ = {
+		7E4FC2A1605510B9CDFFA38A36DA9A2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E81E4EDF1342A758F0E338E2E5A4CD6B /* Foundation.framework in Frameworks */,
+				6C0B4BB81D15980F0144AF4E662C0430 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		02C1A35B7C7B9B03B3232776EEAEC13A /* GitYourFeedack */ = {
+		39CC02F5836F96CFD74AE798157A5777 /* GitYourFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				D392D63286C7AA5099FCFAD14DCFE404 /* Classes */,
+				EA1C369F9F3539A4C3A768AE95E3B35C /* GitYourFeedback */,
+				40E21AC3F85684F5E6AB8BDAB6F63CAD /* Resources */,
+				4DCA1883AE0D78C3208F8B97A6FAACE0 /* Support Files */,
 			);
-			path = GitYourFeedack;
+			name = GitYourFeedback;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -98,86 +101,101 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4D0BA52379663EBC4FB07D260799C4D6 /* GitYourFeedack */ = {
+		40E21AC3F85684F5E6AB8BDAB6F63CAD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				02C1A35B7C7B9B03B3232776EEAEC13A /* GitYourFeedack */,
-				7BD61E2C39B89962FEE9CB31F6ADFECF /* Resources */,
-				F7537F231457DA3A14C7C458A5767FFB /* Support Files */,
+				9B44C625109878008A9E42F764AB59CB /* GitYourFeedback */,
 			);
-			name = GitYourFeedack;
-			path = ../..;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		4E6B4BD22AE849C8799BDA1A0CE84F0A /* Development Pods */ = {
+		4DCA1883AE0D78C3208F8B97A6FAACE0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				4D0BA52379663EBC4FB07D260799C4D6 /* GitYourFeedack */,
+				2CC591B7737928379118E1D15FE4D744 /* GitYourFeedback.modulemap */,
+				837A9664B1104F367EA628BEDB0AE241 /* GitYourFeedback.xcconfig */,
+				F50ECE153543CC26EEC26918BC28F7A0 /* GitYourFeedback-dummy.m */,
+				A72510EC26E1253E7903CF98C0E71A26 /* GitYourFeedback-prefix.pch */,
+				50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */,
+				A988434EC97497F4FF6F8E96E417DFAF /* Info.plist */,
 			);
-			name = "Development Pods";
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/GitYourFeedback";
 			sourceTree = "<group>";
 		};
-		5EABCD65E782239EBC23F6703DC35232 /* Pods-GitYourFeedack_Example */ = {
+		5827457360DA9E0819790B79CFBB25E1 /* Pods-GitYourFeedback_Example */ = {
 			isa = PBXGroup;
 			children = (
-				52CC6050E8D6A449A988988F93909A80 /* Info.plist */,
-				AA06F0A94F3B8E65D319F42A9FF6BF10 /* Pods-GitYourFeedack_Example.modulemap */,
-				6D7784AB51141FDE40720110C0F439B7 /* Pods-GitYourFeedack_Example-acknowledgements.markdown */,
-				643BF39C14975393B754706C34044C2E /* Pods-GitYourFeedack_Example-acknowledgements.plist */,
-				7EA0088FD34B8A15FFC35FFBB873AA8B /* Pods-GitYourFeedack_Example-dummy.m */,
-				124929419E0D3DAD2ACF1CCEFE053BE9 /* Pods-GitYourFeedack_Example-frameworks.sh */,
-				69047E50D50981B9A1E869C6F773EDFE /* Pods-GitYourFeedack_Example-resources.sh */,
-				DDE0D785B975BB7A9ACE2B641877D6DB /* Pods-GitYourFeedack_Example-umbrella.h */,
-				A2355892AFE5F55735C9A376A62B2920 /* Pods-GitYourFeedack_Example.debug.xcconfig */,
-				6C33A21C5E8874535A41D9EFACF538B8 /* Pods-GitYourFeedack_Example.release.xcconfig */,
+				37BDBAF743D42D493BD32C6C7BD78839 /* Info.plist */,
+				F1075B8DFFA9FC311AAD128EECFAE9CA /* Pods-GitYourFeedback_Example.modulemap */,
+				C00A8840744664E2D6070E94867E7C7D /* Pods-GitYourFeedback_Example-acknowledgements.markdown */,
+				8D206B98088CAD09F79AFE3AF8DF7B17 /* Pods-GitYourFeedback_Example-acknowledgements.plist */,
+				0A31D5A58845B5A2CAF0497A0A577CD7 /* Pods-GitYourFeedback_Example-dummy.m */,
+				1C504348FD933572FB331CF86A845E85 /* Pods-GitYourFeedback_Example-frameworks.sh */,
+				1F35E2509BEC3A27E3946AC982E39439 /* Pods-GitYourFeedback_Example-resources.sh */,
+				AFF21F1D1DEB0504413B8DD1003882D9 /* Pods-GitYourFeedback_Example-umbrella.h */,
+				1342FC1EADE45A3073DDEFDF74817ADA /* Pods-GitYourFeedback_Example.debug.xcconfig */,
+				885BD2D28C414CDDB05B51F30258D4CD /* Pods-GitYourFeedback_Example.release.xcconfig */,
 			);
-			name = "Pods-GitYourFeedack_Example";
-			path = "Target Support Files/Pods-GitYourFeedack_Example";
+			name = "Pods-GitYourFeedback_Example";
+			path = "Target Support Files/Pods-GitYourFeedback_Example";
 			sourceTree = "<group>";
 		};
-		5EE5D53D9B8F4E7D3A477830B56050A9 /* Products */ = {
+		60F94F952AF1976546A67A572478AA31 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8F8FD6172E81FB06972FCFDA9BBA466 /* GitYourFeedack.framework */,
-				9149C89D03B564845A19D4FB1649F636 /* Pods_GitYourFeedack_Example.framework */,
+				28AD9C01DD3E37ACB0A9E25D5E82E635 /* GitYourFeedback.framework */,
+				0C669C673275A9AEC68A596709A1579F /* Pods_GitYourFeedback_Example.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7BD61E2C39B89962FEE9CB31F6ADFECF /* Resources */ = {
+		6CE873158068CA0F8E0ECC992BBBF72B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				BBC804B516558FC35277B5A91874D1E5 /* GitYourFeedack */,
+				15498AAF9748F8CC3A942009956150CB /* close.png */,
+				915D5D86A7731A6878DB5F1D238090F4 /* save.png */,
 			);
-			name = Resources;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				4E6B4BD22AE849C8799BDA1A0CE84F0A /* Development Pods */,
+				E5A9EA968164C8AFB84D44D35525426E /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				5EE5D53D9B8F4E7D3A477830B56050A9 /* Products */,
-				DC772237B87B3C796F69BA3605F4031A /* Targets Support Files */,
+				60F94F952AF1976546A67A572478AA31 /* Products */,
+				8A898DBE18D4E9A474A2258F362C7DB9 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8494FCB316F86202024567B4D8E0D573 /* Assets */ = {
+		8A898DBE18D4E9A474A2258F362C7DB9 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A01567C11D885FB00038F4FC /* close.png */,
-				2F274121528BFF23EC9AC08FE5090103 /* save.png */,
+				5827457360DA9E0819790B79CFBB25E1 /* Pods-GitYourFeedback_Example */,
 			);
-			path = Assets;
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BBC804B516558FC35277B5A91874D1E5 /* GitYourFeedack */ = {
+		8CF4FD6629231E3ACE51961FAD41BC3F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8494FCB316F86202024567B4D8E0D573 /* Assets */,
+				7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */,
+				C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */,
+				3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */,
+				7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */,
+				AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */,
 			);
-			path = GitYourFeedack;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9B44C625109878008A9E42F764AB59CB /* GitYourFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				6CE873158068CA0F8E0ECC992BBBF72B /* Assets */,
+			);
+			path = GitYourFeedback;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -188,96 +206,78 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D392D63286C7AA5099FCFAD14DCFE404 /* Classes */ = {
+		E5A9EA968164C8AFB84D44D35525426E /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B786A42A619D21BED10D357B9BE400EB /* FeedbackManager.swift */,
-				A595A4884C11840DF214E7B7EF2BD5CB /* FeedbackViewController.swift */,
-				2136C54D608566D277B226A586548C5B /* GoogleStorage.swift */,
-				0E44C907C62BA42FD7FF01E7BDD0CFBF /* Helpers.swift */,
-				F30023435530D0D391F0FA90DC50A1DF /* MediaQuery.swift */,
+				39CC02F5836F96CFD74AE798157A5777 /* GitYourFeedback */,
 			);
-			path = Classes;
+			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		DC772237B87B3C796F69BA3605F4031A /* Targets Support Files */ = {
+		EA1C369F9F3539A4C3A768AE95E3B35C /* GitYourFeedback */ = {
 			isa = PBXGroup;
 			children = (
-				5EABCD65E782239EBC23F6703DC35232 /* Pods-GitYourFeedack_Example */,
+				8CF4FD6629231E3ACE51961FAD41BC3F /* Classes */,
 			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		F7537F231457DA3A14C7C458A5767FFB /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				878AC2659F51B8E7CEF4505F98FF9754 /* GitYourFeedack.modulemap */,
-				70583733A0CF90836B293C04F1918DF5 /* GitYourFeedack.xcconfig */,
-				F2B6E51993EAA349D1E961CEE734EF98 /* GitYourFeedack-dummy.m */,
-				AD105F2FFA8394EF31E5C5B188ADC8C7 /* GitYourFeedack-prefix.pch */,
-				283BF814E9E168EEF06325D176A3B83A /* GitYourFeedack-umbrella.h */,
-				C0FEDDC5CEAD138CDD305202B4F9451D /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/GitYourFeedack";
+			path = GitYourFeedback;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		8E2B1DFEC6DC5F9FBF4F02E7138B9BFB /* Headers */ = {
+		25EFE756CAB933FEAAFBEC532E3928B7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F34C3AE0A18D25EF945AA079D7ABC3D /* Pods-GitYourFeedack_Example-umbrella.h in Headers */,
+				404B61C8D0F07B4029545262A125BF53 /* GitYourFeedback-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F39D06AC3544986EE40EE504F1A09513 /* Headers */ = {
+		76F3A866FDCE4A2782E8C2F83FB85A32 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3764EE3E07E0E52BE66654D97E88C86 /* GitYourFeedack-umbrella.h in Headers */,
+				69EBC1B61345A166572C8173C4C1ED63 /* Pods-GitYourFeedback_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		5993203587A7B525DE79DCFA1DEA0878 /* Pods-GitYourFeedack_Example */ = {
+		3DC1C74B13DB77817E9F863E9FA2BF94 /* Pods-GitYourFeedback_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D75E7AED8E58D8FB89ED9FCCF02CF07F /* Build configuration list for PBXNativeTarget "Pods-GitYourFeedack_Example" */;
+			buildConfigurationList = E964B2D2E49DE57CA37F6E8CBF3D6023 /* Build configuration list for PBXNativeTarget "Pods-GitYourFeedback_Example" */;
 			buildPhases = (
-				F45C6125344B7272BD81A5FD4FC3E89C /* Sources */,
-				8927B523352B0CBE0BA0BA2FD820A84F /* Frameworks */,
-				8E2B1DFEC6DC5F9FBF4F02E7138B9BFB /* Headers */,
+				A4E3616BA92CE3C0A6D17313AAA4311A /* Sources */,
+				7E4FC2A1605510B9CDFFA38A36DA9A2B /* Frameworks */,
+				76F3A866FDCE4A2782E8C2F83FB85A32 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6839AE0AC146EF2AB8753EAA134305A3 /* PBXTargetDependency */,
+				63C3234B14FFB3D3449A7B2A18BFE61D /* PBXTargetDependency */,
 			);
-			name = "Pods-GitYourFeedack_Example";
-			productName = "Pods-GitYourFeedack_Example";
-			productReference = 9149C89D03B564845A19D4FB1649F636 /* Pods_GitYourFeedack_Example.framework */;
+			name = "Pods-GitYourFeedback_Example";
+			productName = "Pods-GitYourFeedback_Example";
+			productReference = 0C669C673275A9AEC68A596709A1579F /* Pods_GitYourFeedback_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D90D79B6530D84C73674BCDA29CD76DB /* GitYourFeedack */ = {
+		8D9AE5341AD6543178C19985B6743A11 /* GitYourFeedback */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5AE5F1D579C822BCFC4782DBED70B12B /* Build configuration list for PBXNativeTarget "GitYourFeedack" */;
+			buildConfigurationList = C09600F953243A0EC505DB2ACB99E0FB /* Build configuration list for PBXNativeTarget "GitYourFeedback" */;
 			buildPhases = (
-				CEB93E2CC774607EE4B77E0CD253F241 /* Sources */,
-				56BA42E1DEC39D72816822204C3BD527 /* Frameworks */,
-				5077408A53F67C6190ED1EF232314B2F /* Resources */,
-				F39D06AC3544986EE40EE504F1A09513 /* Headers */,
+				F79FEC310022D2030D7CBD4BB1EBA70D /* Sources */,
+				6C6507CAD197E2797302F7400A70D333 /* Frameworks */,
+				160422E29BA54B6E3F09F73DDF175472 /* Resources */,
+				25EFE756CAB933FEAAFBEC532E3928B7 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GitYourFeedack;
-			productName = GitYourFeedack;
-			productReference = B8F8FD6172E81FB06972FCFDA9BBA466 /* GitYourFeedack.framework */;
+			name = GitYourFeedback;
+			productName = GitYourFeedback;
+			productReference = 28AD9C01DD3E37ACB0A9E25D5E82E635 /* GitYourFeedback.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -297,100 +297,65 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 5EE5D53D9B8F4E7D3A477830B56050A9 /* Products */;
+			productRefGroup = 60F94F952AF1976546A67A572478AA31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D90D79B6530D84C73674BCDA29CD76DB /* GitYourFeedack */,
-				5993203587A7B525DE79DCFA1DEA0878 /* Pods-GitYourFeedack_Example */,
+				8D9AE5341AD6543178C19985B6743A11 /* GitYourFeedback */,
+				3DC1C74B13DB77817E9F863E9FA2BF94 /* Pods-GitYourFeedback_Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5077408A53F67C6190ED1EF232314B2F /* Resources */ = {
+		160422E29BA54B6E3F09F73DDF175472 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A01567C21D885FB00038F4FC /* close.png in Resources */,
-				7634779AEDD2140EE06A060E86BCFEC0 /* save.png in Resources */,
+				B65AC11833CBBF87BDE5575CD89EED90 /* close.png in Resources */,
+				4E33B77250D37F22927ECF3DDA4F4639 /* save.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CEB93E2CC774607EE4B77E0CD253F241 /* Sources */ = {
+		A4E3616BA92CE3C0A6D17313AAA4311A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E3D1F88469F8D6B323DD0E5222A385C /* FeedbackManager.swift in Sources */,
-				AC8E2705202C41305CAE7AD5D598CE9D /* FeedbackViewController.swift in Sources */,
-				7D367B2169FDFC2F1B511030FAF44D01 /* GitYourFeedack-dummy.m in Sources */,
-				D7928EC4477BBBA67C46AC6A706953F8 /* GoogleStorage.swift in Sources */,
-				128185307DB7304293C0CB1E1CB76195 /* Helpers.swift in Sources */,
-				58934D18DDAF56AFA0291E31EA418D38 /* MediaQuery.swift in Sources */,
+				E28E2D9AA4B7C3EA5CE5C85C8C8D942D /* Pods-GitYourFeedback_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F45C6125344B7272BD81A5FD4FC3E89C /* Sources */ = {
+		F79FEC310022D2030D7CBD4BB1EBA70D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB032CBB988C43835DA77D53B6BC26BF /* Pods-GitYourFeedack_Example-dummy.m in Sources */,
+				DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */,
+				74B36AB805BFF8B00644016A06421CB9 /* FeedbackViewController.swift in Sources */,
+				CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */,
+				FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */,
+				A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */,
+				FC3252B3DD1450ADC8E13E8C407A48FC /* MediaQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6839AE0AC146EF2AB8753EAA134305A3 /* PBXTargetDependency */ = {
+		63C3234B14FFB3D3449A7B2A18BFE61D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = GitYourFeedack;
-			target = D90D79B6530D84C73674BCDA29CD76DB /* GitYourFeedack */;
-			targetProxy = B29131DDB73738C39199C0433AE1A8A2 /* PBXContainerItemProxy */;
+			name = GitYourFeedback;
+			target = 8D9AE5341AD6543178C19985B6743A11 /* GitYourFeedback */;
+			targetProxy = 1EF5574C6929B92E82A784E2C0E95693 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		133698E40C7389C5C281FCF826879FBF /* Release */ = {
+		034E497094E6B6BABB3A8808D70F4170 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C33A21C5E8874535A41D9EFACF538B8 /* Pods-GitYourFeedack_Example.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-GitYourFeedack_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GitYourFeedack_Example/Pods-GitYourFeedack_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GitYourFeedack_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		22316CDC2BBD59CA94F604AE842531FD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70583733A0CF90836B293C04F1918DF5 /* GitYourFeedack.xcconfig */;
+			baseConfigurationReference = 1342FC1EADE45A3073DDEFDF74817ADA /* Pods-GitYourFeedback_Example.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -403,18 +368,21 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GitYourFeedack/GitYourFeedack-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GitYourFeedack/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-GitYourFeedback_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GitYourFeedack/GitYourFeedack.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GitYourFeedback_Example/Pods-GitYourFeedback_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = GitYourFeedack;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_GitYourFeedback_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -465,41 +433,37 @@
 			};
 			name = Debug;
 		};
-		B6BB04051D9D53FDFFBF21D74F571E28 /* Debug */ = {
+		71E751C462E53AECE13F38096D8DAB2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2355892AFE5F55735C9A376A62B2920 /* Pods-GitYourFeedack_Example.debug.xcconfig */;
+			baseConfigurationReference = 837A9664B1104F367EA628BEDB0AE241 /* GitYourFeedback.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-GitYourFeedack_Example/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/GitYourFeedback/GitYourFeedback-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GitYourFeedback/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GitYourFeedack_Example/Pods-GitYourFeedack_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GitYourFeedack_Example;
+				MODULEMAP_FILE = "Target Support Files/GitYourFeedback/GitYourFeedback.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GitYourFeedback;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -541,9 +505,9 @@
 			};
 			name = Release;
 		};
-		F7D7BED58D04D78E64DD37A087E2041B /* Release */ = {
+		E02D5E478C82F81B8A5C08EEC1EBF140 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70583733A0CF90836B293C04F1918DF5 /* GitYourFeedack.xcconfig */;
+			baseConfigurationReference = 885BD2D28C414CDDB05B51F30258D4CD /* Pods-GitYourFeedback_Example.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -556,22 +520,58 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GitYourFeedack/GitYourFeedack-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GitYourFeedack/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-GitYourFeedback_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GitYourFeedack/GitYourFeedack.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GitYourFeedback_Example/Pods-GitYourFeedback_Example.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = GitYourFeedack;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_GitYourFeedback_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		EB95AF6A34C249B205A4F1EBDD168033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 837A9664B1104F367EA628BEDB0AE241 /* GitYourFeedback.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GitYourFeedback/GitYourFeedback-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GitYourFeedback/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GitYourFeedback/GitYourFeedback.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = GitYourFeedback;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -585,20 +585,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5AE5F1D579C822BCFC4782DBED70B12B /* Build configuration list for PBXNativeTarget "GitYourFeedack" */ = {
+		C09600F953243A0EC505DB2ACB99E0FB /* Build configuration list for PBXNativeTarget "GitYourFeedback" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22316CDC2BBD59CA94F604AE842531FD /* Debug */,
-				F7D7BED58D04D78E64DD37A087E2041B /* Release */,
+				EB95AF6A34C249B205A4F1EBDD168033 /* Debug */,
+				71E751C462E53AECE13F38096D8DAB2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D75E7AED8E58D8FB89ED9FCCF02CF07F /* Build configuration list for PBXNativeTarget "Pods-GitYourFeedack_Example" */ = {
+		E964B2D2E49DE57CA37F6E8CBF3D6023 /* Build configuration list for PBXNativeTarget "Pods-GitYourFeedback_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B6BB04051D9D53FDFFBF21D74F571E28 /* Debug */,
-				133698E40C7389C5C281FCF826879FBF /* Release */,
+				034E497094E6B6BABB3A8808D70F4170 /* Debug */,
+				E02D5E478C82F81B8A5C08EEC1EBF140 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

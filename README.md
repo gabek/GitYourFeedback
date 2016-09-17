@@ -1,8 +1,8 @@
-# GitYourFeedack
+# GitYourFeedback
 
-[![Version](https://img.shields.io/cocoapods/v/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
-[![License](https://img.shields.io/cocoapods/l/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
-[![Platform](https://img.shields.io/cocoapods/p/GitYourFeedack.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedack)
+[![Version](https://img.shields.io/cocoapods/v/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
+[![License](https://img.shields.io/cocoapods/l/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
+[![Platform](https://img.shields.io/cocoapods/p/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
 
 A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to Github and expecting them to file issues, this is an option to support it right from inside your iOS application.
 
@@ -21,11 +21,11 @@ To run the example project:
 
 ## Installation
 
-GitYourFeedack is available through [CocoaPods](http://cocoapods.org). To install
+GitYourFeedback is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "GitYourFeedack"
+pod "GitYourFeedback"
 ```
 
 1. Generate a [Personal Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for the Github user who will be saving the issues in your repo.
@@ -62,4 +62,4 @@ Gabe Kangas, gabek@real-ity.com.  [@gabek](http://twitter.com/gabek)
 
 ## License
 
-GitYourFeedack is available under the MIT license. See the LICENSE file for more info.
+GitYourFeedback is available under the MIT license. See the LICENSE file for more info.

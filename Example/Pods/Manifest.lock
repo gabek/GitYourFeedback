@@ -1,16 +1,16 @@
 PODS:
-  - GitYourFeedack (0.1.0)
+  - GitYourFeedback (0.1.0)
 
 DEPENDENCIES:
-  - GitYourFeedack (from `../`)
+  - GitYourFeedback (from `../`)
 
 EXTERNAL SOURCES:
-  GitYourFeedack:
+  GitYourFeedback:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GitYourFeedack: 3a0173fa876ba57775f2732a18ea2558c368d6c7
+  GitYourFeedback: ee79c59025061b50f2387c3fb6963c83206b59fe
 
-PODFILE CHECKSUM: a65bcb099e3d48a7e2f715e075fe7a335c015383
+PODFILE CHECKSUM: ecbecaa659d35b1b54d3667d6999c056253c5699
 
 COCOAPODS: 1.1.0.rc.1
