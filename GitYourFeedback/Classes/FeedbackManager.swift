@@ -13,7 +13,7 @@ import UIKit
 // time of submission.  Generate the filename any way you like as long as 
 // the result is a valid Google Cloud Storage destination.
 public protocol FeedbackRemoteStorageDelegate {
-    func uploadUrl() -> String
+    func uploadUrl(_ completionHandler: (String) -> Void)
 }
 
 public class FeedbackManager: NSObject {
@@ -70,19 +70,18 @@ public class FeedbackManager: NSObject {
     func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
         if let screenshotData = screenshotData {
             
-            guard let googleStorageUrl = feedbackRemoteStorageDelegate?.uploadUrl() else {
-                fatalError("No URL to upload the screenshot to.")
-                return
-            }
-
-            googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (publicUrl, error) in
-                guard let publicUrl = publicUrl else {
-                    return
+            feedbackRemoteStorageDelegate?.uploadUrl({ (googleStorageUrl) in
+                googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (publicUrl, error) in
+                    guard let publicUrl = publicUrl else {
+                        return
+                    }
+                    
+                    let finalBody = body + "\n\n![Screenshot](\(publicUrl))"
+                    self.createIssue(title: title, body: finalBody, labels: self.githubIssueLabels, completionHandler: completionHandler)
                 }
+            })
+            
 
-                let finalBody = body + "\n\n![Screenshot](\(publicUrl))"
-                self.createIssue(title: title, body: finalBody, labels: self.githubIssueLabels, completionHandler: completionHandler)
-            }
         } else {
             self.createIssue(title: title, body: body, labels: githubIssueLabels, completionHandler: completionHandler)
         }
@@ -125,5 +124,15 @@ public class FeedbackManager: NSObject {
         let authString = "Basic \(base64EncodedCredential!)"
         request.setValue(authString, forHTTPHeaderField: "Authorization")
         return request
+    }
+    
+    static var userEmailAddress: String? {
+        set {
+            Helpers.saveEmail(email: userEmailAddress)
+        }
+        
+        get {
+            return Helpers.email()
+        }
     }
 }

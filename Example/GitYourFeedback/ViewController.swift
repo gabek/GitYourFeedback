@@ -58,9 +58,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: FeedbackRemoteStorageDelegate {
-    func uploadUrl() -> String {
+    public func uploadUrl(_ completionHandler: (String) -> Void) {
         let filename = String(Date().timeIntervalSince1970) + ".jpg"
         let url = "https://www.googleapis.com/upload/storage/v1/b/\(Config.googleStorageBucket)/o?name=\(filename)"
-        return url
+        completionHandler(url)
     }
+
 }
