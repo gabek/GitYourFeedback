@@ -126,7 +126,7 @@ public class FeedbackManager: NSObject {
         return request
     }
     
-    static var userEmailAddress: String? {
+    public static var userEmailAddress: String? {
         set {
             Helpers.saveEmail(email: userEmailAddress)
         }
