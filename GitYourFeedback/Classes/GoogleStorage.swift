@@ -13,13 +13,14 @@ class GoogleStorage {
     
     func upload(data: Data, urlString: String, completionHandler: @escaping (String?, String?) -> Void) {
         // Tell Google this is a one-time, non-multipart upload
-        let fullUrlString = urlString + "&uploadType=media"
-        
-        guard let url = URL(string: fullUrlString) else {
-            fatalError("Unable create a HTTP request from string: \(fullUrlString)")
+		var urlComponents = URLComponents(string: urlString)
+		urlComponents?.appendQueryItem(name: "uploadType", value: "media")
+		
+        guard let url = urlComponents?.url else {
+            fatalError("Unable create a HTTP request from string: \(urlString)")
             return
         }
-        
+		
         var request = createRequest(remoteUrl: url)
         request.setValue(String(data.count), forHTTPHeaderField: "Content-Length")
         
@@ -58,7 +59,8 @@ class GoogleStorage {
             }
             jsonResults = results
         } catch {
-            fatalError("Parsing failed: \((error as NSError).localizedDescription)")
+			let errorText = String(data: responseJsonData, encoding: String.Encoding.utf8)
+            fatalError("Parsing failed: \((error as NSError).localizedDescription).  \(errorText)  You may want to verify your upload URL is correct.")
             return nil
         }
         

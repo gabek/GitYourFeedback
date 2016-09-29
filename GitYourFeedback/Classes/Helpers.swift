@@ -93,3 +93,13 @@ extension UIDevice {
     }
     
 }
+
+extension URLComponents {
+	
+	mutating func appendQueryItem(name name: String, value: String) {
+		var queryItems: [URLQueryItem] = self.queryItems ?? [URLQueryItem]()
+		queryItems.append(URLQueryItem(name: name, value: value))
+		self.queryItems = queryItems
+	}
+	
+}

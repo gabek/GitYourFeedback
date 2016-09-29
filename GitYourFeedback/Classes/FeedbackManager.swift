@@ -63,7 +63,7 @@ public class FeedbackManager: NSObject {
         if let vc = vc {
             vc.present(FeedbackViewController(reporter: self), animated: true, completion: nil)
         } else {
-            fatalError("No view controller to present GKBugreporter on")
+            fatalError("No view controller to present FeedbackManager on")
         }
     }
     
