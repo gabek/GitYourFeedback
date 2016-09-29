@@ -31,13 +31,23 @@ struct Helpers {
         
         // App bundle, version and build number
         if let appDisplayVersion = Helpers.appDisplayVersion() {
-            template += "\nVersion: \(appDisplayVersion)"
+            template += "\nApp Version: \(appDisplayVersion)"
         }
-        
+		
+		// iOS Version
+		template += "\niOS Version: " + UIDevice.current.systemVersion
+		
         // Device name and screen resolution
         let width = String(Int(UIScreen.main.bounds.size.width))
         let height = String(Int(UIScreen.main.bounds.size.height))
-        template += "\nDevice: " + UIDevice.modelName() + ". \(width)x\(height)"
+        template += "\nDevice: " + UIDevice.modelName()
+		template += "\nScreen: " + "\(width) x \(height)"
+		
+		// Timezone and Language
+		if let timezone = TimeZone.current.abbreviation() {
+			template += "\nTimezone: " + timezone
+		}
+		template += "\nLanguage: " + NSLocale.preferredLanguages[0]
         
         return template
     }
