@@ -128,7 +128,7 @@ public class FeedbackManager: NSObject {
     
     public static var userEmailAddress: String? {
         set {
-            Helpers.saveEmail(email: userEmailAddress)
+            Helpers.saveEmail(email: newValue)
         }
         
         get {
