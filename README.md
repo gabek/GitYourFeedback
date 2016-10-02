@@ -1,6 +1,6 @@
 # GitYourFeedback
 
-[![Version](https://img.shields.io/cocoapods/v/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
+[![Version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)
 [![License](https://img.shields.io/cocoapods/l/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
 [![Platform](https://img.shields.io/cocoapods/p/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
 
