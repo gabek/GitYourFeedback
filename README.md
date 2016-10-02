@@ -1,8 +1,6 @@
 # GitYourFeedback
 
-[![Version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)
-[![License](https://img.shields.io/cocoapods/l/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
-[![Platform](https://img.shields.io/cocoapods/p/GitYourFeedback.svg?style=flat)](http://cocoapods.org/pods/GitYourFeedback)
+![Version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)
 
 A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to Github and expecting them to file issues, this is an option to support it right from inside your iOS application.
 
