@@ -60,4 +60,4 @@ Gabe Kangas, gabek@real-ity.com.  [@gabek](http://twitter.com/gabek)
 
 ## License
 
-GitYourFeedback is available under the MIT license. See the LICENSE file for more info.
+GitYourFeedback is available under the [MIT license](https://github.com/gabek/GitYourFeedback/blob/master/LICENSE). See the LICENSE file for more info.
