@@ -12,12 +12,13 @@ import UIKit
 // This is required in order to know where to upload your screenshot to at the
 // time of submission.  Generate the filename any way you like as long as 
 // the result is a valid Google Cloud Storage destination.
-public protocol FeedbackRemoteStorageDelegate {
-    func uploadUrl(_ completionHandler: (String) -> Void)
+@objc public protocol FeedbackManagerDatasource {
+    @objc func uploadUrl(_ completionHandler: (String) -> Void)
+	@objc optional func additionalData() -> String?
 }
 
 public class FeedbackManager: NSObject {
-    var feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate?
+    var datasource: FeedbackManagerDatasource?
     
     // The Personal Access Token to access Github
     var githubApiToken: String
@@ -33,12 +34,12 @@ public class FeedbackManager: NSObject {
     
     let googleStorage = GoogleStorage()
     
-    public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackRemoteStorageDelegate, issueLabels: [String]? = nil) {
+    public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackManagerDatasource, issueLabels: [String]? = nil) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
         self.githubUser = githubUser
         self.githubIssueLabels = issueLabels
-        self.feedbackRemoteStorageDelegate = feedbackRemoteStorageDelegate
+        self.datasource = feedbackRemoteStorageDelegate
         
         super.init()
         listenForScreenshot()
@@ -70,7 +71,7 @@ public class FeedbackManager: NSObject {
     func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
         if let screenshotData = screenshotData {
             
-            feedbackRemoteStorageDelegate?.uploadUrl({ (googleStorageUrl) in
+            datasource?.uploadUrl({ (googleStorageUrl) in
                 googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (publicUrl, error) in
                     guard let publicUrl = publicUrl else {
                         return
