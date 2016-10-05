@@ -63,5 +63,9 @@ extension ViewController: FeedbackManagerDatasource {
         let url = "https://www.googleapis.com/upload/storage/v1/b/\(Config.googleStorageBucket)/o?name=\(filename)"
         completionHandler(url)
     }
+    
+    public func additionalData() -> String? {
+        return "This is additional data that was added via the FeedbackManagerDatasource.\n\nYou can put whatever you want here."
+    }
 
 }

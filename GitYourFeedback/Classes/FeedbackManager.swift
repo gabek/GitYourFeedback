@@ -72,24 +72,33 @@ public class FeedbackManager: NSObject {
         if let screenshotData = screenshotData {
             
             datasource?.uploadUrl({ (googleStorageUrl) in
-                googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (publicUrl, error) in
-                    guard let publicUrl = publicUrl else {
+                googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (screenshotURL, error) in
+                    guard let screenshotURL = screenshotURL else {
                         return
                     }
                     
-                    let finalBody = body + "\n\n![Screenshot](\(publicUrl))"
-                    self.createIssue(title: title, body: finalBody, labels: self.githubIssueLabels, completionHandler: completionHandler)
+                    self.createIssue(title: title, body: body, labels: self.githubIssueLabels, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
             
 
         } else {
-            self.createIssue(title: title, body: body, labels: githubIssueLabels, completionHandler: completionHandler)
+            self.createIssue(title: title, body: body, labels: githubIssueLabels, screenshotURL: nil, completionHandler: completionHandler)
         }
     }
     
-    private func createIssue(title: String, body: String, labels: [String]? = nil, completionHandler: @escaping (Bool) -> Void) {
-        var payload: [String:Any] = ["title": title, "body": body]
+    private func createIssue(title: String, body: String, labels: [String]? = nil, screenshotURL: String?, completionHandler: @escaping (Bool) -> Void) {
+        var finalBody = body
+        
+        if let additionalDataString = datasource?.additionalData?() {
+            finalBody += "\n\n" + additionalDataString
+        }
+        
+        if let screenshotURL = screenshotURL {
+            finalBody += "\n\n![Screenshot](\(screenshotURL))"
+        }
+        
+        var payload: [String:Any] = ["title": title, "body": finalBody]
         if let labels = labels {
             payload["labels"] = labels
         }

@@ -140,11 +140,7 @@ class FeedbackInterfaceViewController: UIViewController {
         }
         
         bodyText += Helpers.templateText()
-		
-		if let additionalDataString = reporter?.datasource?.additionalData?() {
-			bodyText += additionalDataString
-		}
-		
+
         reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (complete) in
             self.close()
         })
