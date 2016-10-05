@@ -6,14 +6,18 @@ A lot of organizations run on Github, not just for the code repositories, but al
 
 ## Example
 
-![Screenshot](./GitYourFeedbackScreenshot.png)
-
 To run the example project:
 
 * Clone the repo, and run `pod install` from the Example directory.
 * Edit `Config.swift` and add your Github details (user, api key, repo) and Google Cloud Storage bucket name.
 * This must be a publicly accessible Google Cloud Storage bucket, as it needs permissions to upload and read the file.
 * Run the project either on a device and take a screenshot, or press the button in the simulator to bring up the feedback interface.
+
+The client will look like: 
+![Screenshot](./ClientScreenshot.png)
+
+While the resulting Github issue will look like:
+![Screenshot](./GithubScreenshot.png)
 
 ## Requirements
 * Google Cloud Storage bucket for storing the screenshots.
