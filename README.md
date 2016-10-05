@@ -6,6 +6,8 @@ A lot of organizations run on Github, not just for the code repositories, but al
 
 ## Example
 
+![Screenshot](./GitYourFeedbackScreenshot.png)
+
 To run the example project:
 
 * Clone the repo, and run `pod install` from the Example directory.
