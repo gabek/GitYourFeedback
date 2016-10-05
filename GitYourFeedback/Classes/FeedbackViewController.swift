@@ -32,14 +32,14 @@ class FeedbackInterfaceViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(stack)
         
-        setupConstraints()
-        
         stack.addArrangedSubview(emailField)
         stack.addArrangedSubview(titleField)
         stack.addArrangedSubview(bodyField)
-        stack.addArrangedSubview(imagePreviewButton)
         stack.addArrangedSubview(footerLabel)
-                
+        
+        view.addSubview(imagePreviewButton)
+        setupConstraints()
+        
         // Navbar
         let bundle = Bundle(for: type(of: self))
         let saveImage = UIImage(named: "save.png", in: bundle, compatibleWith: nil)
@@ -106,6 +106,10 @@ class FeedbackInterfaceViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         scrollView.contentSize = CGSize(width: view.frame.size.width, height: stack.frame.size.height)
+        
+        let buttonFrame = view.convert(imagePreviewButton.frame, to: bodyField).insetBy(dx: -10, dy: -10)
+        let exclusionPath = UIBezierPath(rect: buttonFrame)
+        bodyField.textContainer.exclusionPaths = [exclusionPath]
     }
     
     private func setupConstraints() {
@@ -117,6 +121,9 @@ class FeedbackInterfaceViewController: UIViewController {
         stack.topAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 20).isActive = true
         stack.leftAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.leftAnchor).isActive = true
         stack.rightAnchor.constraint(equalTo: scrollView.layoutMarginsGuide.rightAnchor).isActive = true
+        
+        imagePreviewButton.trailingAnchor.constraint(equalTo: bodyField.trailingAnchor, constant: -8).isActive = true
+        imagePreviewButton.bottomAnchor.constraint(equalTo: bodyField.bottomAnchor, constant: -8).isActive = true
     }
     
     func save() {
@@ -190,7 +197,7 @@ class FeedbackInterfaceViewController: UIViewController {
         let textView = UITextView()
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 40).isActive = true
+        textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 130).isActive = true
         textView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1
@@ -201,10 +208,16 @@ class FeedbackInterfaceViewController: UIViewController {
     private let imagePreviewButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        let height = button.heightAnchor.constraint(equalToConstant: 200)
+        
+        let height = button.heightAnchor.constraint(equalToConstant: 80)
         height.priority = 999
         height.isActive = true
-        button.imageView?.contentMode = .scaleAspectFit
+        
+        let width = button.widthAnchor.constraint(equalToConstant: 80)
+        width.priority = 999
+        width.isActive = true
+        
+        button.imageView?.contentMode = .scaleAspectFill
         return button
     }()
     
