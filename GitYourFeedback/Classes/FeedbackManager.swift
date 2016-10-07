@@ -68,7 +68,7 @@ public class FeedbackManager: NSObject {
         }
     }
     
-    func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
+    internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
         if let screenshotData = screenshotData {
             
             datasource?.uploadUrl({ (googleStorageUrl) in

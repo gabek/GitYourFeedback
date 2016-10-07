@@ -13,13 +13,13 @@ class FeedbackInterfaceViewController: UIViewController {
     
     var reporter: FeedbackManager?
     
-    init(reporter: FeedbackManager?) {
+    internal init(reporter: FeedbackManager?) {
         super.init(nibName: nil, bundle: nil)
         
         self.reporter = reporter
     }
     
-    var image: UIImage? {
+    fileprivate var image: UIImage? {
         didSet {
             imagePreviewButton.setImage(image, for: .normal)
         }
@@ -55,8 +55,7 @@ class FeedbackInterfaceViewController: UIViewController {
         title = "Submit Feedback"
         
         handleScreenshot()
-        listenForKeyboardNotifications()
-        
+		
         populateEmailField()
         imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
     }
@@ -95,13 +94,7 @@ class FeedbackInterfaceViewController: UIViewController {
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         vc.addAction(ok)
     }
-    
-    private func listenForKeyboardNotifications() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
-    }
-    
+        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -241,22 +234,6 @@ class FeedbackInterfaceViewController: UIViewController {
         label.textColor = UIColor(white: 0.8, alpha: 1.0)
         return label
     }()
-    
-    func adjustForKeyboard(notification: NSNotification) {
-        let userInfo = notification.userInfo!
-        
-        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        
-        if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            scrollView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0)
-        } else {
-            scrollView.contentInset = UIEdgeInsets(top: 60, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
-        }
-        
-        scrollView.scrollIndicatorInsets = scrollView.contentInset
-    }
-    
     
     private func populateEmailField() {
         let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
