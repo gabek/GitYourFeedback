@@ -59,6 +59,7 @@ class FeedbackInterfaceViewController: UIViewController {
 		
         populateEmailField()
         imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
+        imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
     }
     
     private func handleScreenshot() {
@@ -217,6 +218,10 @@ class FeedbackInterfaceViewController: UIViewController {
         width.isActive = true
         
         button.imageView?.contentMode = .scaleAspectFill
+        
+        button.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
+        button.layer.borderWidth = 1
+
         return button
     }()
     
