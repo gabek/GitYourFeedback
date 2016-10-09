@@ -31,6 +31,8 @@ struct MediaQuery {
                 
                 completionHandler(image)
             })
+        } else {
+            completionHandler(nil)
         }
     }
     
