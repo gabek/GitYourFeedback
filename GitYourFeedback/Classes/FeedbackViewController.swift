@@ -14,11 +14,13 @@ class FeedbackInterfaceViewController: UIViewController {
     fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
     
     var reporter: FeedbackManager?
+    var shouldFetchScreenshot: Bool
     
-    internal init(reporter: FeedbackManager?) {
-        super.init(nibName: nil, bundle: nil)
-        
+    internal init(reporter: FeedbackManager?, shouldFetchScreenshot: Bool) {
         self.reporter = reporter
+        self.shouldFetchScreenshot = shouldFetchScreenshot
+        
+        super.init(nibName: nil, bundle: nil)
     }
     
     fileprivate var image: UIImage? {
@@ -55,7 +57,9 @@ class FeedbackInterfaceViewController: UIViewController {
         
         title = "Submit Feedback"
         
-        handleScreenshot()
+        if shouldFetchScreenshot {
+            handleScreenshot()
+        }
 		
         populateEmailField()
         imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
@@ -277,17 +281,19 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
 
 class FeedbackViewController: UINavigationController {
     weak var reporter: FeedbackManager?
+    var shouldFetchScreenshot: Bool
     
-    init(reporter: FeedbackManager) {
-        super.init(nibName: nil, bundle: nil)
-        
+    init(reporter: FeedbackManager, shouldFetchScreenshot: Bool = false) {
         self.reporter = reporter
+        self.shouldFetchScreenshot = shouldFetchScreenshot
+        
+        super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [FeedbackInterfaceViewController(reporter: reporter)]
+        viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
     }
     
     required init?(coder aDecoder: NSCoder) {

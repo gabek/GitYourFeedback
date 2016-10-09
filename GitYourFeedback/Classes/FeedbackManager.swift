@@ -47,11 +47,11 @@ public class FeedbackManager: NSObject {
 
     private func listenForScreenshot() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
-            self.display()
+            self.display(viewController: nil, shouldFetchScreenshot: true)
         }
     }
     
-    public func display(viewController: UIViewController? = nil) {
+    public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
         var vc: UIViewController?
         
         // If no view controller was supplied then try to use the root vc
@@ -62,7 +62,7 @@ public class FeedbackManager: NSObject {
         }
         
         if let vc = vc {
-            vc.present(FeedbackViewController(reporter: self), animated: true, completion: nil)
+            vc.present(FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot), animated: true, completion: nil)
         } else {
             fatalError("No view controller to present FeedbackManager on")
         }
