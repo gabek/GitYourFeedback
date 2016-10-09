@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		222676DA3C53FE292F36DD46D89B2166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		324392591DAAC2960050FF89 /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 324392581DAAC2960050FF89 /* add_photo.png */; };
 		404B61C8D0F07B4029545262A125BF53 /* GitYourFeedback-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4E33B77250D37F22927ECF3DDA4F4639 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 915D5D86A7731A6878DB5F1D238090F4 /* save.png */; };
 		69EBC1B61345A166572C8173C4C1ED63 /* Pods-GitYourFeedback_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFF21F1D1DEB0504413B8DD1003882D9 /* Pods-GitYourFeedback_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +42,7 @@
 		1F35E2509BEC3A27E3946AC982E39439 /* Pods-GitYourFeedback_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedback_Example-resources.sh"; sourceTree = "<group>"; };
 		28AD9C01DD3E37ACB0A9E25D5E82E635 /* GitYourFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC591B7737928379118E1D15FE4D744 /* GitYourFeedback.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GitYourFeedback.modulemap; sourceTree = "<group>"; };
+		324392581DAAC2960050FF89 /* add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_photo.png; sourceTree = "<group>"; };
 		37BDBAF743D42D493BD32C6C7BD78839 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleStorage.swift; sourceTree = "<group>"; };
 		50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-umbrella.h"; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		6CE873158068CA0F8E0ECC992BBBF72B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				324392581DAAC2960050FF89 /* add_photo.png */,
 				15498AAF9748F8CC3A942009956150CB /* close.png */,
 				915D5D86A7731A6878DB5F1D238090F4 /* save.png */,
 			);
@@ -312,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				324392591DAAC2960050FF89 /* add_photo.png in Resources */,
 				B65AC11833CBBF87BDE5575CD89EED90 /* close.png in Resources */,
 				4E33B77250D37F22927ECF3DDA4F4639 /* save.png in Resources */,
 			);

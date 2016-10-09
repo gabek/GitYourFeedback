@@ -11,6 +11,8 @@ import UIKit
 
 class FeedbackInterfaceViewController: UIViewController {
     
+    fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
+    
     var reporter: FeedbackManager?
     
     internal init(reporter: FeedbackManager?) {
@@ -41,7 +43,6 @@ class FeedbackInterfaceViewController: UIViewController {
         setupConstraints()
         
         // Navbar
-        let bundle = Bundle(for: type(of: self))
         let saveImage = UIImage(named: "save.png", in: bundle, compatibleWith: nil)
         let saveButton = UIBarButtonItem(image: saveImage, style: .plain, target: self, action: #selector(save))
         saveButton.tintColor = UIColor.black
@@ -66,6 +67,9 @@ class FeedbackInterfaceViewController: UIViewController {
                 if !MediaQuery.hasPhotosAccess() {
                     // Throw error
                     self.showNotification(title: "Photo Access", message: "Access must be granted to the photo library in order to import the screenshot")
+                    DispatchQueue.main.async {
+                        self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                    }
                 } else {
                     self.handleScreenshot()
                 }
@@ -77,6 +81,8 @@ class FeedbackInterfaceViewController: UIViewController {
             OperationQueue.main.addOperation({ 
                 if let image = image {
                     self.image = image
+                } else {
+                    self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
                 }
             })
         }
