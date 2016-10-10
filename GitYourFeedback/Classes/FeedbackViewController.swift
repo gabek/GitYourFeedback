@@ -42,6 +42,7 @@ class FeedbackInterfaceViewController: UIViewController {
         stack.addArrangedSubview(footerLabel)
         
         view.addSubview(imagePreviewButton)
+        view.addSubview(activitySpinner)
         setupConstraints()
         
         // Navbar
@@ -128,9 +129,14 @@ class FeedbackInterfaceViewController: UIViewController {
         
         imagePreviewButton.trailingAnchor.constraint(equalTo: bodyField.trailingAnchor, constant: -8).isActive = true
         imagePreviewButton.bottomAnchor.constraint(equalTo: bodyField.bottomAnchor, constant: -8).isActive = true
+        
+        activitySpinner.centerXAnchor.constraint(equalTo: bodyField.centerXAnchor).isActive = true
+        activitySpinner.centerYAnchor.constraint(equalTo: bodyField.centerYAnchor).isActive = true
     }
     
     func save() {
+        activitySpinner.startAnimating()
+        
         var imageData: Data?
         if let image = image {
             imageData = UIImageJPEGRepresentation(image, 20)
@@ -250,6 +256,12 @@ class FeedbackInterfaceViewController: UIViewController {
         return label
     }()
     
+    private let activitySpinner: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private func populateEmailField() {
         let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
         if let email = Helpers.email() {
@@ -258,7 +270,13 @@ class FeedbackInterfaceViewController: UIViewController {
     }
     
     func close() {
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.sync {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    internal func stopActivitySpinner() {
+        activitySpinner.stopAnimating()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -294,6 +312,18 @@ class FeedbackViewController: UINavigationController {
         super.viewDidLoad()
         
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
+    }
+    
+    internal func displayErrorMessage(title: String, body: String) {
+        let vc = UIAlertController(title: title, message: body, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        vc.addAction(ok)
+        
+        present(vc, animated: true, completion: nil)
+        
+        if let topViewController = topViewController as? FeedbackInterfaceViewController {
+            topViewController.stopActivitySpinner()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

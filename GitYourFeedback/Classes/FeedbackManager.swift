@@ -34,6 +34,8 @@ public class FeedbackManager: NSObject {
     
     let googleStorage = GoogleStorage()
     
+    var feedbackViewController: FeedbackViewController?
+    
     public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackManagerDatasource, issueLabels: [String]? = nil) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
@@ -62,7 +64,8 @@ public class FeedbackManager: NSObject {
         }
         
         if let vc = vc {
-            vc.present(FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot), animated: true, completion: nil)
+            feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
+            vc.present(feedbackViewController!, animated: true, completion: nil)
         } else {
             fatalError("No view controller to present FeedbackManager on")
         }
@@ -115,9 +118,32 @@ public class FeedbackManager: NSObject {
             var request = createRequest()
             request.httpBody = jsonData
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard let response = response as? HTTPURLResponse else {
+                    return
+                }
+                
+                // If it wasn't successful, handle the error
+                if response.statusCode != 201 {
+                    self.handleGithubError(response: response)
+                    return
+                }
+                
                 completionHandler(true)
             }
             task.resume()
+        }
+    }
+    
+    private func handleGithubError(response: HTTPURLResponse) {
+        var errorMessage = String()
+        
+        if let status = response.allHeaderFields["Status"] as? String {
+            errorMessage += status
+        }
+        
+        errorMessage += " for repo \(githubRepo)."
+        DispatchQueue.main.sync {
+            self.feedbackViewController?.displayErrorMessage(title: "Error saving feedback", body: errorMessage)
         }
     }
     
