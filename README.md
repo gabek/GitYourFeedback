@@ -36,6 +36,10 @@ it, simply add the following line to your Podfile:
 pod "GitYourFeedback"
 ```
 
+Or, if you’re using [Carthage](https://github.com/Carthage/Carthage), add GitYourFeedback to your Cartfile:
+
+github "gabek/GitYourFeedback"
+
 1. Generate a [Personal Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for the Github user who will be saving the issues in your repo.
 
 2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.  This is user-facing so use your own judgement.
