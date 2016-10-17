@@ -4,14 +4,14 @@
 [![version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](https://github.com/gabek/GitYourFeedback)
 ![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)
 
-A lot of organizations run on Github, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to Github and expecting them to file issues, this is an option to support it right from inside your iOS application.
+A lot of organizations run on GitHub, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to GitHub and expecting them to file issues, this is an option to support it right from inside your iOS application.
 
 ## Example
 
 To run the example project:
 
 * Clone the repo, and run `pod install` from the Example directory.
-* Edit `Config.swift` and add your Github details (user, api key, repo) and Google Cloud Storage bucket name.
+* Edit `Config.swift` and add your GitHub details (user, api key, repo) and Google Cloud Storage bucket name.
 * This must be a publicly accessible Google Cloud Storage bucket, as it needs permissions to upload and read the file.
 * Run the project either on a device and take a screenshot, or press the button in the simulator to bring up the feedback interface.
 
@@ -19,13 +19,13 @@ To run the example project:
 
 ![Screenshot](./ClientScreenshot.png)
 
-### While the resulting Github issue will look like:
+### While the resulting GitHub issue will look like:
 
-![Screenshot](./GithubScreenshot.png)
+![Screenshot](./GitHubScreenshot.png)
 
 ## Requirements
 * Google Cloud Storage bucket for storing the screenshots.
-* Github repository for storing the issues.
+* GitHub repository for storing the issues.
 
 ## Installation
 
@@ -40,14 +40,14 @@ Or, if you’re using [Carthage](https://github.com/Carthage/Carthage), add GitY
 
 github "gabek/GitYourFeedback"
 
-1. Generate a [Personal Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for the Github user who will be saving the issues in your repo.
+1. Generate a [Personal Access Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) for the GitHub user who will be saving the issues in your repo.
 
 2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.  This is user-facing so use your own judgement.
 
 3. In your AppDelegate, or some other long-lived controller:
 
 ```
-let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever Github Labels You Want"])
+let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever GitHub Labels You Want"])
 ```
 
 You also need to implement `FeedbackRemoteStorageDelegate` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:
