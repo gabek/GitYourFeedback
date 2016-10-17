@@ -9,51 +9,48 @@
 import Foundation
 import UIKit
 
-// This is required in order to know where to upload your screenshot to at the
-// time of submission.  Generate the filename any way you like as long as 
-// the result is a valid Google Cloud Storage destination.
-@objc public protocol FeedbackManagerDatasource {
-    @objc func uploadUrl(_ completionHandler: (String) -> Void)
+/// This is required in order to know where to upload your screenshot to at the time of submission.
+/// Generate the filename any way you like as long as the result is a valid Google Cloud Storage destination.
+@objc public protocol FeedbackReporterDatasource {
+    @objc func uploadUrl(_ completion: (String) -> Void)
 	@objc optional func additionalData() -> String?
 }
 
-public class FeedbackManager: NSObject {
-    var datasource: FeedbackManagerDatasource?
+public protocol FeedbackOptions {
+    /// The Personal Access Token to access a repository
+    var token: String { get set }
+    /// The user that generated the above Personal Access Token and has access to the repository.
+    var user: String { get set }
+    /// The repository in username/repo format where the issue will be saved.
+    var repo: String { get set }
+    /// An array of strings that will be the labels associated to each issue.
+    var issueLabels: [String] { get set }
+}
+
+open class FeedbackReporter {
     
-    // The Personal Access Token to access Github
-    var githubApiToken: String
-    // The user that generated the above Personal Access Token and has access
-    // to the repository.
-    var githubUser: String
+    private (set) var options: FeedbackOptions?
+    open var datasource: FeedbackReporterDatasource?
     
-    // The Github repository in username/repo format where the issue will
-    // be saved.
-    var githubRepo: String
-    // An array of strings that will be the labels associated to each issue.
-    var githubIssueLabels: [String]?
-    
-    let googleStorage = GoogleStorage()
+    private let googleStorage = GoogleStorage()
     
     var feedbackViewController: FeedbackViewController?
     
-    public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackManagerDatasource, issueLabels: [String]? = nil) {
-        self.githubApiToken = githubApiToken
-        self.githubRepo = repo
-        self.githubUser = githubUser
-        self.githubIssueLabels = issueLabels
-        self.datasource = feedbackRemoteStorageDelegate
+    public init(options: FeedbackOptions) {
+        self.options = options
         
-        super.init()
-        listenForScreenshot()
+        self.listenForScreenshot()
     }
 
     private func listenForScreenshot() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
+        let name = NSNotification.Name.UIApplicationUserDidTakeScreenshot
+        
+        NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main) { notification in
             self.display(viewController: nil, shouldFetchScreenshot: true)
         }
     }
     
-    public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
+    public func display(viewController: UIViewController?, shouldFetchScreenshot: Bool = false) {
         var vc: UIViewController?
         
         // If no view controller was supplied then try to use the root vc
@@ -72,21 +69,19 @@ public class FeedbackManager: NSObject {
     }
     
     internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
+        
         if let screenshotData = screenshotData {
-            
             datasource?.uploadUrl({ (googleStorageUrl) in
                 googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (screenshotURL, error) in
-                    guard let screenshotURL = screenshotURL else {
-                        return
-                    }
+                    guard let screenshotURL = screenshotURL else { return }
                     
-                    self.createIssue(title: title, body: body, labels: self.githubIssueLabels, screenshotURL: screenshotURL, completionHandler: completionHandler)
+                    self.createIssue(title: title, body: body, labels: self.options?.issueLabels, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
             
 
         } else {
-            self.createIssue(title: title, body: body, labels: githubIssueLabels, screenshotURL: nil, completionHandler: completionHandler)
+            self.createIssue(title: title, body: body, labels: self.options?.issueLabels, screenshotURL: nil, completionHandler: completionHandler)
         }
     }
     
@@ -141,20 +136,19 @@ public class FeedbackManager: NSObject {
             errorMessage += status
         }
         
-        errorMessage += " for repo \(githubRepo)."
+        errorMessage += " for repo \(self.options?.repo)."
         DispatchQueue.main.sync {
             self.feedbackViewController?.displayErrorMessage(title: "Error saving feedback", body: errorMessage)
         }
     }
     
     private func createRequest() -> URLRequest {
-        let url = URL(string: "https://api.github.com/repos/\(githubRepo)/issues")!
+        let url = URL(string: "https://api.github.com/repos/\(self.options?.repo)/issues")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        // Github uses HTTP Basic auth using the username and Personal Access
-        // Toekn for authentication.
-        let basicAuthString = "\(githubUser):\(githubApiToken)"
+        // Github uses HTTP Basic auth using the username and Personal Access Token for authentication.
+        let basicAuthString = "\(self.options?.user):\(self.options?.token)"
         let userPasswordData = basicAuthString.data(using: String.Encoding.utf8)
         let base64EncodedCredential = userPasswordData?.base64EncodedString()
         let authString = "Basic \(base64EncodedCredential!)"

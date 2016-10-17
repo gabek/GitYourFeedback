@@ -13,10 +13,10 @@ class FeedbackInterfaceViewController: UIViewController {
     
     fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
     
-    var reporter: FeedbackManager?
+    var reporter: FeedbackReporter?
     var shouldFetchScreenshot: Bool
     
-    internal init(reporter: FeedbackManager?, shouldFetchScreenshot: Bool) {
+    internal init(reporter: FeedbackReporter?, shouldFetchScreenshot: Bool) {
         self.reporter = reporter
         self.shouldFetchScreenshot = shouldFetchScreenshot
         
@@ -298,10 +298,10 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
 }
 
 class FeedbackViewController: UINavigationController {
-    weak var reporter: FeedbackManager?
+    weak var reporter: FeedbackReporter?
     var shouldFetchScreenshot: Bool
     
-    init(reporter: FeedbackManager, shouldFetchScreenshot: Bool = false) {
+    init(reporter: FeedbackReporter, shouldFetchScreenshot: Bool = false) {
         self.reporter = reporter
         self.shouldFetchScreenshot = shouldFetchScreenshot
         
