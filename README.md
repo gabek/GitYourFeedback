@@ -21,7 +21,7 @@ To run the example project:
 
 ### While the resulting GitHub issue will look like:
 
-![Screenshot](./GitHubScreenshot.png)
+![Screenshot](./GithubScreenshot.png)
 
 ## Requirements
 * Google Cloud Storage bucket for storing the screenshots.
