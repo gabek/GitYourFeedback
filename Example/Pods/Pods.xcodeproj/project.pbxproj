@@ -15,6 +15,7 @@
 		6C0B4BB81D15980F0144AF4E662C0430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		74B36AB805BFF8B00644016A06421CB9 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */; };
 		A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */; };
+		A0DA9D5E1DB5A63600DB3310 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DA9D5D1DB5A63600DB3310 /* ImagePreviewViewController.swift */; };
 		B65AC11833CBBF87BDE5575CD89EED90 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 15498AAF9748F8CC3A942009956150CB /* close.png */; };
 		CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F50ECE153543CC26EEC26918BC28F7A0 /* GitYourFeedback-dummy.m */; };
 		DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */; };
@@ -53,6 +54,7 @@
 		8D206B98088CAD09F79AFE3AF8DF7B17 /* Pods-GitYourFeedback_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GitYourFeedback_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		915D5D86A7731A6878DB5F1D238090F4 /* save.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0DA9D5D1DB5A63600DB3310 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		A72510EC26E1253E7903CF98C0E71A26 /* GitYourFeedback-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-prefix.pch"; sourceTree = "<group>"; };
 		A988434EC97497F4FF6F8E96E417DFAF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MediaQuery.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */,
 				7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */,
 				AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */,
+				A0DA9D5D1DB5A63600DB3310 /* ImagePreviewViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			files = (
 				DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */,
 				74B36AB805BFF8B00644016A06421CB9 /* FeedbackViewController.swift in Sources */,
+				A0DA9D5E1DB5A63600DB3310 /* ImagePreviewViewController.swift in Sources */,
 				CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */,
 				FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */,
 				A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */,

@@ -25,7 +25,15 @@ class FeedbackInterfaceViewController: UIViewController {
     
     fileprivate var image: UIImage? {
         didSet {
-            imagePreviewButton.setImage(image, for: .normal)
+            UIView.transition(with: imagePreviewButton, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                
+                self.imagePreviewButton.setImage(self.image, for: .normal)
+                if self.image == nil {
+                    self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                }
+                
+                }, completion: nil)
+
         }
     }
     
@@ -58,13 +66,15 @@ class FeedbackInterfaceViewController: UIViewController {
         
         title = "Submit Feedback"
         
+        // Set the default image button state
+        image = nil
+
         if shouldFetchScreenshot {
             handleScreenshot()
         }
 		
         populateEmailField()
-        imagePreviewButton.addTarget(self, action: #selector(selectNewImage), for: .touchUpInside)
-        imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+        imagePreviewButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
     }
     
     private func handleScreenshot() {
@@ -94,11 +104,6 @@ class FeedbackInterfaceViewController: UIViewController {
         }
     }
     
-    func selectNewImage() {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
     
     private func showNotification(title: String, message: String) {
         let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -134,7 +139,53 @@ class FeedbackInterfaceViewController: UIViewController {
         activitySpinner.centerYAnchor.constraint(equalTo: bodyField.centerYAnchor).isActive = true
     }
     
-    func save() {
+    // MARK: - Actions
+    
+    private func selectNewImage() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    private func showImageOptions() {
+        let actionSheet = UIAlertController(title: "Screenshot", message: nil, preferredStyle: .actionSheet)
+        
+        let viewAction = UIAlertAction(title: "View", style: .default) { (action) in
+            self.showImagePreview()
+        }
+        actionSheet.addAction(viewAction)
+        
+        let replaceAction = UIAlertAction(title: "Replace", style: .default) { (action) in
+            self.selectNewImage()
+        }
+        actionSheet.addAction(replaceAction)
+        
+        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { (action) in
+            self.image = nil
+        }
+        actionSheet.addAction(removeAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func showImagePreview() {
+        guard let image = image else {
+            return
+        }
+        
+        let vc = ImagePreviewViewController(image: image)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func imageButtonPressed() {
+        if image == nil {
+            selectNewImage()
+        } else {
+            showImageOptions()
+        }
+    }
+    
+    @objc private func save() {
         activitySpinner.startAnimating()
         
         var imageData: Data?
@@ -165,6 +216,14 @@ class FeedbackInterfaceViewController: UIViewController {
 		// Save the email address for next time
         Helpers.saveEmail(email: emailField.text)
     }
+    
+    @objc private func close() {
+        DispatchQueue.main.sync {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    // MARK - Views
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -266,12 +325,6 @@ class FeedbackInterfaceViewController: UIViewController {
         let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
         if let email = Helpers.email() {
             emailField.text = email
-        }
-    }
-    
-    func close() {
-        DispatchQueue.main.sync {
-            self.dismiss(animated: true, completion: nil)
         }
     }
     
