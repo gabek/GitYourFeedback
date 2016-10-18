@@ -86,7 +86,7 @@ public class FeedbackManager: NSObject {
                         completionHandler(Result.Failure(GitYourFeedbackError.ImageUploadError(error.localizedDescription)))
                     }
                     
-                    guard let screenshotUrl = screenshotURL else {
+                    guard screenshotURL != nil else {
                         return
                     }
                     

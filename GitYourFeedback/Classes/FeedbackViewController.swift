@@ -12,10 +12,11 @@ import UIKit
 class FeedbackInterfaceViewController: UIViewController {
     
     fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
-    
+    let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     var reporter: FeedbackManager?
     var shouldFetchScreenshot: Bool
-    
+	
+	
     internal init(reporter: FeedbackManager?, shouldFetchScreenshot: Bool) {
         self.reporter = reporter
         self.shouldFetchScreenshot = shouldFetchScreenshot
@@ -186,8 +187,27 @@ class FeedbackInterfaceViewController: UIViewController {
     }
     
     @objc private func save() {
-        activitySpinner.startAnimating()
-        
+		
+		
+		if (titleField.text?.isEmpty)!
+		{
+			let alert = UIAlertController(title: "Alert", message: "Please enter a Title", preferredStyle: UIAlertControllerStyle.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
+		}
+		
+		
+		let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+		
+		if(emailTest.evaluate(with: emailField.text) == false)
+		{
+			let alert = UIAlertController(title: "Alert", message: "Please enter a proper E-mail address", preferredStyle: UIAlertControllerStyle.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
+		}
+		
+		activitySpinner.startAnimating()
+		
         var imageData: Data?
         if let image = image {
             imageData = UIImageJPEGRepresentation(image, 20)
@@ -211,7 +231,7 @@ class FeedbackInterfaceViewController: UIViewController {
 
         reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (result) in
             do {
-                let success = try result.resolve()
+                _ = try result.resolve()
                 self.close()
             } catch GitYourFeedbackError.GithubSaveError(let errorMessage) {
                 self.handleError(title: "Error saving to GitHub", errorMessage: errorMessage)
@@ -342,7 +362,7 @@ class FeedbackInterfaceViewController: UIViewController {
     }()
     
     private func populateEmailField() {
-        let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
+        _ = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
         if let email = Helpers.email() {
             emailField.text = email
         }
