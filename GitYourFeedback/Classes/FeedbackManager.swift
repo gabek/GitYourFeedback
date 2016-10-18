@@ -164,10 +164,7 @@ public class FeedbackManager: NSObject {
         
         // Github uses HTTP Basic auth using the username and Personal Access
         // Toekn for authentication.
-        let basicAuthString = "\(githubUser):\(githubApiToken)"
-        let userPasswordData = basicAuthString.data(using: String.Encoding.utf8)
-        let base64EncodedCredential = userPasswordData?.base64EncodedString()
-        let authString = "Basic \(base64EncodedCredential!)"
+        let authString = "\(githubUser):\(githubApiToken)".gitHubAuthString()
         request.setValue(authString, forHTTPHeaderField: "Authorization")
         return request
     }

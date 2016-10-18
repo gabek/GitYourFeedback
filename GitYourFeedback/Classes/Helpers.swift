@@ -105,11 +105,19 @@ extension UIDevice {
 }
 
 extension URLComponents {
-	
 	mutating func appendQueryItem(name name: String, value: String) {
 		var queryItems: [URLQueryItem] = self.queryItems ?? [URLQueryItem]()
 		queryItems.append(URLQueryItem(name: name, value: value))
 		self.queryItems = queryItems
 	}
-	
+}
+
+extension String {
+    func gitHubAuthString() -> String {
+        let userPasswordData = data(using: String.Encoding.utf8)
+        let base64EncodedCredential = userPasswordData?.base64EncodedString()
+        let authString = "Basic \(base64EncodedCredential!)"
+        return authString
+    }
+
 }
