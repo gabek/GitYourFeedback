@@ -11,7 +11,7 @@ import Foundation
 class GoogleStorage {
     var bucket: String?
     
-    func upload(data: Data, urlString: String, completionHandler: @escaping (String?, String?) -> Void) {
+    func upload(data: Data, urlString: String, completionHandler: @escaping (Result<String>) -> Void) {
         // Tell Google this is a one-time, non-multipart upload
 		var urlComponents = URLComponents(string: urlString)
 		urlComponents?.appendQueryItem(name: "uploadType", value: "media")
@@ -30,12 +30,14 @@ class GoogleStorage {
                 return
             }
             
-            OperationQueue.main.addOperation {
+            DispatchQueue.main.sync {
                 if let publicUrlString = self.parseResponseForPublicUrl(responseJsonData: data) {
-                    completionHandler(publicUrlString, nil)
-                } else {
-                    let errorString = "Could not upload to \(urlString).  \(response?.description)"
-                    completionHandler(nil, errorString)
+                    let successResult = Result.Success(publicUrlString)
+                    completionHandler(successResult)
+                } else if let response = response as? HTTPURLResponse {
+                    let errorString = "\(urlString).  Status code: \(response.statusCode)"
+                    let failureResult: Result<String> = Result.Failure(GitYourFeedbackError.ImageUploadError(errorString))
+                    completionHandler(failureResult)
                 }
             }
             

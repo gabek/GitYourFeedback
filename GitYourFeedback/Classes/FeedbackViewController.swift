@@ -209,8 +209,19 @@ class FeedbackInterfaceViewController: UIViewController {
         
         bodyText += Helpers.templateText()
 
-        reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (complete) in
-            self.close()
+        reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (result) in
+            do {
+                let success = try result.resolve()
+                self.close()
+            } catch GitYourFeedbackError.GithubSaveError(let errorMessage) {
+                self.handleError(title: "Error saving to GitHub", errorMessage: errorMessage)
+            } catch GitYourFeedbackError.ImageUploadError(let errorMessage) {
+                let message = "The image could not be uploaded.  Try again or remove the image.  \(errorMessage)"
+                self.handleError(title: "Error uploading image", errorMessage: message)
+            } catch {
+                self.handleError(title: "Error", errorMessage: error.localizedDescription)
+            }
+            
         })
 		
 		// Save the email address for next time
@@ -221,6 +232,15 @@ class FeedbackInterfaceViewController: UIViewController {
         DispatchQueue.main.sync {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    private func handleError(title: String, errorMessage: String) {
+        let vc = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        vc.addAction(ok)
+        
+        present(vc, animated: true, completion: nil)
+        stopActivitySpinner()
     }
     
     // MARK - Views
@@ -365,18 +385,6 @@ class FeedbackViewController: UINavigationController {
         super.viewDidLoad()
         
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
-    }
-    
-    internal func displayErrorMessage(title: String, body: String) {
-        let vc = UIAlertController(title: title, message: body, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        vc.addAction(ok)
-        
-        present(vc, animated: true, completion: nil)
-        
-        if let topViewController = topViewController as? FeedbackInterfaceViewController {
-            topViewController.stopActivitySpinner()
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -71,12 +71,22 @@ public class FeedbackManager: NSObject {
         }
     }
     
-    internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Bool) -> Void) {
+    internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
         if let screenshotData = screenshotData {
             
             datasource?.uploadUrl({ (googleStorageUrl) in
-                googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (screenshotURL, error) in
-                    guard let screenshotURL = screenshotURL else {
+                var screenshotURL: String?
+                
+                googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (result) in
+                    do {
+                        screenshotURL = try result.resolve()
+                    } catch GitYourFeedbackError.ImageUploadError(let errorMessage){
+                        completionHandler(Result.Failure(GitYourFeedbackError.ImageUploadError(errorMessage)))
+                    } catch {
+                        completionHandler(Result.Failure(GitYourFeedbackError.ImageUploadError(error.localizedDescription)))
+                    }
+                    
+                    guard let screenshotUrl = screenshotURL else {
                         return
                     }
                     
@@ -90,7 +100,7 @@ public class FeedbackManager: NSObject {
         }
     }
     
-    private func createIssue(title: String, body: String, labels: [String]? = nil, screenshotURL: String?, completionHandler: @escaping (Bool) -> Void) {
+    private func createIssue(title: String, body: String, labels: [String]? = nil, screenshotURL: String?, completionHandler: @escaping (Result<Bool>) -> Void) {
         var finalBody = body
         
         if let additionalDataString = datasource?.additionalData?() {
@@ -111,7 +121,7 @@ public class FeedbackManager: NSObject {
             jsonData = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
         } catch let error as NSError {
             print(error)
-            completionHandler(false)
+            completionHandler(Result.Failure(error))
         }
 
         if let jsonData = jsonData {
@@ -124,17 +134,17 @@ public class FeedbackManager: NSObject {
                 
                 // If it wasn't successful, handle the error
                 if response.statusCode != 201 {
-                    self.handleGithubError(response: response)
+                    self.handleGithubError(response: response, completionHandler: completionHandler)
                     return
                 }
                 
-                completionHandler(true)
+                completionHandler(Result.Success(true))
             }
             task.resume()
         }
     }
     
-    private func handleGithubError(response: HTTPURLResponse) {
+    private func handleGithubError(response: HTTPURLResponse, completionHandler: @escaping (Result<Bool>) -> Void) {
         var errorMessage = String()
         
         if let status = response.allHeaderFields["Status"] as? String {
@@ -143,7 +153,7 @@ public class FeedbackManager: NSObject {
         
         errorMessage += " for repo \(githubRepo)."
         DispatchQueue.main.sync {
-            self.feedbackViewController?.displayErrorMessage(title: "Error saving feedback", body: errorMessage)
+            completionHandler(Result.Failure(GitYourFeedbackError.GithubSaveError(errorMessage)))
         }
     }
     
