@@ -15,6 +15,7 @@ import UIKit
 @objc public protocol FeedbackManagerDatasource {
     @objc func uploadUrl(_ completionHandler: (String) -> Void)
 	@objc optional func additionalData() -> String?
+	@objc optional func issueLabels() -> [String]?
 }
 
 public class FeedbackManager: NSObject {
@@ -29,19 +30,16 @@ public class FeedbackManager: NSObject {
     // The Github repository in username/repo format where the issue will
     // be saved.
     var githubRepo: String
-    // An array of strings that will be the labels associated to each issue.
-    var githubIssueLabels: [String]?
-    
+	
     let googleStorage = GoogleStorage()
     
     var feedbackViewController: FeedbackViewController?
     
-    public init(githubApiToken: String, githubUser: String, repo: String, feedbackRemoteStorageDelegate: FeedbackManagerDatasource, issueLabels: [String]? = nil) {
+    public init(githubApiToken: String, githubUser: String, repo: String, datasourceDelegate: FeedbackManagerDatasource) {
         self.githubApiToken = githubApiToken
         self.githubRepo = repo
         self.githubUser = githubUser
-        self.githubIssueLabels = issueLabels
-        self.datasource = feedbackRemoteStorageDelegate
+        self.datasource = datasourceDelegate
         
         super.init()
         listenForScreenshot()
@@ -86,21 +84,21 @@ public class FeedbackManager: NSObject {
                         completionHandler(Result.Failure(GitYourFeedbackError.ImageUploadError(error.localizedDescription)))
                     }
                     
-                    guard let screenshotUrl = screenshotURL else {
+                    guard let screenshotURL = screenshotURL else {
                         return
                     }
                     
-                    self.createIssue(title: title, body: body, labels: self.githubIssueLabels, screenshotURL: screenshotURL, completionHandler: completionHandler)
+                    self.createIssue(title: title, body: body, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
             
 
         } else {
-            self.createIssue(title: title, body: body, labels: githubIssueLabels, screenshotURL: nil, completionHandler: completionHandler)
+            self.createIssue(title: title, body: body, screenshotURL: nil, completionHandler: completionHandler)
         }
     }
     
-    private func createIssue(title: String, body: String, labels: [String]? = nil, screenshotURL: String?, completionHandler: @escaping (Result<Bool>) -> Void) {
+    private func createIssue(title: String, body: String, screenshotURL: String?, completionHandler: @escaping (Result<Bool>) -> Void) {
         var finalBody = body
         
         if let additionalDataString = datasource?.additionalData?() {
@@ -112,7 +110,7 @@ public class FeedbackManager: NSObject {
         }
         
         var payload: [String:Any] = ["title": title, "body": finalBody]
-        if let labels = labels {
+        if let labels = datasource?.issueLabels?() {
             payload["labels"] = labels
         }
         

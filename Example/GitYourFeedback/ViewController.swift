@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, githubUser: Config.githubUser, repo: Config.githubRepo, feedbackRemoteStorageDelegate: self, issueLabels: ["Feedback", "Bugs"])
+        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, githubUser: Config.githubUser, repo: Config.githubRepo, datasourceDelegate: self)
         
         view.backgroundColor = UIColor.white
         
@@ -67,5 +67,8 @@ extension ViewController: FeedbackManagerDatasource {
     public func additionalData() -> String? {
         return "This is additional data that was added via the FeedbackManagerDatasource.\n\nYou can put whatever you want here."
     }
-
+	
+	public func issueLabels() -> [String]? {
+		return ["Feedback", "Bugs", "Anything"]
+	}
 }
