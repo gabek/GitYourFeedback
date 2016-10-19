@@ -47,17 +47,24 @@ github "gabek/GitYourFeedback"
 3. In your AppDelegate, or some other long-lived controller:
 
 ```
-let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", feedbackRemoteStorageDelegate: self, labels: ["Feedback", "Bugs", "Whatever GitHub Labels You Want"])
+let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", datasourceDelegate: self)
 ```
 
-You also need to implement `FeedbackRemoteStorageDelegate` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:
+You also need to implement `FeedbackManagerDatasource` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:
 
 ```
-func uploadUrl() -> String {
+func uploadUrl(_ completionHandler: (String) -> Void) {
     let filename = String(Date().timeIntervalSince1970) + ".jpg"
     let url = "https://www.googleapis.com/upload/storage/v1/b/mybucketname.appspot.com/o?name=\(filename)"
-    return url
+    completionHandler(url)
 }
+```
+
+And there are other methods you can implement as well, to provide additional information in the issues that get filed.
+
+```
+func additionalData() -> String?
+func issueLabels() -> [String]?
 ```
 
 This is also where you could generate, possibly from your backend, a signed URL so the Google Cloud Storage bucket doesn't need to be completely public.
