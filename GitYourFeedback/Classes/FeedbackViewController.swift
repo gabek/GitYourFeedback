@@ -189,16 +189,17 @@ class FeedbackInterfaceViewController: UIViewController {
     @objc private func save() {
 		
 		if (titleField.text?.isEmpty)!{
-			let alert = UIAlertController(title: "Alert", message: "Please enter a title.", preferredStyle: UIAlertControllerStyle.Alert)
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-			self.presentViewController(alert, animated: true, completion: nil)
+			let alert = UIAlertController(title: "Alert", message: "Please enter a title.", preferredStyle: UIAlertControllerStyle.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
 		}
 		
 		
-		if emailField.text?.isValidEmail == false {
-			let alert = UIAlertController(title: "Alert", message: "Please enter a a vaild E-mail.", preferredStyle: UIAlertControllerStyle.Alert)
-			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-			self.presentViewController(alert, animated: true, completion: nil)
+		if emailField.text?.isValidEmail
+			== false {
+			let alert = UIAlertController(title: "Alert", message: "Please enter a a vaild E-mail.", preferredStyle: UIAlertControllerStyle.alert)
+			alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+			self.present(alert, animated: true, completion: nil)
 		}
 		
 		
