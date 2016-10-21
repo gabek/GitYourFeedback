@@ -247,7 +247,7 @@ class FeedbackInterfaceViewController: UIViewController {
     }
     
     @objc private func close() {
-        DispatchQueue.main.sync {
+        DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
         }
     }
