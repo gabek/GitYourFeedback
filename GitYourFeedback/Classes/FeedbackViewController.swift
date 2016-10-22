@@ -94,14 +94,21 @@ class FeedbackInterfaceViewController: UIViewController {
             return
         }
         
-        MediaQuery.fetchLastImage { (image) in
-            OperationQueue.main.addOperation({ 
-                if let image = image {
-                    self.image = image
-                } else {
-                    self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+        // This is a hack to fix the fact that getting a screenshot notification
+        // does not mean the screenshot has saved yet.  This artificial delay
+        // gives iOS the moment required to store the image before we query
+        // the image library for it.
+        let delayTime = DispatchTime.now() + 0.5
+        DispatchQueue.global(qos: DispatchQoS.background.qosClass).asyncAfter(deadline: delayTime) {
+            MediaQuery.fetchLastImage { (image) in
+                DispatchQueue.main.async {
+                    if let image = image {
+                        self.image = image
+                    } else {
+                        self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                    }
                 }
-            })
+            }
         }
     }
     
