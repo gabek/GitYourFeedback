@@ -12,6 +12,7 @@ import UIKit
 /// This is required in order to know where to upload your screenshot to at the time of submission.
 /// Generate the filename any way you like as long as the result is a valid Google Cloud Storage destination.
 @objc public protocol FeedbackReporterDatasource {
+    
     @objc func uploadUrl(_ completion: (String) -> Void)
 	@objc optional func additionalData() -> String?
 }
@@ -102,6 +103,7 @@ open class FeedbackReporter {
         }
         
         var jsonData: Data?
+        
         do {
             jsonData = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
         } catch let error as NSError {
@@ -110,7 +112,7 @@ open class FeedbackReporter {
         }
 
         if let jsonData = jsonData {
-            var request = createRequest()
+            guard var request = createRequest() else { return }
             request.httpBody = jsonData
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let response = response as? HTTPURLResponse else {
@@ -142,8 +144,10 @@ open class FeedbackReporter {
         }
     }
     
-    private func createRequest() -> URLRequest {
-        let url = URL(string: "https://api.github.com/repos/\(self.options?.repo)/issues")!
+    private func createRequest() -> URLRequest? {
+        guard let repo = self.options?.repo else { return nil }
+        
+        let url = URL(string: "https://api.github.com/repos/\(repo)/issues")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         

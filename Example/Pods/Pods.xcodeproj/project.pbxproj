@@ -17,7 +17,7 @@
 		A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */; };
 		B65AC11833CBBF87BDE5575CD89EED90 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 15498AAF9748F8CC3A942009956150CB /* close.png */; };
 		CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F50ECE153543CC26EEC26918BC28F7A0 /* GitYourFeedback-dummy.m */; };
-		DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */; };
+		DF774BD3E3749051673C2B8D90DB7032 /* FeedbackReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackReporter.swift */; };
 		E28E2D9AA4B7C3EA5CE5C85C8C8D942D /* Pods-GitYourFeedback_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A31D5A58845B5A2CAF0497A0A577CD7 /* Pods-GitYourFeedback_Example-dummy.m */; };
 		FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */; };
 		FC3252B3DD1450ADC8E13E8C407A48FC /* MediaQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */; };
@@ -47,7 +47,7 @@
 		3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleStorage.swift; sourceTree = "<group>"; };
 		50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-umbrella.h"; sourceTree = "<group>"; };
 		7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackManager.swift; sourceTree = "<group>"; };
+		7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackReporter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FeedbackReporter.swift; sourceTree = "<group>"; };
 		837A9664B1104F367EA628BEDB0AE241 /* GitYourFeedback.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GitYourFeedback.xcconfig; sourceTree = "<group>"; };
 		885BD2D28C414CDDB05B51F30258D4CD /* Pods-GitYourFeedback_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GitYourFeedback_Example.release.xcconfig"; sourceTree = "<group>"; };
 		8D206B98088CAD09F79AFE3AF8DF7B17 /* Pods-GitYourFeedback_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GitYourFeedback_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		8CF4FD6629231E3ACE51961FAD41BC3F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackManager.swift */,
+				7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackReporter.swift */,
 				C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */,
 				3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */,
 				7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */,
@@ -336,7 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF774BD3E3749051673C2B8D90DB7032 /* FeedbackManager.swift in Sources */,
+				DF774BD3E3749051673C2B8D90DB7032 /* FeedbackReporter.swift in Sources */,
 				74B36AB805BFF8B00644016A06421CB9 /* FeedbackViewController.swift in Sources */,
 				CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */,
 				FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */,

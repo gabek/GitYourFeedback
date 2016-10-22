@@ -21,14 +21,14 @@ struct GitHubOptions: FeedbackOptions {
 
 class ViewController: UIViewController {
 
-    var feedback: FeedbackManager!
+    var feedback: FeedbackReporter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let options = GitHubOptions()
         
-        self.feedback = FeedbackManager(options: options)
+        self.feedback = FeedbackReporter(options: options)
         self.feedback.datasource = self
         
         view.backgroundColor = UIColor.white
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     func display() {
-        feedback.display(viewController: self)
+        self.feedback.display(viewController: self)
     }
     
     private let button: UIButton = {

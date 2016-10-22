@@ -285,6 +285,7 @@ class FeedbackInterfaceViewController: UIViewController {
 }
 
 extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image = pickedImage
@@ -298,6 +299,7 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
 }
 
 class FeedbackViewController: UINavigationController {
+    
     weak var reporter: FeedbackReporter?
     var shouldFetchScreenshot: Bool
     
