@@ -172,6 +172,12 @@ class FeedbackInterfaceViewController: UIViewController {
             self.image = nil
         }
         actionSheet.addAction(removeAction)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action) in
+            // No action needed...
+        }
+        actionSheet.addAction(cancelAction)
+
         
         present(actionSheet, animated: true, completion: nil)
     }
