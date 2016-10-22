@@ -18,7 +18,6 @@ class GoogleStorage {
 		
         guard let url = urlComponents?.url else {
             fatalError("Unable create a HTTP request from string: \(urlString)")
-            return
         }
 		
         var request = createRequest(remoteUrl: url)
@@ -27,7 +26,6 @@ class GoogleStorage {
         let uploadTask = URLSession.shared.uploadTask(with: request, from: data) { (data, response, httpError) in
             guard let data = data else {
                 fatalError("No response from Google Cloud Storage")
-                return
             }
             
             DispatchQueue.main.sync {
@@ -63,7 +61,6 @@ class GoogleStorage {
         } catch {
 			let errorText = String(data: responseJsonData, encoding: String.Encoding.utf8)
             fatalError("Parsing failed: \((error as NSError).localizedDescription).  \(errorText)  You may want to verify your upload URL is correct.")
-            return nil
         }
         
         if let bucket = jsonResults?["bucket"] as? String, let name = jsonResults?["name"] as? String {

@@ -223,7 +223,7 @@ class FeedbackInterfaceViewController: UIViewController {
 
         reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (result) in
             do {
-                let success = try result.resolve()
+                _ = try result.resolve()
                 self.close()
             } catch GitYourFeedbackError.GithubSaveError(let errorMessage) {
                 self.handleError(title: "Error saving to GitHub", errorMessage: errorMessage)
@@ -360,7 +360,6 @@ class FeedbackInterfaceViewController: UIViewController {
     }()
     
     private func populateEmailField() {
-        let defaults = UserDefaults(suiteName: "com.gabekangas.gityourfeedback")
         if let email = Helpers.email() {
             emailField.text = email
         }
