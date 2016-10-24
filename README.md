@@ -1,3 +1,5 @@
+**Note**: This software is in pre-release and has not yet been submitted to the Cocoapods repository.  Point directly to this repo if you want to contribute or test.  [More instructions here.](https://github.com/gabek/GitYourFeedback/issues/23)  v0.1.0 will be released once the issues assigned to the [v0.1.0](https://github.com/gabek/GitYourFeedback/milestone/1) milestone are closed.
+
 # GitYourFeedback
 
 [![Platform](https://img.shields.io/cocoapods/p/Typist.svg?style=flat)](https://github.com/gabek/GitYourFeedback)
