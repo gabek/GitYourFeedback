@@ -60,15 +60,21 @@ public class FeedbackManager: NSObject {
         } else if let viewController = UIApplication.shared.keyWindow?.rootViewController {
             vc = viewController
         }
-        
-        if let vc = vc {
-            feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
-            vc.present(feedbackViewController!, animated: true, completion: nil)
-        } else {
-            fatalError("No view controller to present FeedbackManager on")
-        }
+		
+		// Does this view controller have a presented view controller?
+		// If so, we need to use that one.
+		if let viewControllerPresentedViewController = vc?.presentedViewController {
+			vc = viewControllerPresentedViewController
+		}
+
+		if vc == nil {
+			fatalError("No view controller to present FeedbackManager on")
+		}
+		
+		feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
+		vc?.present(feedbackViewController!, animated: true, completion: nil)
     }
-    
+	
     internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
         if let screenshotData = screenshotData {
             
