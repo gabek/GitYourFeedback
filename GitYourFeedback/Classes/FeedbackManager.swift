@@ -50,29 +50,30 @@ public class FeedbackManager: NSObject {
             self.display(viewController: nil, shouldFetchScreenshot: true)
         }
     }
-    
-    public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
-        var vc: UIViewController?
-        
-        // If no view controller was supplied then try to use the root vc
-        if let viewController = viewController {
-            vc = viewController
-        } else if let viewController = UIApplication.shared.keyWindow?.rootViewController {
-            vc = viewController
-        }
+	
+	private var topmostViewController: UIViewController? {
+		var vc: UIViewController?
 		
-		// Does this view controller have a presented view controller?
-		// If so, we need to use that one.
-		if let viewControllerPresentedViewController = vc?.presentedViewController {
-			vc = viewControllerPresentedViewController
+		guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
+			return nil
 		}
-
-		if vc == nil {
+		
+		vc = rootViewController
+		
+		while let presentedViewController = vc?.presentedViewController {
+			vc = presentedViewController
+		}
+		
+		return vc
+	}
+	
+    public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
+		guard let topmostViewController = topmostViewController else {
 			fatalError("No view controller to present FeedbackManager on")
 		}
 		
 		feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
-		vc?.present(feedbackViewController!, animated: true, completion: nil)
+		topmostViewController.present(feedbackViewController!, animated: true, completion: nil)
     }
 	
     internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
