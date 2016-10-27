@@ -113,7 +113,8 @@ extension URLComponents {
 }
 
 extension String {
-    func gitHubAuthString() -> String {
+    
+    func basicAuthString() -> String {
         let userPasswordData = data(using: String.Encoding.utf8)
         let base64EncodedCredential = userPasswordData?.base64EncodedString()
         let authString = "Basic \(base64EncodedCredential!)"
