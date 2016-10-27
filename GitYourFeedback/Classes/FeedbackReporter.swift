@@ -15,6 +15,7 @@ import UIKit
     
     @objc func uploadUrl(_ completion: (String) -> Void)
 	@objc optional func additionalData() -> String?
+    /// An array of strings that will be the labels associated to each issue.
 	@objc optional func issueLabels() -> [String]?
 }
 
@@ -25,8 +26,6 @@ public protocol FeedbackOptions {
     var user: String { get set }
     /// The repository in username/repo format where the issue will be saved.
     var repo: String { get set }
-    /// An array of strings that will be the labels associated to each issue.
-    var issueLabels: [String] { get set }
 }
 
 open class FeedbackReporter {
@@ -102,7 +101,7 @@ open class FeedbackReporter {
         }
         
         var payload: [String:Any] = ["title": title, "body": finalBody]
-        if let labels = self.options?.issueLabels {
+        if let labels = self.datasource?.issueLabels?() {
             payload["labels"] = labels
         }
         
