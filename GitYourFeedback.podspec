@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'GitYourFeedback'
   s.version          = '0.1.0'
-  s.summary          = 'Let users submit feedback, with screenshots, directly from your iOS app to Github Issues.'
+  s.summary          = 'Let users submit feedback and bugs with screenshots, directly from your iOS app to Github Issues.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,11 +18,11 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Instead of routing your users to GitHub and expecting them to file issues, or copying and pasting from emails into GitHub, allow users to easily submit feedback and bugs right from within your application.
                        DESC
 
   s.homepage         = 'https://github.com/gabek/GitYourFeedback'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots     = 'https://raw.githubusercontent.com/gabek/GitYourFeedback/master/ClientScreenshot.png', 'https://github.com/gabek/GitYourFeedback/raw/master/GithubScreenshot.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Gabe Kangas' => 'gabek@real-ity.com' }
   s.source           = { :git => 'https://github.com/gabek/GitYourFeedback.git', :tag => s.version.to_s }
