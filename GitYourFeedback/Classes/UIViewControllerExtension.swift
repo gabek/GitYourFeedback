@@ -10,7 +10,7 @@ import Foundation
 
 extension UIViewController {
     
-    var topmostViewController: UIViewController? {
+    static var topmostViewController: UIViewController? {
         var vc: UIViewController?
         
         guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {

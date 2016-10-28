@@ -52,7 +52,7 @@ open class FeedbackReporter {
     }
 	
     public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
-        guard let topmostViewController = viewController?.topmostViewController else {
+        guard let topmostViewController = UIViewController.topmostViewController else {
             fatalError("No view controller to present FeedbackManager on")
         }
         
