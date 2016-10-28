@@ -32,6 +32,6 @@ Instead of routing your users to GitHub and expecting them to file issues, or co
 
   s.source_files = 'GitYourFeedback/Classes/**/*'
 
-  s.resources = 'GitYourFeedback/Assets/*.png'
+  s.resources = 'GitYourFeedback/Assets/**/*'
 
 end
