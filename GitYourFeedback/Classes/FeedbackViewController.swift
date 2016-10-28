@@ -428,7 +428,10 @@ class FeedbackViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		let navigationTitleFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
+		navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont]
+		
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
     }
     
