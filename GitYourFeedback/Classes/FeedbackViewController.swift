@@ -30,7 +30,11 @@ class FeedbackInterfaceViewController: UIViewController {
                 
                 self.imagePreviewButton.setImage(self.image, for: .normal)
                 if self.image == nil {
-                    self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                    
+                    let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
+                    addPhoto?.resize(to: CGSize(width: 32, height: 32))
+                    
+                    self.imagePreviewButton.setImage(addPhoto, for: .normal)
                 }
                 
                 }, completion: nil)
@@ -55,12 +59,16 @@ class FeedbackInterfaceViewController: UIViewController {
         setupConstraints()
         
         // Navbar
-        let saveImage = UIImage(named: "save.png", in: bundle, compatibleWith: nil)
+        let saveImage = UIImage(named: "save", in: bundle, compatibleWith: nil)
+        saveImage?.resize(to: CGSize(width: 32, height: 32))
+        
         let saveButton = UIBarButtonItem(image: saveImage, style: .plain, target: self, action: #selector(save))
         saveButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = saveButton
 
-        let closeImage = UIImage(named: "close.png", in: bundle, compatibleWith: nil)
+        let closeImage = UIImage(named: "close", in: bundle, compatibleWith: nil)
+        closeImage?.resize(to: CGSize(width: 32, height: 32))
+        
         let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(close))
         closeButton.tintColor = UIColor.black
         navigationItem.leftBarButtonItem = closeButton
@@ -85,7 +93,10 @@ class FeedbackInterfaceViewController: UIViewController {
                     // Throw error
                     self.showNotification(title: "Photo Access", message: "Access must be granted to the photo library in order to import the screenshot")
                     DispatchQueue.main.async {
-                        self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                        let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
+                        addPhoto?.resize(to: CGSize(width: 32, height: 32))
+                        
+                        self.imagePreviewButton.setImage(addPhoto, for: .normal)
                     }
                 } else {
                     self.handleScreenshot()
@@ -105,7 +116,9 @@ class FeedbackInterfaceViewController: UIViewController {
                     if let image = image {
                         self.image = image
                     } else {
-                        self.imagePreviewButton.setImage(UIImage(named: "add_photo.png", in: self.bundle, compatibleWith: nil), for: .normal)
+                        let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
+                        addPhoto?.resize(to: CGSize(width: 32, height: 32))
+                        self.imagePreviewButton.setImage(addPhoto, for: .normal)
                     }
                 }
             }
