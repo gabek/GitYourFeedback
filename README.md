@@ -81,6 +81,8 @@ You could also manually fire `feedback.display()` with an optional specific view
 
 Gabe Kangas, gabek@real-ity.com.  [@gabek](http://twitter.com/gabek)
 
+Icon credits: designed by [Madebyoliver](http://www.flaticon.com/packs/essential-set-2) from Flaticon.
+
 ## License
 
 GitYourFeedback is available under the [MIT license](https://github.com/gabek/GitYourFeedback/blob/master/LICENSE). See the LICENSE file for more info.
