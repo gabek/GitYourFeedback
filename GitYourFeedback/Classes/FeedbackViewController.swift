@@ -12,12 +12,12 @@ import UIKit
 class FeedbackInterfaceViewController: UIViewController {
     
     fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
-	
-
-    var reporter: FeedbackManager?
+    
+    var reporter: FeedbackReporter?
+    
     var shouldFetchScreenshot: Bool
     
-    internal init(reporter: FeedbackManager?, shouldFetchScreenshot: Bool) {
+    internal init(reporter: FeedbackReporter?, shouldFetchScreenshot: Bool) {
         self.reporter = reporter
         self.shouldFetchScreenshot = shouldFetchScreenshot
         
@@ -401,6 +401,7 @@ class FeedbackInterfaceViewController: UIViewController {
 }
 
 extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             image = pickedImage
@@ -414,10 +415,11 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
 }
 
 class FeedbackViewController: UINavigationController {
-    weak var reporter: FeedbackManager?
+    
+    weak var reporter: FeedbackReporter?
     var shouldFetchScreenshot: Bool
     
-    init(reporter: FeedbackManager, shouldFetchScreenshot: Bool = false) {
+    init(reporter: FeedbackReporter, shouldFetchScreenshot: Bool = false) {
         self.reporter = reporter
         self.shouldFetchScreenshot = shouldFetchScreenshot
         

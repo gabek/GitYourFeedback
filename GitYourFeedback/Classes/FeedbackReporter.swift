@@ -9,80 +9,67 @@
 import Foundation
 import UIKit
 
-// This is required in order to know where to upload your screenshot to at the
-// time of submission.  Generate the filename any way you like as long as 
-// the result is a valid Google Cloud Storage destination.
-@objc public protocol FeedbackManagerDatasource {
-    @objc func uploadUrl(_ completionHandler: (String) -> Void)
+/// This is required in order to know where to upload your screenshot to at the time of submission.
+/// Generate the filename any way you like as long as the result is a valid Google Cloud Storage destination.
+@objc public protocol FeedbackReporterDatasource {
+    
+    @objc func uploadUrl(_ completion: (String) -> Void)
 	@objc optional func additionalData() -> String?
+    /// An array of strings that will be the labels associated to each issue.
 	@objc optional func issueLabels() -> [String]?
 }
 
-public class FeedbackManager: NSObject {
-    var datasource: FeedbackManagerDatasource?
+public protocol FeedbackOptions {
+    /// The Personal Access Token to access a repository
+    var token: String { get set }
+    /// The user that generated the above Personal Access Token and has access to the repository.
+    var user: String { get set }
+    /// The repository in username/repo format where the issue will be saved.
+    var repo: String { get set }
+}
+
+open class FeedbackReporter {
     
-    // The Personal Access Token to access Github
-    var githubApiToken: String
-    // The user that generated the above Personal Access Token and has access
-    // to the repository.
-    var githubUser: String
+    private (set) var options: FeedbackOptions?
+    open var datasource: FeedbackReporterDatasource?
     
-    // The Github repository in username/repo format where the issue will
-    // be saved.
-    var githubRepo: String
-	
-    let googleStorage = GoogleStorage()
+    private let googleStorage = GoogleStorage()
     
     var feedbackViewController: FeedbackViewController?
     
-    public init(githubApiToken: String, githubUser: String, repo: String, datasourceDelegate: FeedbackManagerDatasource) {
-        self.githubApiToken = githubApiToken
-        self.githubRepo = repo
-        self.githubUser = githubUser
-        self.datasource = datasourceDelegate
+    public init(options: FeedbackOptions) {
+        self.options = options
         
-        super.init()
-        listenForScreenshot()
+        self.listenForScreenshot()
     }
 
     private func listenForScreenshot() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
+        let name = NSNotification.Name.UIApplicationUserDidTakeScreenshot
+        
+        NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main) { notification in
             self.display(viewController: nil, shouldFetchScreenshot: true)
         }
     }
 	
-	private var topmostViewController: UIViewController? {
-		var vc: UIViewController?
-		
-		guard let rootViewController = UIApplication.shared.keyWindow?.rootViewController else {
-			return nil
-		}
-		
-		vc = rootViewController
-		
-		while let presentedViewController = vc?.presentedViewController {
-			vc = presentedViewController
-		}
-		
-		return vc
-	}
-	
     public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
-		guard let topmostViewController = topmostViewController else {
-			fatalError("No view controller to present FeedbackManager on")
-		}
-		
-		feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
-		topmostViewController.present(feedbackViewController!, animated: true, completion: nil)
+        guard let topmostViewController = viewController?.topmostViewController else {
+            fatalError("No view controller to present FeedbackManager on")
+        }
+        
+        feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
+        topmostViewController.present(feedbackViewController!, animated: true, completion: nil)
     }
-	
+    
     internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
+        
         if let screenshotData = screenshotData {
             
             datasource?.uploadUrl({ (googleStorageUrl) in
+                
                 var screenshotURL: String?
                 
                 googleStorage.upload(data: screenshotData, urlString: googleStorageUrl) { (result) in
+                    
                     do {
                         screenshotURL = try result.resolve()
                     } catch GitYourFeedbackError.ImageUploadError(let errorMessage){
@@ -91,14 +78,11 @@ public class FeedbackManager: NSObject {
                         completionHandler(Result.Failure(GitYourFeedbackError.ImageUploadError(error.localizedDescription)))
                     }
                     
-                    guard let screenshotURL = screenshotURL else {
-                        return
-                    }
+                    guard let screenshotURL = screenshotURL else { return }
                     
                     self.createIssue(title: title, body: body, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
-            
 
         } else {
             self.createIssue(title: title, body: body, screenshotURL: nil, completionHandler: completionHandler)
@@ -117,11 +101,12 @@ public class FeedbackManager: NSObject {
         }
         
         var payload: [String:Any] = ["title": title, "body": finalBody]
-        if let labels = datasource?.issueLabels?() {
+        if let labels = self.datasource?.issueLabels?() {
             payload["labels"] = labels
         }
         
         var jsonData: Data?
+        
         do {
             jsonData = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
         } catch let error as NSError {
@@ -130,7 +115,8 @@ public class FeedbackManager: NSObject {
         }
 
         if let jsonData = jsonData {
-            var request = createRequest()
+            guard var request = createRequest() else { return }
+            
             request.httpBody = jsonData
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 guard let response = response as? HTTPURLResponse else {
@@ -156,21 +142,22 @@ public class FeedbackManager: NSObject {
             errorMessage += status
         }
         
-        errorMessage += " for repo \(githubRepo)."
+        errorMessage += " for repo \(self.options?.repo)."
         DispatchQueue.main.sync {
             completionHandler(Result.Failure(GitYourFeedbackError.GithubSaveError(errorMessage)))
         }
     }
     
-    private func createRequest() -> URLRequest {
-        let url = URL(string: "https://api.github.com/repos/\(githubRepo)/issues")!
+    private func createRequest() -> URLRequest? {
+        guard let repo = self.options?.repo else { return nil }
+        
+        let url = URL(string: "https://api.github.com/repos/\(repo)/issues")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        // Github uses HTTP Basic auth using the username and Personal Access
-        // Toekn for authentication.
-        let authString = "\(githubUser):\(githubApiToken)".gitHubAuthString()
-        request.setValue(authString, forHTTPHeaderField: "Authorization")
+        let basicAuth = "\(self.options?.user):\(self.options?.token)".basicAuthString()
+        
+        request.setValue(basicAuth, forHTTPHeaderField: "Authorization")
         return request
     }
     

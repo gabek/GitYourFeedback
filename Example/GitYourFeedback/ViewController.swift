@@ -9,14 +9,27 @@
 import UIKit
 import GitYourFeedback
 
+struct GitHubOptions: FeedbackOptions {
+    var token: String = Config.githubApiToken
+    /// The user that generated the above Personal Access Token and has access to the repository.
+    var user: String = Config.githubUser
+    /// The Github repository in username/repo format where the issue will be saved.
+    var repo: String = Config.githubRepo
+    // An array of strings that will be the labels associated to each issue.
+    var issueLabels: [String] = ["Feedback", "Bugs"]
+}
+
 class ViewController: UIViewController {
 
-    var feedback: FeedbackManager!
+    var feedback: FeedbackReporter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        feedback = FeedbackManager(githubApiToken: Config.githubApiToken, githubUser: Config.githubUser, repo: Config.githubRepo, datasourceDelegate: self)
+        let options = GitHubOptions()
+        
+        self.feedback = FeedbackReporter(options: options)
+        self.feedback.datasource = self
         
         view.backgroundColor = UIColor.white
         
@@ -34,7 +47,7 @@ class ViewController: UIViewController {
     }
     
     func display() {
-        feedback.display(viewController: self)
+        self.feedback.display(viewController: self)
     }
     
     private let button: UIButton = {
@@ -57,7 +70,8 @@ class ViewController: UIViewController {
     }()
 }
 
-extension ViewController: FeedbackManagerDatasource {
+extension ViewController: FeedbackReporterDatasource {
+    
     public func uploadUrl(_ completionHandler: (String) -> Void) {
         let filename = String(Date().timeIntervalSince1970) + ".jpg"
         let url = "https://www.googleapis.com/upload/storage/v1/b/\(Config.googleStorageBucket)/o?name=\(filename)"
