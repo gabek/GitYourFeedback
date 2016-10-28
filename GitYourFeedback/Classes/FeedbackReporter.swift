@@ -154,8 +154,12 @@ open class FeedbackReporter {
         let url = URL(string: "https://api.github.com/repos/\(repo)/issues")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        let basicAuth = "\(self.options?.user):\(self.options?.token)".basicAuthString()
+		
+		guard let user = options?.user, let token = options?.token else {
+			return nil
+		}
+		
+        let basicAuth = "\(user):\(token)".basicAuthString()
         
         request.setValue(basicAuth, forHTTPHeaderField: "Authorization")
         return request

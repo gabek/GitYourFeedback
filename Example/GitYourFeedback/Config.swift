@@ -10,8 +10,8 @@ import Foundation
 
 struct Config {
     
-    static let githubApiToken = "abc123"
-    static let githubRepo = "yourusername/yourRepoName"
-    static let githubUser = "repoman"
-    static let googleStorageBucket = "yourbucket.appspot.com"
+    static let githubApiToken = "cc77e219ffde730693bf22606cd101cbbbbf9c28"
+    static let githubRepo = "gabek/GKBugreportertest"
+    static let githubUser = "gabek"
+    static let googleStorageBucket = "gkbugreporter-test.appspot.com"
 }
