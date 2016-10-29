@@ -1,5 +1,5 @@
 //
-//  FeedbackManager.swift
+//  FeedbackReporter.swift
 //  GitYourFeedback
 //
 //  Created by Gabe Kangas on 9/10/16.
@@ -54,6 +54,11 @@ open class FeedbackReporter {
     public func display(viewController: UIViewController? = nil, shouldFetchScreenshot: Bool = false) {
         guard let topmostViewController = UIViewController.topmostViewController else {
             fatalError("No view controller to present FeedbackManager on")
+        }
+        
+        // Don't allow the the UI to be presented if it's already the top VC
+        if topmostViewController is FeedbackViewController {
+            return
         }
         
         feedbackViewController = FeedbackViewController(reporter: self, shouldFetchScreenshot: shouldFetchScreenshot)
