@@ -66,10 +66,15 @@ open class FeedbackReporter {
     }
     
     internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
+        // Verify we have a datasource, it's requird.
+        guard let datasource = datasource else {
+            assertionFailure("A datasource must be set in order to how to upload screenshots.")
+            return
+        }
         
         if let screenshotData = screenshotData {
             
-            datasource?.uploadUrl({ (googleStorageUrl) in
+            datasource.uploadUrl({ (googleStorageUrl) in
                 
                 var screenshotURL: String?
                 
