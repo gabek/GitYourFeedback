@@ -228,7 +228,10 @@ class FeedbackInterfaceViewController: UIViewController {
         
         var imageData: Data?
         if let image = image {
-            imageData = UIImageJPEGRepresentation(image, 20)
+            let sizeMultiplier: CGFloat = 0.6 // Shrink image
+            let newSize = image.sizeWith(multiplier: sizeMultiplier)
+            let resizedImage = image.resize(to: newSize)
+            imageData = UIImageJPEGRepresentation(resizedImage, 20)
         }
         
         var titleText = "Feedback"

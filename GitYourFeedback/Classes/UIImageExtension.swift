@@ -19,4 +19,8 @@ extension UIImage {
         return scaledImage!
     }
     
+    func sizeWith(multiplier: CGFloat) -> CGSize {
+        return CGSize(width: Int(size.width * multiplier), height: Int(size.height * multiplier))
+    }
+    
 }
