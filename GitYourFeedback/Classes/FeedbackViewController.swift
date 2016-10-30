@@ -84,6 +84,10 @@ class FeedbackInterfaceViewController: UIViewController {
 		
         populateEmailField()
         imagePreviewButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
+        
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
     
     private func handleScreenshot() {
@@ -288,6 +292,22 @@ class FeedbackInterfaceViewController: UIViewController {
         
         present(vc, animated: true, completion: nil)
         stopActivitySpinner()
+    }
+    
+    @objc private func adjustForKeyboard(notification: Notification) {
+        let userInfo = notification.userInfo!
+        
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            scrollView.contentInset = UIEdgeInsets.zero
+        } else {
+            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
+        
+        scrollView.scrollIndicatorInsets = scrollView.contentInset
+        scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.frame.maxY, width: view.frame.width, height: view.frame.height), animated: true)
     }
     
     // MARK - Views
