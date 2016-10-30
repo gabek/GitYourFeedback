@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CLImageEditor/CLImageEditor.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GRMustache.swift/Mustache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GitYourFeedback/GitYourFeedback.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/CLImageEditor/CLImageEditor.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GRMustache.swift/Mustache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/GitYourFeedback/GitYourFeedback.framework"
 fi

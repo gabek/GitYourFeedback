@@ -28,6 +28,12 @@
   "dependencies": {
     "GRMustache.swift": [
 
+    ],
+    "CLImageEditor": [
+
+    ],
+    "CLImageEditor/TextTool": [
+
     ]
   }
 }

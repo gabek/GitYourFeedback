@@ -1,5 +1,12 @@
 PODS:
+  - CLImageEditor (0.1.6):
+    - CLImageEditor/Core (= 0.1.6)
+  - CLImageEditor/Core (0.1.6)
+  - CLImageEditor/TextTool (0.1.6):
+    - CLImageEditor/Core
   - GitYourFeedback (0.1.0):
+    - CLImageEditor
+    - CLImageEditor/TextTool
     - GRMustache.swift
   - GRMustache.swift (2.0.0)
 
@@ -11,7 +18,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GitYourFeedback: 0ce919162e4cd92640f486d8503e8150446c8582
+  CLImageEditor: a0fa2fefc7b2ad611f2116dccbe3db5621f70301
+  GitYourFeedback: 3bbba0f68e29e17ecbb6c0058a52e09722f2a126
   GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
 
 PODFILE CHECKSUM: ecbecaa659d35b1b54d3667d6999c056253c5699

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CLImageEditor
 
 class FeedbackInterfaceViewController: UIViewController {
     
@@ -180,6 +181,13 @@ class FeedbackInterfaceViewController: UIViewController {
         }
         actionSheet.addAction(viewAction)
         
+        let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
+            let editor = CLImageEditor(image: self.image, delegate: self)!
+            editor.setup()
+            self.present(editor, animated: true, completion: nil)
+        }
+        actionSheet.addAction(editAction)
+
         let replaceAction = UIAlertAction(title: "Replace", style: .default) { (action) in
             self.selectNewImage()
         }
@@ -424,6 +432,32 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CLImageEditor {
+    func setup() {
+        disable(tools: ["CLToneCurveTool", "CLFilterTool", "CLEffectTool", "CLAdjustmentTool", "CLBlurTool", "CLRotateTool", "CLSplashTool", "CLResizeTool", "CLEmoticonTool", "CLStickerTool"])
+        rename(tool: "CLDrawTool", name: "Markup")
+    }
+    
+    func disable(tools: [String]) {
+        for tool in tools {
+            let tool = toolInfo.subToolInfo(withToolName: tool, recursive: true)
+            tool?.available = false
+        }
+    }
+    
+    func rename(tool: String, name: String) {
+        let tool = toolInfo.subToolInfo(withToolName: tool, recursive: true)
+        tool?.title = name
+    }
+}
+
+extension FeedbackInterfaceViewController: CLImageEditorDelegate {
+    func imageEditor(_ editor: CLImageEditor!, didFinishEdittingWith image: UIImage!) {
+        self.image = image
+        editor.dismiss(animated: true, completion: nil)
     }
 }
 
