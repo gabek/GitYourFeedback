@@ -435,25 +435,6 @@ extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINa
     }
 }
 
-extension CLImageEditor {
-    func setup() {
-        disable(tools: ["CLToneCurveTool", "CLFilterTool", "CLEffectTool", "CLAdjustmentTool", "CLBlurTool", "CLRotateTool", "CLSplashTool", "CLResizeTool", "CLEmoticonTool", "CLStickerTool"])
-        rename(tool: "CLDrawTool", name: "Markup")
-    }
-    
-    func disable(tools: [String]) {
-        for tool in tools {
-            let tool = toolInfo.subToolInfo(withToolName: tool, recursive: true)
-            tool?.available = false
-        }
-    }
-    
-    func rename(tool: String, name: String) {
-        let tool = toolInfo.subToolInfo(withToolName: tool, recursive: true)
-        tool?.title = name
-    }
-}
-
 extension FeedbackInterfaceViewController: CLImageEditorDelegate {
     func imageEditor(_ editor: CLImageEditor!, didFinishEdittingWith image: UIImage!) {
         self.image = image
