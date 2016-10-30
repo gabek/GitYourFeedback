@@ -34,4 +34,5 @@ Instead of routing your users to GitHub and expecting them to file issues, or co
 
   s.resources = 'GitYourFeedback/Assets/**/*'
 
+  s.dependency 'GRMustache.swift'
 end

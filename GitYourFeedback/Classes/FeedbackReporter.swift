@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+import Mustache
+
 /// This is required in order to know where to upload your screenshot to at the time of submission.
 /// Generate the filename any way you like as long as the result is a valid Google Cloud Storage destination.
 @objc public protocol FeedbackReporterDatasource {
@@ -65,12 +67,15 @@ open class FeedbackReporter {
         topmostViewController.present(feedbackViewController!, animated: true, completion: nil)
     }
     
-    internal func submit(title: String, body: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
+    internal func submit(title: String, body: String?, email: String, screenshotData: Data?, completionHandler: @escaping (Result<Bool>) -> Void) {
         // Verify we have a datasource, it's requird.
         guard let datasource = datasource else {
             assertionFailure("A datasource must be set in order to how to upload screenshots.")
             return
         }
+        
+        // Optional additional data string provided by the datasource
+        let additionalDataString = datasource.additionalData?()
         
         if let screenshotData = screenshotData {
             
@@ -89,28 +94,41 @@ open class FeedbackReporter {
                     }
                     
                     guard let screenshotURL = screenshotURL else { return }
-                    
-                    self.createIssue(title: title, body: body, screenshotURL: screenshotURL, completionHandler: completionHandler)
+                    let issueBody = self.generateIssueContents(title: title, email: email, screenshotURL: screenshotURL, additionalData: additionalDataString)
+                    self.createIssue(issueTitle: title, issueBody: issueBody, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
 
         } else {
-            self.createIssue(title: title, body: body, screenshotURL: nil, completionHandler: completionHandler)
+            let issueBody = self.generateIssueContents(title: title, email: email, screenshotURL: nil, additionalData: additionalDataString)
+            self.createIssue(issueTitle: title, issueBody: issueBody, screenshotURL: nil, completionHandler: completionHandler)
         }
     }
     
-    private func createIssue(title: String, body: String, screenshotURL: String?, completionHandler: @escaping (Result<Bool>) -> Void) {
-        var finalBody = body
+    private func generateIssueContents(title: String, email: String, screenshotURL: String?, additionalData: String?) -> String {
+        let bundle = Bundle(for: FeedbackInterfaceViewController.self)
+        let template = try! Template(named: "issueTemplate", bundle: bundle, templateExtension: "md", encoding: String.Encoding.utf8)
+        template.register(StandardLibrary.each, forKey: "each")
+
+        var templateData = [String:Any]()
+        templateData["title"] = title
+        templateData["email"] = email
+        templateData["applicationDetails"] = Helpers.applicationDetails()
         
-        if let additionalDataString = datasource?.additionalData?() {
-            finalBody += "\n\n" + additionalDataString
+        if let additionalData = additionalData {
+            templateData["additionalData"] = additionalData
         }
         
         if let screenshotURL = screenshotURL {
-            finalBody += "\n\n![Screenshot](\(screenshotURL))"
+            templateData["screenshotURL"] = screenshotURL
         }
         
-        var payload: [String:Any] = ["title": title, "body": finalBody]
+        let rendering = try! template.render(templateData)
+        return rendering
+    }
+    
+    private func createIssue(issueTitle: String, issueBody: String, screenshotURL: String?, completionHandler: @escaping (Result<Bool>) -> Void) {
+        var payload: [String:Any] = ["title": "Feedback: " + issueTitle, "body": issueBody]
         if let labels = self.datasource?.issueLabels?() {
             payload["labels"] = labels
         }

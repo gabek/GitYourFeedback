@@ -1,5 +1,7 @@
 PODS:
-  - GitYourFeedback (0.1.0)
+  - GitYourFeedback (0.1.0):
+    - GRMustache.swift
+  - GRMustache.swift (2.0.0)
 
 DEPENDENCIES:
   - GitYourFeedback (from `../`)
@@ -9,8 +11,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  GitYourFeedback: ee79c59025061b50f2387c3fb6963c83206b59fe
+  GitYourFeedback: 0ce919162e4cd92640f486d8503e8150446c8582
+  GRMustache.swift: 8a547c12bea16052071b2b540af83d770075f0eb
 
 PODFILE CHECKSUM: ecbecaa659d35b1b54d3667d6999c056253c5699
 
-COCOAPODS: 1.1.0.rc.1
+COCOAPODS: 1.1.1

@@ -26,30 +26,33 @@ struct Helpers {
         return nil
     }
     
-    static func templateText() -> String {
-        var template = "\n\n ------------------------ Details ------------------------"
+    static func applicationDetails() -> [String: String] {
+        var appDetails = [String:String]()
         
         // App bundle, version and build number
         if let appDisplayVersion = Helpers.appDisplayVersion() {
-            template += "\n**App Version:** \(appDisplayVersion)"
+            appDetails["Application Version"] = appDisplayVersion
         }
 		
 		// iOS Version
-		template += "\n**iOS Version:** " + UIDevice.current.systemVersion
+        appDetails["iOS Version"] = UIDevice.current.systemVersion
 		
         // Device name and screen resolution
         let width = String(Int(UIScreen.main.bounds.size.width))
         let height = String(Int(UIScreen.main.bounds.size.height))
-        template += "\n**Device:** " + UIDevice.modelName()
-		template += "\n**Screen:** " + "\(width) x \(height)"
-		
+        appDetails["Device"] = UIDevice.modelName()
+        appDetails["Screen"] = "\(width) x \(height)"
+		appDetails["Disk Space"] = "\(Helpers.freeSpace()) of \(Helpers.totalSpace())"
+        appDetails["Network"] = Helpers.isConnectedViaWiFi() ? "Wifi" : "Cellular"
+        appDetails["Uptime"] = String(String(Int(ProcessInfo().systemUptime) / 60) + " mins")
+        
 		// Timezone and Language
 		if let timezone = TimeZone.current.abbreviation() {
-			template += "\n**Timezone:** " + timezone
+            appDetails["Timezone"] = timezone
 		}
-		template += "\n**Language:** " + NSLocale.preferredLanguages[0]
+        appDetails["Language"] = NSLocale.preferredLanguages[0]
         
-        return template
+        return appDetails
     }
     
     static func appDisplayVersion() -> String? {
@@ -57,6 +60,58 @@ struct Helpers {
             return "\(bundleId) \(appVersion) build \(buildNumber)"
         }
         return nil
+    }
+    
+    public static func totalSpace () -> String {
+        return ByteCountFormatter.string(fromByteCount: totalSpaceInBytes(), countStyle: ByteCountFormatter.CountStyle.binary)
+    }
+    
+    public static func freeSpace () -> String {
+        return ByteCountFormatter.string(fromByteCount: freeSpaceInBytes(), countStyle: ByteCountFormatter.CountStyle.binary)
+    }
+    
+    public static func isConnectedViaWiFi () -> Bool {
+        
+        let reachability = Reachability()!
+        
+        if reachability.isReachableViaWiFi {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    /// The used disk space in string format
+    ///
+    /// - returns: The used disk space in string format (in megabytes)
+    public static func usedSpace () -> String {
+        return ByteCountFormatter.string(fromByteCount: freeSpaceInBytes(), countStyle: ByteCountFormatter.CountStyle.binary)
+    }
+    
+    /// The total disk space in bytes
+    ///
+    /// - returns: The total disk space in bytes. Returns 0 if something went wrong
+    public static func totalSpaceInBytes () -> Int64 {
+        do {
+            let systemAttributes = try FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory() as String)
+            let space = (systemAttributes[FileAttributeKey.systemSize] as? NSNumber)?.int64Value
+            return space!
+        } catch {
+            return 0
+        }
+    }
+    
+    /// The free disk space in bytes
+    ///
+    /// - returns: The free disk space in bytes. Returns 0 if something went wrong
+    public static func freeSpaceInBytes () -> Int64 {
+        do {
+            let systemAttributes = try FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory() as String)
+            let freeSpace = (systemAttributes[FileAttributeKey.systemFreeSize] as? NSNumber)?.int64Value
+            return freeSpace!
+        } catch {
+            return 0
+        }
     }
 }
 

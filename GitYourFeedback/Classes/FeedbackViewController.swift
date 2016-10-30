@@ -218,16 +218,22 @@ class FeedbackInterfaceViewController: UIViewController {
     
     @objc private func save() {
 		
-		if let titleText = titleField.text, titleText.isEmpty {
+        guard let titleText = titleField.text else {
+            showRequiredFieldAlert()
+            return
+        }
+        
+        guard let emailText = emailField.text else {
+            showRequiredFieldAlert()
+            return
+        }
+        
+        // Validate that we have a title and a valid email adddress
+		if titleText.isEmpty || !emailText.isValidEmail {
             showRequiredFieldAlert()
             return
 		}
-		
-		if let emailText = emailField.text, !emailText.isValidEmail {
-            showRequiredFieldAlert()
-            return
-		}
-		
+				
         activitySpinner.startAnimating()
         
         var imageData: Data?
@@ -238,23 +244,7 @@ class FeedbackInterfaceViewController: UIViewController {
             imageData = UIImageJPEGRepresentation(resizedImage, 20)
         }
         
-        var titleText = "Feedback"
-        if let text = titleField.text {
-            titleText = "Feedback: \(text)"
-        }
-        
-        var bodyText = "No description"
-        if let email = emailField.text {
-            bodyText = "From: \(email)"
-        }
-        
-        if let bodyFieldText = bodyField.text {
-            bodyText += "\n\n\(bodyFieldText)"
-        }
-        
-        bodyText += Helpers.templateText()
-
-        reporter?.submit(title: titleText, body: bodyText, screenshotData: imageData, completionHandler: { (result) in
+        reporter?.submit(title: titleText, body: bodyField.text, email: emailText, screenshotData: imageData, completionHandler: { (result) in
             do {
                 _ = try result.resolve()
                 self.close()
