@@ -301,7 +301,7 @@
 		5B555B0F5FF662DC484959627D29E900 /* CLBlurTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLBlurTool.h; path = CLImageEditor/ImageTools/CLBlurTool/CLBlurTool.h; sourceTree = "<group>"; };
 		5E1C6AB3BE0BCE940B40A2E4D671A71E /* CLTextTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLTextTool.m; path = OptionalImageTools/CLTextTool/CLTextTool.m; sourceTree = "<group>"; };
 		5EF963916B8AFEA34A2A9D00300732EF /* CLGloomEffect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLGloomEffect.h; path = CLImageEditor/ImageTools/CLEffectTool/CLEffect/CLGloomEffect.h; sourceTree = "<group>"; };
-		5F0DB663C7E5771E8090EB237E1CA911 /* Pods_GitYourFeedback_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitYourFeedback_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0DB663C7E5771E8090EB237E1CA911 /* GitYourFeedback_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedback_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F0E3C8D6AC5DA0A3F504F2E516CA1AB /* CLDrawTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLDrawTool.h; path = CLImageEditor/ImageTools/CLDrawTool/CLDrawTool.h; sourceTree = "<group>"; };
 		60FA93D584A346A1824FE1F2FC449BA1 /* Fixit-1.1.0.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Fixit-1.1.0.swift"; path = "Sources/Fixit-1.1.0.swift"; sourceTree = "<group>"; };
 		63AFEEA31B1C9810E67EE7EF4FD13BFC /* UIView+CLImageToolInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+CLImageToolInfo.h"; path = "CLImageEditor/ImageTools/ToolSettings/UIView+CLImageToolInfo.h"; sourceTree = "<group>"; };
@@ -489,7 +489,7 @@
 				66A0305C3F0DEC5C0B84A012C251CB71 /* CLImageEditor.framework */,
 				031E0C4B20A611B517675C1FEE77A8EE /* GitYourFeedback.framework */,
 				69CAAAA6C80617EF7D4952303BBB620E /* Mustache.framework */,
-				5F0DB663C7E5771E8090EB237E1CA911 /* Pods_GitYourFeedback_Example.framework */,
+				5F0DB663C7E5771E8090EB237E1CA911 /* GitYourFeedback_Example.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -960,7 +960,7 @@
 			);
 			name = "Pods-GitYourFeedback_Example";
 			productName = "Pods-GitYourFeedback_Example";
-			productReference = 5F0DB663C7E5771E8090EB237E1CA911 /* Pods_GitYourFeedback_Example.framework */;
+			productReference = 5F0DB663C7E5771E8090EB237E1CA911 /* GitYourFeedback_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1193,8 +1193,8 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GitYourFeedback_Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gabekangas.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = GitYourFeedback_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1305,8 +1305,8 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_GitYourFeedback_Example;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gabekangas.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = GitYourFeedback_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
