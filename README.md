@@ -1,5 +1,3 @@
-**Note**: This software is in pre-release and has not yet been submitted to the Cocoapods repository.  Point directly to this repo if you want to contribute or test.  [More instructions here.](https://github.com/gabek/GitYourFeedback/issues/23)  v0.1.0 will be released once the issues assigned to the [v0.1.0](https://github.com/gabek/GitYourFeedback/milestone/1) milestone are closed.
-
 # GitYourFeedback
 
 [![Platform](https://img.shields.io/cocoapods/p/Typist.svg?style=flat)](https://github.com/gabek/GitYourFeedback)
@@ -46,13 +44,25 @@ github "gabek/GitYourFeedback"
 
 2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.  This is user-facing so use your own judgement.
 
-3. In your AppDelegate, or some other long-lived controller:
+3. Create a struct that adheres to the FeedbackOptions protocol. It should be as simple as:
+```
+struct MyFeedbackReportingOptions: FeedbackOptions {
+    // The GitHub personal access token for the below user 
+    var token: String = "abc123"
+    /// The user that generated the above Personal Access Token and has access to the repository.
+    var user: String = "repoman"
+    /// The Github repository in username/repo format where the issue will be saved.
+    var repo: String = "repoman/myRepository"
+}
+```
+4. In your AppDelegate, or some other long-lived controller:
+
 
 ```
-let feedback = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", datasourceDelegate: self)
+let feedbackReporter = FeedbackReporter(options: MyFeedbackReportingOptions())
 ```
 
-You also need to implement `FeedbackManagerDatasource` in order to tell the FeedbackManager where to upload screenshots.  The simplest implementation would be something like:
+You also need to implement `FeedbackReporterDatasource` in order to tell the FeedbackReporter where to upload screenshots.  The simplest implementation would be something like:
 
 ```
 func uploadUrl(_ completionHandler: (String) -> Void) {

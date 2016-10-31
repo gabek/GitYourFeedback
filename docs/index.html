@@ -31,7 +31,7 @@
       issues every day. That's no fun.</p>
     <h3>
       <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Customizable</h3>
-    <p>Via <code>FeedbackManagerDatasource</code> you can provide the labels you want assigned to each issue, as well as any
+    <p>Via <code>FeedbackReporterDatasource</code> you can provide the labels you want assigned to each issue, as well as any
       arbitrary data that could be useful in troubleshooting.</p>
     <h3>
       <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots are
@@ -48,7 +48,7 @@
     <ol>
       
       <li>In your Podfile add:<br>
-        <code>pod 'GitYourFeedback', :git => 'https://github.com/gabek/GitYourFeedback'</code>
+        <code>pod 'GitYourFeedback'</code>
         <br>or your Cartfile:
         <br><code>github "gabek/GitYourFeedback"</code>
       </li>
@@ -68,17 +68,29 @@
       <br>
 
       <li>
+        Create a struct that adheres to the FeedbackOptions protocol. It should be as simple as:<br>
+        <pre><code>
+struct MyFeedbackReportingOptions: FeedbackOptions {
+  // The GitHub personal access token for the below user 
+  var token: String = "abc123"
+  // The user that generated the above Personal Access Token and has access to the repository.
+  var user: String = "repoman"
+  // The Github repository in username/repo format where the issue will be saved.
+  var repo: String = "repoman/myRepository"
+}
+        </pre></code>
+      </li>
+      <li>
         In your AppDelegate or some other place of your choice that sticks around for the lifetime of your app, add an instance of
-        FeedbackManager using your GitHub Personal Access Token, your GitHub username, and the repo you'd like to create
+        FeedbackReporter using your GitHub Personal Access Token, your GitHub username, and the repo you'd like to create
         the issues in. This user needs access to create issues in the repo specified.
-        <pre><code>var feedbackManager
-func setupFeedbackManager() {
-   feedbackManager = FeedbackManager(githubApiToken: "abc123", githubUser: "reesedewhat", repo: "gabek/MyReallyCoolProject", datasourceDelegate: self)
+        <pre><code>func setupFeedbackReporting() {
+   let feedbackReporter = FeedbackReporter(options: MyFeedbackReportingOptions())
 }</pre></code>
       </li>
       
       <li>
-        Implement FeedbackManagerDatasource's <code>uploadUrl:completionHandler</code> method to point to a valid Google Storage bucket. This
+        Implement FeedbackReporterDatasource's <code>uploadUrl:completionHandler</code> method to point to a valid Google Storage bucket. This
         bucket needs access for you to read and write to. It can look like this:
         <br>
         <pre><code>func uploadUrl(_ completionHandler: (String) -&gt; Void) {
@@ -105,7 +117,7 @@ func issueLabels() -> [String]?
         The interface will automatically display as a result of a user taking a screenshot. If this is the first time the user has taken a screenshot in your application they will be greeted with an iOS permissions dialog stating they need to grant your app access to the user's Photos in order to use the screenshot. You may want to emphasize that the user should accept this. It uses the copy you added in your Info.plist's <code>NSPhotoLibraryUsageDescription</code> key.
       </p>
       <p>
-        You could also manually fire <code>yourFeedbackManagerInstance.display()</code> with an optional specific view controller to present from. With this approach the user will have to select their own screenshot manually if they want to send one.
+        You could also manually fire <code>yourFeedbackReporterInstance.display()</code> with an optional specific view controller to present from. With this approach the user will have to select their own screenshot manually if they want to send one.
       </p>
 
 
