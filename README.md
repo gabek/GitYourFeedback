@@ -77,6 +77,8 @@ The interface will automatically display as a result of a user taking a screensh
 
 You could also manually fire `feedback.display()` with an optional specific view controller to present from.  With this approach the user will have to select their own screenshot manually if they want to send one.
 
+![Demo](./GitYourFeedbackDemo.gif)
+
 ## Author
 
 Gabe Kangas, gabek@real-ity.com.  [@gabek](http://twitter.com/gabek)
