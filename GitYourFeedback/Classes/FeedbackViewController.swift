@@ -431,7 +431,8 @@ class FeedbackViewController: UINavigationController {
 		
 		let navigationTitleFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
 		navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont]
-		
+		navigationBar.barTintColor = UIColor.white
+        
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
     }
     
