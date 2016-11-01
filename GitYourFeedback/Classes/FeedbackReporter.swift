@@ -94,18 +94,18 @@ open class FeedbackReporter {
                     }
                     
                     guard let screenshotURL = screenshotURL else { return }
-                    let issueBody = self.generateIssueContents(title: title, email: email, screenshotURL: screenshotURL, additionalData: additionalDataString)
+                    let issueBody = self.generateIssueContents(title: title, body: body, email: email, screenshotURL: screenshotURL, additionalData: additionalDataString)
                     self.createIssue(issueTitle: title, issueBody: issueBody, screenshotURL: screenshotURL, completionHandler: completionHandler)
                 }
             })
 
         } else {
-            let issueBody = self.generateIssueContents(title: title, email: email, screenshotURL: nil, additionalData: additionalDataString)
+            let issueBody = self.generateIssueContents(title: title, body: body, email: email, screenshotURL: nil, additionalData: additionalDataString)
             self.createIssue(issueTitle: title, issueBody: issueBody, screenshotURL: nil, completionHandler: completionHandler)
         }
     }
     
-    private func generateIssueContents(title: String, email: String, screenshotURL: String?, additionalData: String?) -> String {
+    private func generateIssueContents(title: String, body: String?, email: String, screenshotURL: String?, additionalData: String?) -> String {
         let bundle = Bundle(for: FeedbackInterfaceViewController.self)
         let template = try! Template(named: "issueTemplate", bundle: bundle, templateExtension: "md", encoding: String.Encoding.utf8)
         template.register(StandardLibrary.each, forKey: "each")
@@ -121,6 +121,10 @@ open class FeedbackReporter {
         
         if let screenshotURL = screenshotURL {
             templateData["screenshotURL"] = screenshotURL
+        }
+        
+        if let body = body {
+            templateData["body"] = body
         }
         
         let rendering = try! template.render(templateData)

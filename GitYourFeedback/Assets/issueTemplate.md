@@ -2,12 +2,21 @@
 
 Submitted by: {{ email }}
 
-{{ title }}
+## {{ title }}
+
+{{#body}}
+{{body}}
+{{/body}}
+
+<details><summary>Client Details</summary><p>
 
 | Name  | Value |
 | ------------- | ------------- |
 {{# each(applicationDetails)}}| {{ @key }} | {{.}} |
 {{/}}
+
+</p></details>
+
 
 {{#additionalData}}
 {{additionalData}}
