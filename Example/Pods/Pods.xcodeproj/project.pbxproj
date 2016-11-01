@@ -9,9 +9,7 @@
 /* Begin PBXBuildFile section */
 		222676DA3C53FE292F36DD46D89B2166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		2E43E6E21DC291C5004F126B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43E6E11DC291C5004F126B /* UIViewControllerExtension.swift */; };
-		324392591DAAC2960050FF89 /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 324392581DAAC2960050FF89 /* add_photo.png */; };
 		2E43E6F61DC2A454004F126B /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E43E6F51DC2A454004F126B /* Icons.xcassets */; };
-		2E43E6F81DC2A5C0004F126B /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43E6F71DC2A5C0004F126B /* UIImageExtension.swift */; };
 		404B61C8D0F07B4029545262A125BF53 /* GitYourFeedback-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		69EBC1B61345A166572C8173C4C1ED63 /* Pods-GitYourFeedback_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AFF21F1D1DEB0504413B8DD1003882D9 /* Pods-GitYourFeedback_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C0B4BB81D15980F0144AF4E662C0430 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -54,9 +52,7 @@
 		28AD9C01DD3E37ACB0A9E25D5E82E635 /* GitYourFeedback.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitYourFeedback.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC591B7737928379118E1D15FE4D744 /* GitYourFeedback.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GitYourFeedback.modulemap; sourceTree = "<group>"; };
 		2E43E6E11DC291C5004F126B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		324392581DAAC2960050FF89 /* add_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_photo.png; sourceTree = "<group>"; };
 		2E43E6F51DC2A454004F126B /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
-		2E43E6F71DC2A5C0004F126B /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		37BDBAF743D42D493BD32C6C7BD78839 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GoogleStorage.swift; sourceTree = "<group>"; };
 		50BAD722948F92669CEA5FB4ED9AD9F2 /* GitYourFeedback-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GitYourFeedback-umbrella.h"; sourceTree = "<group>"; };
@@ -212,7 +208,6 @@
 			children = (
 				7E4B902EA6B541A9CBD92851053FA9E6 /* FeedbackReporter.swift */,
 				C635895E0A0B44F8472C6C94DCD8E9DF /* FeedbackViewController.swift */,
-				2E43E6F71DC2A5C0004F126B /* UIImageExtension.swift */,
 				3F31C24CB9AD91F00404503EDF822F6C /* GoogleStorage.swift */,
 				7D7B593F46056788FEB9B909D329B8CC /* Helpers.swift */,
 				AC165D08373B4F01495C94CC589C7DB6 /* MediaQuery.swift */,
@@ -420,7 +415,6 @@
 				A0DA9D5E1DB5A63600DB3310 /* ImagePreviewViewController.swift in Sources */,
 				CACF4F7B75D85562E29BECCCB14C0BDD /* GitYourFeedback-dummy.m in Sources */,
 				FACB0FDD5A3F8C0A8C4937D8952CBBFA /* GoogleStorage.swift in Sources */,
-				2E43E6F81DC2A5C0004F126B /* UIImageExtension.swift in Sources */,
 				A0B815160002649469C62A966D438299 /* Helpers.swift in Sources */,
 				A0DA9D601DB5AAFE00DB3310 /* Errors.swift in Sources */,
 				FC3252B3DD1450ADC8E13E8C407A48FC /* MediaQuery.swift in Sources */,
