@@ -33,8 +33,6 @@ class FeedbackInterfaceViewController: UIViewController {
                 if self.image == nil {
                     
                     let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
-                    addPhoto?.resize(to: CGSize(width: 32, height: 32))
-                    
                     self.imagePreviewButton.setImage(addPhoto, for: .normal)
                 }
                 
@@ -61,14 +59,12 @@ class FeedbackInterfaceViewController: UIViewController {
         
         // Navbar
         let saveImage = UIImage(named: "save", in: bundle, compatibleWith: nil)
-        saveImage?.resize(to: CGSize(width: 32, height: 32))
         
         let saveButton = UIBarButtonItem(image: saveImage, style: .plain, target: self, action: #selector(save))
         saveButton.tintColor = UIColor.black
         navigationItem.rightBarButtonItem = saveButton
 
         let closeImage = UIImage(named: "close", in: bundle, compatibleWith: nil)
-        closeImage?.resize(to: CGSize(width: 32, height: 32))
         
         let closeButton = UIBarButtonItem(image: closeImage, style: .plain, target: self, action: #selector(close))
         closeButton.tintColor = UIColor.black
@@ -99,8 +95,6 @@ class FeedbackInterfaceViewController: UIViewController {
                     self.showNotification(title: "Photo Access", message: "Access must be granted to the photo library in order to import the screenshot")
                     DispatchQueue.main.async {
                         let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
-                        addPhoto?.resize(to: CGSize(width: 32, height: 32))
-                        
                         self.imagePreviewButton.setImage(addPhoto, for: .normal)
                     }
                 } else {
@@ -122,7 +116,6 @@ class FeedbackInterfaceViewController: UIViewController {
                         self.image = image
                     } else {
                         let addPhoto = UIImage(named: "add_photo", in: self.bundle, compatibleWith: nil)
-                        addPhoto?.resize(to: CGSize(width: 32, height: 32))
                         self.imagePreviewButton.setImage(addPhoto, for: .normal)
                     }
                 }
@@ -458,7 +451,8 @@ class FeedbackViewController: UINavigationController {
 		
 		let navigationTitleFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
 		navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont]
-		
+		navigationBar.barTintColor = UIColor.white
+        
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
     }
     
