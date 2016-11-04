@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'GitYourFeedback'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Let users submit feedback and bugs with screenshots, directly from your iOS app to Github Issues.'
 
 # This description is used to generate tags and improve search results.
