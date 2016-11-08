@@ -109,6 +109,7 @@
 		9DEF6CAFE681316FC42E93D86F7DF70D /* CLPickerDrum.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E75BD5CB10B0030E0F00ABCFF75C8CF /* CLPickerDrum.h */; };
 		9F2682779081D243BFAA0DEA857541CE /* CLEffectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 859B11462DC10E44370D7DE5F53883C1 /* CLEffectBase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		9F2A912AFA586BF60F262CEE3F6F8792 /* CLRotateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC3E5212D855C7AFAEBA5A95AB211A4 /* CLRotateTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		A0232CB71DD235470034B7F7 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */; };
 		A17F7B96451E66C9B743B82E5B3EF631 /* CLHueEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5E07E879A52A6F9E6ACA8846EB974D /* CLHueEffect.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A45A8615EE320897CE0457869624514A /* CLBlurTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B555B0F5FF662DC484959627D29E900 /* CLBlurTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A762A903551D9070B764428CD801B221 /* CLImageToolInfo+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A2E7D0AD21C8C40E26A2A5F6523C98 /* CLImageToolInfo+Private.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -351,6 +352,7 @@
 		9E7E1CF93EC301770120825CB08414E3 /* CLFontPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLFontPickerView.h; path = OptionalImageTools/CLTextTool/CLFontPickerView.h; sourceTree = "<group>"; };
 		9F0E8B1ED85D9F912895DF269F5308D5 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Sources/Common.swift; sourceTree = "<group>"; };
 		9F6EB4FC5993A9277A055FE24A6EDEEB /* CLRotateTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLRotateTool.m; path = CLImageEditor/ImageTools/CLRotateTool/CLRotateTool.m; sourceTree = "<group>"; };
+		A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		A12EE767EE644B0A7129A0FC4E10F8DD /* CLEffectBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLEffectBase.h; path = CLImageEditor/ImageTools/CLEffectTool/CLEffectBase.h; sourceTree = "<group>"; };
 		A257A4210AEB9738BBD0B03310E4BA9B /* CLFilterTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLFilterTool.m; path = CLImageEditor/ImageTools/CLFilterTool/CLFilterTool.m; sourceTree = "<group>"; };
 		A4762B4E6CC420A75B0D424CE47DC667 /* CLImageToolInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLImageToolInfo.m; path = CLImageEditor/CLImageToolInfo.m; sourceTree = "<group>"; };
@@ -468,17 +470,14 @@
 		0FF1663537BE30217C0132BC0E2F915A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				46EB438F16C5F7838AE8C31277AC3DB5 /* CLImageEditorExtension.swift */,
+				A0232CB41DD233F90034B7F7 /* Extensions */,
+				A0232CB31DD233E50034B7F7 /* UI */,
 				3B8F376625E6420B949EB0B6050E6C4E /* Errors.swift */,
 				863D3926894C92D0B32683D52FF0550C /* FeedbackReporter.swift */,
-				DFF087F4AEF1D4BC626BC071CC12E268 /* FeedbackViewController.swift */,
 				E3090E7321D70447CDF82480B5B3C1A8 /* GoogleStorage.swift */,
 				DC1F37F22A497E65AA8F75609863E373 /* Helpers.swift */,
-				1D32C75E7443917AAEAF0D1690914196 /* ImagePreviewViewController.swift */,
 				A597682E976FA2634F021A2673F314D5 /* MediaQuery.swift */,
 				26EDFEEF25B64493283B22CA6E45D5EC /* Reachability.swift */,
-				D26AFE8E4082FC799A4A4F598952539F /* UIImageExtension.swift */,
-				668F667D0ABF08B7D321D8A293F5A713 /* UIViewControllerExtension.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -702,6 +701,26 @@
 				357E51DAE651FA7F09CB38A0F84E7E9A /* Assets */,
 			);
 			path = GitYourFeedback;
+			sourceTree = "<group>";
+		};
+		A0232CB31DD233E50034B7F7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DFF087F4AEF1D4BC626BC071CC12E268 /* FeedbackViewController.swift */,
+				1D32C75E7443917AAEAF0D1690914196 /* ImagePreviewViewController.swift */,
+				A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		A0232CB41DD233F90034B7F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				46EB438F16C5F7838AE8C31277AC3DB5 /* CLImageEditorExtension.swift */,
+				D26AFE8E4082FC799A4A4F598952539F /* UIImageExtension.swift */,
+				668F667D0ABF08B7D321D8A293F5A713 /* UIViewControllerExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		A18C542539629490BDADC7571354B852 /* Resources */ = {
@@ -971,6 +990,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					969E97D213A8639645CA631A03FBEE55 = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1083,6 +1107,7 @@
 				0B10B1F5B4B43A46962B3888DCE803D6 /* MediaQuery.swift in Sources */,
 				4ADB1812F859ECC2881FC2C36367B7C2 /* Reachability.swift in Sources */,
 				D8B2287B2DE87294F861C915D6D7A0E8 /* UIImageExtension.swift in Sources */,
+				A0232CB71DD235470034B7F7 /* PlaceholderTextView.swift in Sources */,
 				4CAC75B45C14892BE4E005D755A07059 /* UIViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1385,6 +1410,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 931F36ACBB1522853D5BEEFF88AAB0E8 /* CLImageEditor.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1457,6 +1483,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 931F36ACBB1522853D5BEEFF88AAB0E8 /* CLImageEditor.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -1478,6 +1505,7 @@
 				PRODUCT_NAME = CLImageEditor;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

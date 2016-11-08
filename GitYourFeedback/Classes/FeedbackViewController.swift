@@ -347,13 +347,15 @@ class FeedbackInterfaceViewController: UIViewController {
     }()
     
     private let bodyField: UITextView = {
-        let textView = UITextView()
+        let textView = PlaceholderTextView()
         textView.isScrollEnabled = true
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1
         textView.font = UIFont.systemFont(ofSize: 14)
+        textView.textContainerInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        
         return textView
     }()
     
