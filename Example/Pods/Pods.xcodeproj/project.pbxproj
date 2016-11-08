@@ -110,6 +110,7 @@
 		9F2682779081D243BFAA0DEA857541CE /* CLEffectBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 859B11462DC10E44370D7DE5F53883C1 /* CLEffectBase.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		9F2A912AFA586BF60F262CEE3F6F8792 /* CLRotateTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC3E5212D855C7AFAEBA5A95AB211A4 /* CLRotateTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A0232CB71DD235470034B7F7 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */; };
+		A0232CBA1DD23D5F0034B7F7 /* FeedbackReportingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0232CB81DD23D1C0034B7F7 /* FeedbackReportingOptions.swift */; };
 		A17F7B96451E66C9B743B82E5B3EF631 /* CLHueEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5E07E879A52A6F9E6ACA8846EB974D /* CLHueEffect.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		A45A8615EE320897CE0457869624514A /* CLBlurTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B555B0F5FF662DC484959627D29E900 /* CLBlurTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A762A903551D9070B764428CD801B221 /* CLImageToolInfo+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A2E7D0AD21C8C40E26A2A5F6523C98 /* CLImageToolInfo+Private.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
@@ -353,6 +354,7 @@
 		9F0E8B1ED85D9F912895DF269F5308D5 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Sources/Common.swift; sourceTree = "<group>"; };
 		9F6EB4FC5993A9277A055FE24A6EDEEB /* CLRotateTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLRotateTool.m; path = CLImageEditor/ImageTools/CLRotateTool/CLRotateTool.m; sourceTree = "<group>"; };
 		A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		A0232CB81DD23D1C0034B7F7 /* FeedbackReportingOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackReportingOptions.swift; sourceTree = "<group>"; };
 		A12EE767EE644B0A7129A0FC4E10F8DD /* CLEffectBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLEffectBase.h; path = CLImageEditor/ImageTools/CLEffectTool/CLEffectBase.h; sourceTree = "<group>"; };
 		A257A4210AEB9738BBD0B03310E4BA9B /* CLFilterTool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLFilterTool.m; path = CLImageEditor/ImageTools/CLFilterTool/CLFilterTool.m; sourceTree = "<group>"; };
 		A4762B4E6CC420A75B0D424CE47DC667 /* CLImageToolInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CLImageToolInfo.m; path = CLImageEditor/CLImageToolInfo.m; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				DC1F37F22A497E65AA8F75609863E373 /* Helpers.swift */,
 				A597682E976FA2634F021A2673F314D5 /* MediaQuery.swift */,
 				26EDFEEF25B64493283B22CA6E45D5EC /* Reachability.swift */,
+				A0232CB81DD23D1C0034B7F7 /* FeedbackReportingOptions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				FE38DAA7DFA1AF7DF2AF5A62556F6D31 /* ImagePreviewViewController.swift in Sources */,
 				0B10B1F5B4B43A46962B3888DCE803D6 /* MediaQuery.swift in Sources */,
 				4ADB1812F859ECC2881FC2C36367B7C2 /* Reachability.swift in Sources */,
+				A0232CBA1DD23D5F0034B7F7 /* FeedbackReportingOptions.swift in Sources */,
 				D8B2287B2DE87294F861C915D6D7A0E8 /* UIImageExtension.swift in Sources */,
 				A0232CB71DD235470034B7F7 /* PlaceholderTextView.swift in Sources */,
 				4CAC75B45C14892BE4E005D755A07059 /* UIViewControllerExtension.swift in Sources */,
