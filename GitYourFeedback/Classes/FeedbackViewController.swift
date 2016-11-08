@@ -15,7 +15,6 @@ class FeedbackInterfaceViewController: UIViewController {
     fileprivate let bundle = Bundle(for: FeedbackInterfaceViewController.self)
     
     var reporter: FeedbackReporter?
-    
     var shouldFetchScreenshot: Bool
     
     internal init(reporter: FeedbackReporter?, shouldFetchScreenshot: Bool) {
@@ -85,6 +84,12 @@ class FeedbackInterfaceViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        if let _ = Helpers.email() {
+            titleField.becomeFirstResponder()
+        } else {
+            emailField.becomeFirstResponder()
+        }
     }
     
     private func handleScreenshot() {
@@ -154,6 +159,8 @@ class FeedbackInterfaceViewController: UIViewController {
         imagePreviewButton.trailingAnchor.constraint(equalTo: bodyField.trailingAnchor, constant: -8).isActive = true
         imagePreviewButton.bottomAnchor.constraint(equalTo: bodyField.bottomAnchor, constant: -8).isActive = true
         
+        bodyField.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
+
         activitySpinner.centerXAnchor.constraint(equalTo: bodyField.centerXAnchor).isActive = true
         activitySpinner.centerYAnchor.constraint(equalTo: bodyField.centerYAnchor).isActive = true
     }
@@ -291,13 +298,12 @@ class FeedbackInterfaceViewController: UIViewController {
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
         if notification.name == Notification.Name.UIKeyboardWillHide {
-            scrollView.contentInset = UIEdgeInsets.zero
+            scrollView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         } else {
-            scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+            scrollView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
         }
-        
+
         scrollView.scrollIndicatorInsets = scrollView.contentInset
-        scrollView.scrollRectToVisible(CGRect(x: 0, y: scrollView.frame.maxY, width: view.frame.width, height: view.frame.height), animated: true)
     }
     
     // MARK - Views
@@ -305,7 +311,8 @@ class FeedbackInterfaceViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.keyboardDismissMode = .interactive
+        scrollView.keyboardDismissMode = .onDrag
+        scrollView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         return scrollView
     }()
     
@@ -341,13 +348,12 @@ class FeedbackInterfaceViewController: UIViewController {
     
     private let bodyField: UITextView = {
         let textView = UITextView()
-        textView.isScrollEnabled = false
+        textView.isScrollEnabled = true
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.heightAnchor.constraint(greaterThanOrEqualToConstant: 130).isActive = true
         textView.layer.borderColor = UIColor(white: 0.9, alpha: 1.0).cgColor
         textView.layer.cornerRadius = 5
         textView.layer.borderWidth = 1
-        textView.font = UIFont.systemFont(ofSize: 15)
+        textView.font = UIFont.systemFont(ofSize: 14)
         return textView
     }()
     
