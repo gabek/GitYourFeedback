@@ -9,26 +9,15 @@
 import UIKit
 import GitYourFeedback
 
-struct GitHubOptions: FeedbackOptions {
-    var token: String = Config.githubApiToken
-    /// The user that generated the above Personal Access Token and has access to the repository.
-    var user: String = Config.githubUser
-    /// The Github repository in username/repo format where the issue will be saved.
-    var repo: String = Config.githubRepo
-    // An array of strings that will be the labels associated to each issue.
-    var issueLabels: [String] = ["Feedback", "Bugs"]
-}
-
 class ViewController: UIViewController {
 
     var feedback: FeedbackReporter!
-    
+    let feedbackReportingOptions = FeedbackReportingOptions(token: Config.githubApiToken, user: Config.githubUser, repo: Config.githubRepo)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let options = GitHubOptions()
-        
-        self.feedback = FeedbackReporter(options: options)
+        self.feedback = FeedbackReporter(options: feedbackReportingOptions)
         self.feedback.datasource = self
         
         view.backgroundColor = UIColor.white
@@ -68,6 +57,7 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
+    
 }
 
 extension ViewController: FeedbackReporterDatasource {

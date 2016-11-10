@@ -9,6 +9,12 @@
 import Foundation
 
 public struct FeedbackReportingOptions: FeedbackOptions {
+    public init(token: String, user: String, repo: String) {
+        self.token = token
+        self.user = user
+        self.repo = repo
+    }
+    
     // The GitHub personal access token for the below user
     public var token: String
     /// The user that generated the above Personal Access Token and has access to the repository.
