@@ -1,7 +1,7 @@
 # GitYourFeedback
 
 [![Platform](https://img.shields.io/cocoapods/p/Typist.svg?style=flat)](https://github.com/gabek/GitYourFeedback)
-[![version](https://img.shields.io/badge/version-0.1.0-brightgreen.svg)](https://github.com/gabek/GitYourFeedback)
+[![version](https://img.shields.io/badge/version-0.1.1-brightgreen.svg)](https://github.com/gabek/GitYourFeedback)
 ![Swift Version](https://img.shields.io/badge/swift-3.0-orange.svg?style=flat)
 
 A lot of organizations run on GitHub, not just for the code repositories, but also for the heavy use of Issues, the bug tracking/feedback reporting tool.  Instead of routing your users to GitHub and expecting them to file issues, this is an option to support it right from inside your iOS application.
@@ -27,6 +27,13 @@ To run the example project:
 * Google Cloud Storage bucket for storing the screenshots.
 * GitHub repository for storing the issues.
 
+## Dependencies
+* If you install via Cocoapods these dependencies are handled for you, as they're listed in the Podspec.
+* CLImageEditor is used for editing the screenshot after it's taken.  This can be fore redacting personal information
+or calling out speficic items.
+* GRMustache is used to enable the Mustache templating used for `issueTemplate.md`.  It allows iteration of the actual issue content
+without code.
+
 ## Installation
 
 GitYourFeedback is available through [CocoaPods](http://cocoapods.org). To install
@@ -44,25 +51,20 @@ github "gabek/GitYourFeedback"
 
 2. In your project's `Info.plist` add a key of `NSPhotoLibraryUsageDescription` with a string explaining that your use of the photo library is for submitting screenshots.  This is user-facing so use your own judgement.
 
-3. Create a struct that adheres to the FeedbackOptions protocol. It should be as simple as:
+3. Create a `FeedbackReportingOptions` object and fill in the properties.  As simple as:
 ```
-struct MyFeedbackReportingOptions: FeedbackOptions {
-    // The GitHub personal access token for the below user 
-    var token: String = "abc123"
-    /// The user that generated the above Personal Access Token and has access to the repository.
-    var user: String = "repoman"
-    /// The Github repository in username/repo format where the issue will be saved.
-    var repo: String = "repoman/myRepository"
-}
+let feedbackOptions = FeedbackReportingOptions(token: "abc123", user: "repoman", repo: "repoman/myRepository")
 ```
+Alternatively you can create your own struct that adheres to the `FeedbackOptions` protocol and use that instead.  So you don't have to keep all the intialization values inline.
+
 4. In your AppDelegate, or some other long-lived controller:
 
 
 ```
-let feedbackReporter = FeedbackReporter(options: MyFeedbackReportingOptions())
+let feedbackReporter = FeedbackReporter(options: feedbackOptions)
 ```
 
-You also need to implement `FeedbackReporterDatasource` in order to tell the FeedbackReporter where to upload screenshots.  The simplest implementation would be something like:
+You'll also need to implement `FeedbackReporterDatasource` in order to tell the FeedbackReporter where to upload screenshots.  The simplest implementation would be something like:
 
 ```
 func uploadUrl(_ completionHandler: (String) -> Void) {
