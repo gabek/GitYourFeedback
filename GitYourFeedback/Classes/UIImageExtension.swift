@@ -11,8 +11,6 @@ import Foundation
 extension UIImage {
     
     func resize(to size: CGSize) -> UIImage {
-        let recommendedSize = CGSize(width: 450, height: 800)
-        
         UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         

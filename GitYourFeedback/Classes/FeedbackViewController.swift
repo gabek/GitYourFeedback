@@ -246,7 +246,6 @@ class FeedbackInterfaceViewController: UIViewController {
         
         var imageData: Data?
         if let image = image {
-            let sizeMultiplier: CGFloat = 0.6 // Shrink image
             let resizedImage = image.resizeToUploadingSize()
             imageData = UIImageJPEGRepresentation(resizedImage, 20)
         }
