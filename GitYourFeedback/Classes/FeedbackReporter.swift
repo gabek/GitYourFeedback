@@ -38,13 +38,22 @@ open class FeedbackReporter {
     private let googleStorage = GoogleStorage()
     
     var feedbackViewController: FeedbackViewController?
-    
+	
+	@available(*, deprecated, message: "use initializer that passes in datasource delegate instead")
     public init(options: FeedbackOptions) {
         self.options = options
         
         self.listenForScreenshot()
     }
 
+	public init(options: FeedbackOptions, datasource: FeedbackReporterDatasource) {
+		self.options = options
+		self.datasource = datasource
+		
+		self.listenForScreenshot()
+	}
+
+	
     private func listenForScreenshot() {
         let name = NSNotification.Name.UIApplicationUserDidTakeScreenshot
         

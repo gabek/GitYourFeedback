@@ -61,10 +61,10 @@ Alternatively you can create your own struct that adheres to the `FeedbackOption
 
 
 ```
-let feedbackReporter = FeedbackReporter(options: feedbackOptions)
+let feedbackReporter = FeedbackReporter(options: feedbackOptions, datasource: self)
 ```
 
-You'll also need to implement `FeedbackReporterDatasource` in order to tell the FeedbackReporter where to upload screenshots.  The simplest implementation would be something like:
+You'll need to implement `FeedbackReporterDatasource` in order to tell the FeedbackReporter where to upload screenshots.  The simplest implementation would be something like:
 
 ```
 func uploadUrl(_ completionHandler: (String) -> Void) {
@@ -73,15 +73,16 @@ func uploadUrl(_ completionHandler: (String) -> Void) {
     completionHandler(url)
 }
 ```
+This is also where you could generate, possibly from your backend, a signed URL so the Google Cloud Storage bucket doesn't need to be completely public.
 
-And there are other methods you can implement as well, to provide additional information in the issues that get filed.
+
+There are other methods you can implement as well, to provide additional information in the issues that get filed.
 
 ```
 func additionalData() -> String?
 func issueLabels() -> [String]?
 ```
 
-This is also where you could generate, possibly from your backend, a signed URL so the Google Cloud Storage bucket doesn't need to be completely public.
 
 ## Presenting the Feedback interface
 

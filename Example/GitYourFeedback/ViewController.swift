@@ -17,8 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.feedback = FeedbackReporter(options: feedbackReportingOptions)
-        self.feedback.datasource = self
+		self.feedback = FeedbackReporter(options: feedbackReportingOptions, datasource: self)
         
         view.backgroundColor = UIColor.white
         
