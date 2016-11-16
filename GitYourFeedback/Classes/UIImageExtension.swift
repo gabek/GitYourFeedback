@@ -19,7 +19,7 @@ extension UIImage {
     }
     
     func resizeToUploadingSize() -> UIImage {
-        let recommendedSize = CGSize(width: 450, height: 800)
+        let recommendedSize = CGSize(width: 360, height: 640)
 
         let widthFactor = size.width / recommendedSize.width
         let heightFactor = size.height / recommendedSize.height
