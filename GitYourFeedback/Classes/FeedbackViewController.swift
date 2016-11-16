@@ -176,11 +176,6 @@ class FeedbackInterfaceViewController: UIViewController {
     private func showImageOptions() {
         let actionSheet = UIAlertController(title: "Screenshot", message: nil, preferredStyle: .actionSheet)
         
-        let viewAction = UIAlertAction(title: "View", style: .default) { (action) in
-            self.showImagePreview()
-        }
-        actionSheet.addAction(viewAction)
-        
         let editAction = UIAlertAction(title: "Edit", style: .default) { (action) in
             let editor = CLImageEditor(image: self.image, delegate: self)!
             editor.setup()
@@ -205,15 +200,6 @@ class FeedbackInterfaceViewController: UIViewController {
 
         
         present(actionSheet, animated: true, completion: nil)
-    }
-    
-    private func showImagePreview() {
-        guard let image = image else {
-            return
-        }
-        
-        let vc = ImagePreviewViewController(image: image)
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func imageButtonPressed() {

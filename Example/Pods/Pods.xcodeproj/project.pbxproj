@@ -166,7 +166,6 @@
 		FBB6D918E701DB96CAFFF362FB4F7551 /* UIImage+Utility.h in Headers */ = {isa = PBXBuildFile; fileRef = D2A065CE08AAAFC0783EA1B93D43D7A7 /* UIImage+Utility.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FCA96D8BCDFE89A9D8DA89D322ABEE8B /* TemplateAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D946AE9404F415643798A6AABE09B0 /* TemplateAST.swift */; };
 		FD25D88FB180107D638BF9D97CE952C9 /* CLTextTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E1C6AB3BE0BCE940B40A2E4D671A71E /* CLTextTool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		FE38DAA7DFA1AF7DF2AF5A62556F6D31 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32C75E7443917AAEAF0D1690914196 /* ImagePreviewViewController.swift */; };
 		FFBFECEDF5C50A32364C6DDC0FE50DAB /* CLBlurTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 249CC3BC3D7641BEDF1641844F0A5B95 /* CLBlurTool.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 /* End PBXBuildFile section */
 
@@ -261,7 +260,6 @@
 		1AC02849E07A3AD4A034721CD8D0CE3B /* CLSpotEffect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSpotEffect.h; path = CLImageEditor/ImageTools/CLEffectTool/CLEffect/CLSpotEffect.h; sourceTree = "<group>"; };
 		1C0F6A850AA6E93318D74907CB3265F2 /* CLAdjustmentTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLAdjustmentTool.h; path = CLImageEditor/ImageTools/CLAdjustmentTool/CLAdjustmentTool.h; sourceTree = "<group>"; };
 		1C504348FD933572FB331CF86A845E85 /* Pods-GitYourFeedback_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedback_Example-frameworks.sh"; sourceTree = "<group>"; };
-		1D32C75E7443917AAEAF0D1690914196 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		1DD609A115E8F2C6159E302CC23FC402 /* GRMustache.swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GRMustache.swift.xcconfig; sourceTree = "<group>"; };
 		1F35E2509BEC3A27E3946AC982E39439 /* Pods-GitYourFeedback_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GitYourFeedback_Example-resources.sh"; sourceTree = "<group>"; };
 		1FB704C6F6E48E6C2EDA2C262F9E9FCC /* CLColorPickerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLColorPickerView.h; path = CLImageEditor/ImageTools/ToolSettings/CLColorPickerView.h; sourceTree = "<group>"; };
@@ -710,7 +708,6 @@
 			isa = PBXGroup;
 			children = (
 				DFF087F4AEF1D4BC626BC071CC12E268 /* FeedbackViewController.swift */,
-				1D32C75E7443917AAEAF0D1690914196 /* ImagePreviewViewController.swift */,
 				A0232CB51DD234380034B7F7 /* PlaceholderTextView.swift */,
 			);
 			name = UI;
@@ -1106,7 +1103,6 @@
 				D2BC58554A7BC078B6B1CB9622804919 /* GitYourFeedback-dummy.m in Sources */,
 				94022BA8B70E686B0C5F0762DC93B20D /* GoogleStorage.swift in Sources */,
 				E7A04FDA95C725505A3123F3B53F3234 /* Helpers.swift in Sources */,
-				FE38DAA7DFA1AF7DF2AF5A62556F6D31 /* ImagePreviewViewController.swift in Sources */,
 				0B10B1F5B4B43A46962B3888DCE803D6 /* MediaQuery.swift in Sources */,
 				4ADB1812F859ECC2881FC2C36367B7C2 /* Reachability.swift in Sources */,
 				A0232CBA1DD23D5F0034B7F7 /* FeedbackReportingOptions.swift in Sources */,
