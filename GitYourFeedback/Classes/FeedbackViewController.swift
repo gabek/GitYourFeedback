@@ -82,8 +82,8 @@ class FeedbackInterfaceViewController: UIViewController {
         imagePreviewButton.addTarget(self, action: #selector(imageButtonPressed), for: .touchUpInside)
         
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         if let _ = Helpers.email() {
             titleField.becomeFirstResponder()
@@ -127,7 +127,6 @@ class FeedbackInterfaceViewController: UIViewController {
             }
         }
     }
-    
     
     private func showNotification(title: String, message: String) {
         let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -233,7 +232,7 @@ class FeedbackInterfaceViewController: UIViewController {
         var imageData: Data?
         if let image = image {
             let resizedImage = image.resizeToUploadingSize()
-            imageData = UIImageJPEGRepresentation(resizedImage, 20)
+            imageData = resizedImage.jpegData(compressionQuality: 20)
         }
         
         reporter?.submit(title: titleText, body: bodyField.text, email: emailText, screenshotData: imageData, completionHandler: { (result) in
@@ -256,8 +255,8 @@ class FeedbackInterfaceViewController: UIViewController {
     }
     
     private func showRequiredFieldAlert() {
-        let alert = UIAlertController(title: "Information Required", message: "Your email address and a description is required.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: "Information Required", message: "Your email address and a description is required.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -279,10 +278,10 @@ class FeedbackInterfaceViewController: UIViewController {
     @objc private func adjustForKeyboard(notification: Notification) {
         let userInfo = notification.userInfo!
         
-        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardScreenEndFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
         
-        if notification.name == Notification.Name.UIKeyboardWillHide {
+        if notification.name == UIResponder.keyboardWillHideNotification {
             scrollView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         } else {
             scrollView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
@@ -349,11 +348,11 @@ class FeedbackInterfaceViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         
         let height = button.heightAnchor.constraint(equalToConstant: 80)
-        height.priority = 999
+        height.priority = UILayoutPriority(rawValue: 999)
         height.isActive = true
         
         let width = button.widthAnchor.constraint(equalToConstant: 80)
-        width.priority = 999
+        width.priority = UILayoutPriority(rawValue: 999)
         width.isActive = true
         
         button.imageView?.contentMode = .scaleAspectFill
@@ -386,7 +385,7 @@ class FeedbackInterfaceViewController: UIViewController {
     }()
     
     private let activitySpinner: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let view = UIActivityIndicatorView(style: .gray)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -408,8 +407,8 @@ class FeedbackInterfaceViewController: UIViewController {
 
 extension FeedbackInterfaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
             image = pickedImage
             picker.dismiss(animated: true, completion: nil)
         }
@@ -442,8 +441,8 @@ class FeedbackViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		let navigationTitleFont = UIFont.systemFont(ofSize: 18, weight: UIFontWeightThin)
-		navigationBar.titleTextAttributes = [NSFontAttributeName: navigationTitleFont]
+		let navigationTitleFont = UIFont.systemFont(ofSize: 18, weight: .thin)
+		navigationBar.titleTextAttributes = [.font: navigationTitleFont]
 		navigationBar.barTintColor = UIColor.white
         
         viewControllers = [FeedbackInterfaceViewController(reporter: reporter, shouldFetchScreenshot: shouldFetchScreenshot)]
