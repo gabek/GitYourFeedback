@@ -55,7 +55,7 @@ open class FeedbackReporter {
 
 	
     private func listenForScreenshot() {
-        let name = NSNotification.Name.UIApplicationUserDidTakeScreenshot
+        let name = UIApplication.userDidTakeScreenshotNotification
         
         NotificationCenter.default.addObserver(forName: name, object: nil, queue: OperationQueue.main) { notification in
             self.display(viewController: nil, shouldFetchScreenshot: true)

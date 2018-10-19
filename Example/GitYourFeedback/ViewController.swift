@@ -34,12 +34,12 @@ class ViewController: UIViewController {
         label.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -50).isActive = true
     }
     
-    func display() {
+    @objc func display() {
         self.feedback.display(viewController: self)
     }
     
     private let button: UIButton = {
-        let button = UIButton(type: UIButtonType.roundedRect)
+        let button = UIButton(type: .roundedRect)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Provide Feedback", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)

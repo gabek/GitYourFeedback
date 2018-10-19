@@ -32,7 +32,7 @@ extension Result {
     }
     
     // Construct a .Success if the expression returns a value or a .Failure if it throws
-    init( _ throwingExpr: (Void) throws -> T) {
+    init( _ throwingExpr: () throws -> T) {
         do {
             let value = try throwingExpr()
             self = Result.Success(value)
